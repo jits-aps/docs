@@ -1,0 +1,150 @@
+
+
+
+TProgressDialog
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TProgressDialog
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+TProgressDialog shows a standard window with a TProgressBar. Progress bars provide users with visual feedback about the progress of a procedure.
+&nbsp;
+Example
+&nbsp;
+var
+ &nbsp; i: Integer;
+begin
+ &nbsp; with TProgressDialog.Create do
+ &nbsp; try
+ &nbsp; &nbsp; Caption := 'Form title';
+ &nbsp; &nbsp; Text := 'Checking records...';
+ &nbsp; &nbsp; Min := 1;
+ &nbsp; &nbsp; Max := DataSet.RecCount - 1;
+ &nbsp; &nbsp; while not DataSet.Eof do
+ &nbsp; &nbsp; begin
+ &nbsp; &nbsp; &nbsp; Position := Position + 1;
+ &nbsp; &nbsp; &nbsp; // Check if user has pressed the Cancel button
+ &nbsp; &nbsp; &nbsp; ProcessMessages;
+ &nbsp; &nbsp; &nbsp; if ModalResult = mrCancel then
+ &nbsp; &nbsp; &nbsp; &nbsp; Abort;
+ &nbsp; &nbsp; &nbsp; // Execute the procedure per record
+ &nbsp; &nbsp; &nbsp; CheckCustomer(DataSet.FieldByName('No').AsString);
+ &nbsp; &nbsp; &nbsp; DataSet.Next;
+ &nbsp; &nbsp; end;
+ &nbsp; finally
+ &nbsp; &nbsp; Free;
+ &nbsp; end;
+&nbsp;
+Object Hierarchy
+TProgressDialog - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TProgressDialog
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AllowCancel
+
+Controls whether the cancel button responds to mouse and keyboard. Set AllowCancel to False if you want to disable the Cancel button.
+Note! This feature has been implemented in version 5.30.01
+
+
+
+Caption
+
+Use Caption to specify the text string that labels the form.
+
+
+
+Min
+Max
+
+Specifies the lower (Min) and upper (Max) limit of the range of possible progress positions.
+&nbsp;
+Use Min along with the Max property to establish the range of possible positions of the progress bar. When the process tracked by the progress bar is complete, the value of Position should equal Max.
+
+
+
+ModalResult
+
+Use this property to find out if the user has pressed the Cancel button.
+Returns mrCancel if the buttons has been pressed. Otherwise it return mrNone (0).
+&nbsp;
+Note! Call ProgressMessages before checke the ModalResult. ProcessMessages permit the application to handle user activities. (from the Windows Messages Queue)
+
+
+
+Position
+
+Specifies the current position of the progress bar.
+
+
+
+Text
+
+Use this string property to enter the message. If you want the user to enter the message, ignore this property and set ShowDialog to True.
+
+
+
+
+&nbsp;
+Methods of TProgressDialog
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Create
+
+Creates and initializes a TProgressDialog instance.
+
+
+
+Free
+
+Destroys the TProgressDialog and frees its memory.
+
+
+
+
+
+
+
+

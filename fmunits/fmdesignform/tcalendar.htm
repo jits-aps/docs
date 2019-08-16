@@ -1,0 +1,343 @@
+
+
+
+TCalendar
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Form Designer&nbsp;&gt;
+   
+      TCalendar
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+TCalendar is stand-alone calendar in which a user can select a date or range of dates.
+&nbsp;
+Object Hierarchy
+TCalendar - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TCalendar
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Align
+
+Determines how the control aligns within its container (parent control).
+
+
+
+Anchors
+
+Specifies how the control is anchored to its parent.
+
+
+
+AutoSize
+
+Specifies whether the control sizes itself automatically to accommodate its contents.
+
+
+
+CalColors
+
+Contains the colors used for each part of the calendar. Use this property to get or set the calendar's background color, month background color, text color, title background color, title text color, and trailing text color.
+
+
+
+Constraints
+
+Specifies the size constraints for the control.
+
+
+
+Cursor
+
+Specifies the image used to represent the mouse pointer when it passes into the region covered by the control.
+
+
+
+Date
+
+Indicates the date that is marked on the calendar.
+
+
+
+Enabled
+
+Controls whether the control responds to mouse and keyboard events.
+
+
+
+EndDate
+
+Indicates the last date that in the range of selected dates. Use EndDate to get or set the last selected date that is marked on the calendar. The first selected date is given by the Date property. Before you can set the EndDate property, you must set the MultiSelect property to true.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text written on or in the control.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+HelpKeyword
+
+Keyword for control's context-sensitive help topic.
+
+
+
+Hint
+
+Contains the text string that can appear when the user moves the mouse over the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+MaxDate
+MinDate
+
+Indicates the maximum and minimum date that can be selected. The values of the Date and EndDate properties cannot exceed MaxDate.
+
+
+
+MaxSelectRange
+
+Specifies the maximum number of days that can be selected. Use this property to limit the number of days that can be selected when MultiSelect is true. To limit ranges so that they fall between specific date values, use the MaxDate and MinDate properties instead.
+
+
+
+MultiSelect
+
+Specifies whether multiple dates can be selected on the calendar. Use MultiSelect to specify whether the calendar represents a single date or a range of dates. When MultiSelect is true, the calendar represents the range of dates from Date to EndDate . When MultiSelect is false, the calendar represents only the value of Date.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+ShowToday
+
+Specifies whether today's date is shown below the calendar.
+
+
+
+ShowTodayCircle
+
+Specifies whether today's date is circled on the calendar.
+
+
+
+TabOrder
+
+Indicates the position of the control in its parent's tab order.
+
+
+
+TabStop
+
+Determines if the user can tab to a control.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Visible
+
+Determines whether the component appears on screen.
+
+
+
+WeekNumbers
+
+Specifies whether week numbers are shown to the left of the calendar.
+
+
+
+Width
+
+Specifies the horizontal size of the control or form in pixels.
+
+
+
+
+&nbsp;
+Methods of TCalendar
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Repaint
+
+Call Repaint to repaint the entire control.
+
+
+
+SetFocus
+
+Gives the input focus to the control. When a control has focus, it receives keyboard events.
+
+
+
+
+&nbsp;
+Events of TCalendar
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnClick
+
+Occurs when the user clicks the control.
+
+
+
+OnDblClick
+
+Occurs when the user double-clicks the left mouse button when the mouse pointer is over the control.
+
+
+
+OnEnter
+
+Occurs when the control receives the input focus. Use the OnEnter event handler to cause any special processing to occur when a control becomes active.
+
+
+
+OnExit
+
+Occurs when the input focus shifts away from the control to another control. Use the OnExit event handler to provide special processing when the control ceases to be active.
+
+
+
+OnKeyDown
+
+Occurs when a user presses any key while the control has focus.
+
+
+
+OnKeyPress
+
+Occurs when a key is pressed.
+
+
+
+OnKeyUp
+
+Occurs when the user releases a key that has been pressed.
+
+
+
+OnMouseDown
+
+Occurs when the user presses a mouse button with the mouse pointer over a control.
+
+
+
+OnMouseEnter
+
+Occurs when the user moves the mouse into a control.
+
+
+
+OnMouseLeave
+
+Occurs when the user moves the mouse outside of a control.
+
+
+
+OnMouseMove
+
+Occurs when the user moves the mouse pointer while the mouse pointer is over a control.
+
+
+
+OnMouseUp
+
+Occurs when the user releases a mouse button that was pressed with the mouse pointer over a component.
+
+
+
+OnSelectDate
+
+Occurs when the user select a date by the mouse or by using the arrows and enter key.
+Note! This event will not be called if MultiSelect is true.
+
+
+
+
+&nbsp;
+
+
+
+

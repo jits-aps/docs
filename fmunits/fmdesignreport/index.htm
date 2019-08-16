@@ -1,0 +1,110 @@
+
+
+
+Rapport Designer
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units&nbsp;&gt;
+   
+      Rapport Designer
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Generelt
+Rapportgeneratoren er baseret pÃ¥ TQReport komponenten fra QBS Software og giver dig mulighed for at designe egne udskrifter, baseret pÃ¥ de data som findes i databasen. En udskrift kan enten vises pÃ¥ skÃ¦rmen, udskrives til en printer, eller eksporteres til forskellige filformater.
+&nbsp;
+Design af rapporter krÃ¦ver lidt kendskab til SQL (Structured Query Language). Du kan lÃ¦se mere om SQL i afsnittet SQL Reference Guide, som indeholder en detaljeret gennemgang af de forskellige SQL kommandoer.
+&nbsp;
+Designeren er opdelt i to vinduer. âRequest Designâ som er et anfordringsvindue og âReport Designâ, hvis baggrund er udformet som et hvidt kvadratnet, hvor selve udskriften designes.
+&nbsp;
+VÃ¦rktÃ¸jer
+Via menupanelet (Ãverst) kan du Ã¥bne en Designpalet (Design Palette), hvorfra du har adgang til de visuelle komponenter samt en Objektinspektor (Object Inspector), som viser komponenternes egenskaber. Disse to vÃ¦rktÃ¸js vinduer anvendes ved design af rapporter.
+&nbsp;
+Request Design
+Dette vindue er et almindeligt TForm vindue, som vises nÃ¥r rapporten kaldes. Herfra kan brugeren vÃ¦lge, om udskriften skal vises pÃ¥ skÃ¦rmen eller udskrives til printeren, via de foruddefineret knapper.
+&nbsp;
+Meningen med dette vindue er, at man kan tilfÃ¸je anfordringsfelter, som brugeren skal udfylde, fÃ¸r udskriften generes. Hvis man f.eks. skal designe en rapport som viser nogle data for en given periode, skal der vÃ¦re mulighed for indtastning af en fra- og til dato. Vinduet kan naturligvis ogsÃ¥ bruges til andre formÃ¥l.
+&nbsp;
+Anfordringsfelter oprettes ved at hÃ¸jreklikke pÃ¥ formen og herefter vÃ¦lges menupunktet âLocal DataSetâ. En tabel kommer til syne, hvorfra felternes navn og type defineres. Hvis du samtidig Ã¥bner Objektinspektoren, vil du fÃ¥ adgang til alle felt egenskaberne. Du kan lÃ¦se mere om databasefelter i afsnittet Table Designer.
+&nbsp;
+BemÃ¦rk! Felter som oprettes under Local DataSet oprettes ikke fysisk i databasen, men generes sammen med formen i hukommelse, nÃ¥r rapporten Ã¥bnes. Det betyder at indtastede data forsvinder, nÃ¥r rapporten lukkes. Men via formens âSaveLocalDataâ egenskab, kan man fÃ¥ programmet til at gemme indtastede data pÃ¥ brugerens egen computer.
+&nbsp;
+De oprettede felter indsÃ¦ttes pÃ¥ formen via Designpaletten. Marker felterne ved at sÃ¦tte et flueben til venstre for feltnavnene og klik herefter pÃ¥ det punkt hvor felterne skal placeres. Programmet opretter automatisk nogle etiketter og tekstbokse (komponenter), som peger pÃ¥ de valgte felter. Du kan efterfÃ¸lgende flytte rundt pÃ¥ komponenterne, hvis deres placering skal Ã¦ndres.
+&nbsp;
+NÃ¥r anfordringsvinduet er fÃ¦rdigt navngives rapporten via egenskaben âCaptionâ i Objektinspektoren, og samtidig skal du kontrollere formens tabulering. (Dvs. hvilken rÃ¦kkefÃ¸lgende komponenterne fÃ¥r fokus, ved brug af tabulatortasten.) Dette gÃ¸r du ved at hÃ¸jreklikke pÃ¥ formen, og herefter vÃ¦lge menupunktet Tab Order.
+&nbsp;
+Report Design
+En rapport er styret af sÃ¥kaldte bands (bÃ¥nd), hvorpÃ¥ man placerer sine komponenter (tekster, billeder datafelter etc.), som er tilgÃ¦ngelige via Designpaletten. Den nemmeste mÃ¥de at udvÃ¦lge hvilke âbandsâ som rapporten skal indeholde, er ved at hÃ¸jreklikke pÃ¥ rapporten, og vÃ¦lge dem via menuen. Der findes fÃ¸lgende standard âbandsâ:
+&nbsp;
+
+
+
+
+Page Header
+Dette bÃ¥nd er det fÃ¸rste som udskrives pÃ¥ alle siderne. Via Objektinspektoren og egenskaben Options.FirstPageHeader, kan du dog fravÃ¦lge at bÃ¥ndet udskrives pÃ¥ den fÃ¸rste side,
+&nbsp;
+Title
+Dette bÃ¥nd er det fÃ¸rste om udskrives efter Page Header. (hvis denne er valgt). Her kan du designe en overskrift, som kun skal vises pÃ¥ den fÃ¸rste side.
+&nbsp;
+Column Header
+Dette bÃ¥nd udskrives pÃ¥ toppen af en kolonne. Hvis rapporten kun indeholder Ã©n kolonne, hvilket er standard, udskrives bÃ¥ndet pÃ¥ hver side efter Page Header og Title. Antallet af kolonner defineres via Objektinspektoren og egenskaben Options.Columns.
+&nbsp;
+Detail
+Dette bÃ¥nd styres af resultatet af en SQL forespÃ¸rgsel og udskrives Ã©n gang pr. record. Efter at bÃ¥ndet er tilfÃ¸jet, defineres SQL sÃ¦tningen via en SQL editor, som vÃ¦lges ved at hÃ¸jreklikke pÃ¥ selve bÃ¥ndet. Hvis du undlader at definere en SQL sÃ¦tning, udskrives bÃ¥ndet Ã©n gang. SQL editoren beskrives nÃ¦rmere i afsnittet SQL Editor.
+&nbsp;
+Summary
+Dette bÃ¥nd udskrives efter gennemlÃ¸b af Detail bÃ¥ndet og bruges ofte til at vise totaler af numeriske datafelter via TQRExpr komponenten, som vÃ¦lges via Designpaletten.
+&nbsp;
+Page Footer
+Dette bÃ¥nd udskrives til sidst pÃ¥ hver side. Via Objektinspektoren og egenskaben Options.LastPageFooter, kan du dog fravÃ¦lge at bÃ¥ndet udskrives pÃ¥ den sidste side.
+
+
+
+
+&nbsp;
+NÃ¥r du har valgt de Ã¸nskede bÃ¥nd (bands), kan du via Objektinspektoren Ã¦ndre pÃ¥ forskellige egenskaber. Hvis du f.eks. klikker pÃ¥ selve rapportens baggrund, vises de generelle egenskaber. Klikker du derimod pÃ¥ et bÃ¥nd, vises egenskaberne for denne.
+&nbsp;
+Et bÃ¥nds hÃ¸jde justeres ved at trÃ¦kke bundlinien op eller ned med musen, eller ved at Ã¦ndre egenskaben Width via Objektinspektoren. Bredden er derimod tilpasset rapportens bredde, som fastsÃ¦ttes via rapportens Page egenskaber.
+&nbsp;
+Udover de nÃ¦vnte standard bÃ¥nd findes ogsÃ¥ et TQRGroupBand, som kan opdele en liste i afsnit, et TQRLoopBand, som afvikles et bestemt antal gange og et TQRSubBand, hvorfra du kan definerede en data underlÃ¸kke til et detail bÃ¥nd. Disse specielle &quot;bands&quot; vÃ¦lges via Designpaletten.
+&nbsp;
+PÃ¥ de valgte bÃ¥nd anbringes forskellige komponenter, som bruges til at designe selve indholdet af rapporten. Ãnsker du f.eks. at indsÃ¦tte en fast tekst, vÃ¦lges TQRLabel komponenten via Designpaletten og herefter klikker du pÃ¥ det bÃ¥nd, hvorpÃ¥ komponenten skal placeres. Tekst og skrifttype defineres under egenskaberne Caption og Font, via Objektinspectoren.
+&nbsp;
+Hvis du har defineret en SQL forespÃ¸rgsel via SQL editoren, vises datafelterne i designpaletten. Marker de Ã¸nskede felter og klik herefter pÃ¥ et &quot;band&quot;, og designeren opretter automatisk nogle TQRDBText komponenter, som peger pÃ¥ de valgte datafelter.
+&nbsp;
+BemÃ¦rk! &nbsp;Hvis alle komponenterne skal anvende samme skrifttype, skal skrifttypen vÃ¦lges for selve rapporten. Alle komponenten hvor egenskaben ParentFont er lig True, &nbsp;hvilket er standard, anvender automatisk rapportens skrifttype indstillinger. 
+&nbsp;
+Du finder mere information om de enkelte komponenter via hjÃ¦lpemenuen, som vises til venstre. Hver komponent har sit eget afsnit, for selve komponenten og dens egenskaber beskrives nÃ¦rmere.
+&nbsp;
+Event handlers
+I Script Editoren har du mulighed for at programmere egne event handlers, baseret pÃ¥ de komponenter som findes i designmiljÃ¸et. Applikationssproget som anvendes, understÃ¸tter de grundlÃ¦ggende strukturer fra programmeringssproget Pascal, herunder definering af procedurer, funktioner, variabler og konstanter.
+&nbsp;
+En event handler er en procedure, som afvikles nÃ¥r en given hÃ¦ndelse er indtruffet. F.eks. fÃ¸r et &quot;band&quot; udskrives kaldes BeforePrint. NÃ¥r du designer en rapport, kan du via Objektinspectoren se hvilke events (hÃ¦ndelser), der er knyttet til den aktuelle komponent. For at oprette et event, skal du klikke pÃ¥ knappen i feltet udfra det Ã¸nskede event, og herefter generes automatisk en ny procedure i editoren. Det er sÃ¥ din opgave at definere den hÃ¦ndelse som skal afvikles.
+
+
+
+

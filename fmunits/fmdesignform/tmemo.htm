@@ -1,0 +1,496 @@
+
+
+
+TMemo
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Form Designer&nbsp;&gt;
+   
+      TMemo
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+Use TMemo object to put a standard Windows multiline edit control on a form. Multiline edit boxes allow the user to enter more than one line of text. They are appropriate for representing lengthy information. TMemo uses the Text property to represent the contents of the field. If the control is not associated to a data field, use the Lines property to read or specify the text value that appears within the control. The Lines property is only accessible by the script library.
+&nbsp;
+Object Hierarchy
+TMemo - TCustomEdit - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TMemo
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Align
+
+Determines how the control aligns within its container (parent control).
+
+
+
+Alignment
+
+Determines how the text is aligned within the memo control.
+
+
+
+Anchors
+
+Specifies how the control is anchored to its parent.
+
+
+
+BevelEdges
+
+Specifies which edges of the control are beveled.
+
+
+
+BevelInner
+
+Specifies the cut of the inner bevel.
+
+
+
+BevelKind
+
+Specifies the control's bevel style.
+
+
+
+BevelOuter
+
+Specifies the cut of the outer bevel.
+
+
+
+BevelWidth
+
+Specifies the width of the inner and outer bevels.
+
+
+
+BorderStyle
+
+Determines whether the edit control has a single line border around the client area.
+
+
+
+CaretPosX
+Run-time only
+
+Indicates the horizontal position of the caret in the client area of the memo.
+
+
+
+CaretPosY
+Run-time only
+
+Indicates the vertical position of the caret in the client area of the memo.
+
+
+
+Color
+
+Specifies the background color of the control.
+
+
+
+Constraints
+
+Specifies the size constraints for the control.
+
+
+
+Ctl3D
+
+Determines whether a control has a three-dimensional (3-D) or two-dimensional look.
+
+
+
+Cursor
+
+Specifies the image used to represent the mouse pointer when it passes into the region covered by the control.
+
+
+
+DataField
+
+Use DataField to bind the memo control to a field in the parent form dataset.
+
+
+
+Enabled
+
+Controls whether the control responds to mouse and keyboard events.
+
+
+
+Field
+Run-time only
+
+Identifies the TField component the memo is linked to.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text written on or in the control.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+HelpKeyword
+
+Keyword for control's context-sensitive help topic.
+
+
+
+Hint
+
+Contains the text string that can appear when the user moves the mouse over the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Lines
+Run-time only
+
+Contains the individual lines of text in the memo control.
+Use Lines to manipulate text in an memo control on a line-by-line basis. Lines is a TStringList object, so the TStringList methods may be used for Lines to perform manipulations such as counting the lines of text, adding new lines, deleting lines, or replacing lines with new text.
+To work with all the text at once, use the Text property. To manipulate individual lines of text, the Lines property works better.
+
+
+
+MaxLength
+
+Specifies the maximum number of characters that can appear in the edit control.
+
+
+
+Modified
+Run-time only
+
+Use Modified to determine whether the user changed the Text property of the edit control. Modified is only reset to False when you assign a value to the Text property. In particular, it is not reset when the control receives focus.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParentColor
+
+Determines where a control looks for its color information.
+
+
+
+ParentCtl3D
+
+Determines where a component looks to determine if it should appear three dimensional.
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+ParentReadOnly
+
+Determines where a control looks for whether the user can change the value.
+
+
+
+ReadOnly
+
+Determines whether the user can change the text of the edit control.
+
+
+
+SelLength
+Run-time only
+
+Specifies the number of characters (bytes) that are selected.
+
+
+
+SelStart
+Run-time only
+
+Specifies the position of the first selected character in the text.
+
+
+
+SelText
+Run-time only
+
+Specifies the selected portion of the edit control's text.
+
+
+
+ScrollBars
+
+Determines whether the memo control has scroll bars.
+&nbsp;
+
+
+Value
+
+Description
+
+
+
+ssNone
+
+The control has no scroll bars.
+
+
+
+ssHorizontal
+
+The control has a single scroll bar on the bottom edge.
+
+
+
+ssVertical
+
+The control has a single scroll bar on the right edge.
+
+
+
+ssBoth
+
+The control has a scroll bar on both the bottom and right edges.
+
+
+
+
+
+
+
+TabOrder
+
+Indicates the position of the control in its parent's tab order.
+
+
+
+TabStop
+
+Determines if the user can tab to a control.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Text
+Run-time only
+
+Contains a text string associated with the control.
+Use the Text property to read the Text of the control or specify a new string for the Text value.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Visible
+
+Determines whether the component appears on screen.
+
+
+
+WantReturns
+
+Determines whether the user can insert return characters into the text.
+
+
+
+WantTabs
+
+Determines whether the user can insert tab characters into the text.
+
+
+
+Width
+
+Specifies the horizontal size of the control or form in pixels.
+
+
+
+WordWrap
+
+Determines whether the edit control inserts soft carriage returns so text wraps at the right margin.
+
+
+
+
+&nbsp;
+Methods of TMemo
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Repaint
+
+Call Repaint to repaint the entire control.
+
+
+
+SetFocus
+
+Gives the input focus to the control. When a control has focus, it receives keyboard events.
+
+
+
+
+&nbsp;
+Events of TMemo
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnChange
+
+Occurs when the text for the edit control may have changed.
+
+
+
+OnClick
+
+Occurs when the user clicks the control.
+
+
+
+OnDblClick
+
+Occurs when the user double-clicks the left mouse button when the mouse pointer is over the control.
+
+
+
+OnEnter
+
+Occurs when the control receives the input focus. Use the OnEnter event handler to cause any special processing to occur when a control becomes active.
+
+
+
+OnExit
+
+Occurs when the input focus shifts away from the control to another control. Use the OnExit event handler to provide special processing when the control ceases to be active.
+
+
+
+OnKeyDown
+
+Occurs when a user presses any key while the control has focus.
+&nbsp;
+Use the OnKeyDown event handler to specify special processing to occur when a key is pressed. The OnKeyDown handler can respond to keyboard keys, including function keys and keys combined with the SHIFT, ALT, and CTRL keys, and pressed mouse buttons. See TShiftState for a description of the Shift parameter.
+
+
+
+OnKeyPress
+
+Occurs when a key is pressed.
+
+
+
+OnKeyUp
+
+Occurs when the user releases a key that has been pressed.
+
+
+
+OnMouseDown
+
+Occurs when the user presses a mouse button with the mouse pointer over a control.
+
+
+
+OnMouseEnter
+
+Occurs when the user moves the mouse into a control.
+
+
+
+OnMouseLeave
+
+Occurs when the user moves the mouse outside of a control.
+
+
+
+OnMouseMove
+
+Occurs when the user moves the mouse pointer while the mouse pointer is over a control.
+
+
+
+OnMouseUp
+
+Occurs when the user releases a mouse button that was pressed with the mouse pointer over a component.
+
+
+
+
+
+
+
+

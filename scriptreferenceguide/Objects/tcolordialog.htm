@@ -1,0 +1,113 @@
+
+
+
+TColorDialog
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TColorDialog
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+The TColorDialog component displays a Windows dialog box for selecting colors. The dialog does not appear at runtime until it is activated by a call to the Execute method. When the user selects a color and clicks OK, the dialog closes and the selected color is stored in the Color property.
+&nbsp;
+Example
+&nbsp;
+var
+ &nbsp; d: TColorDialog;
+ &nbsp; MyColor: TColor;
+&nbsp;
+begin
+ &nbsp; d := TColorDialog.Create;
+ &nbsp; try
+ &nbsp; &nbsp; d.Color := MyColor;
+ &nbsp; &nbsp; if d.Execute then
+ &nbsp; &nbsp; &nbsp; MyColor := d.Color;
+ &nbsp; finally
+ &nbsp; &nbsp; d.Free;
+ &nbsp; end;
+end;
+&nbsp;
+Object Hierarchy
+TColorDialog - TCommonDialog - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TColorDialog
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Color
+
+Returns the selected color. When the user selects a color in the dialog box and clicks OK, the selected color becomes the value of the Color property. To make a default color of choice appear in the dialog when it opens, assign a value to this property, otherwise the default is clBlack.
+
+
+
+CustomColors
+
+Determines which custom colors are available in the dialog box.
+&nbsp;
+Each custom color is represented as a string of the form ColorX=HexValue. For example, the following string sets the first custom color: &quot;ColorA=808022&quot; Up to 16 custom colors (ColorA through ColorP) can be set.
+
+
+
+Options
+
+Only for internal use
+Note! Set Options to 1 if you want to display custom color options when the dialog opens.
+
+
+
+
+&nbsp;
+Methods of TColorDialog
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Execute
+
+Execute opens the color-selection dialog, returning true when the user selects a color and clicks OK, or false when the user cancels.
+
+
+
+
+
+
+
+

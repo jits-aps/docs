@@ -1,0 +1,275 @@
+
+
+
+TWebBrowser
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Form Designer&nbsp;&gt;
+   
+      TWebBrowser
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+TWebBrowser wraps the IWebBrowser2 interface from Microsoft's Shell Doc Object and Control Library (SHDOCVW.DLL) to allow you to create a customized Web browsing application or to add Internet, file and network browsing, document viewing, and data downloading capabilities to your applications. The TWebBrowser component can display any Web page that Microsoft Internet Explorer version 3.0 or later (i.e. 4.0, 4.01, 5, 5.5, 6 ...) can display.
+&nbsp;
+Note: Because TWebBrowser wraps the SHDOCVW.DLL, you must have SHDOCVW.DLL installed to use this component. This DLL ships with Internet Explorer 4 and later.
+&nbsp;
+Object Hierarchy
+TWebBrowser - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Browser Emulation
+The FEATURE_BROWSER_EMULATION feature defines the default emulation mode:
+https://msdn.microsoft.com/en-us/library/ee330730(v=vs.85).aspx
+&nbsp;
+Example:
+The flowing example changes the emulation to run in IE11 mode:
+&nbsp;
+const
+ &nbsp; ModeIE11 = 11000;
+var
+ &nbsp; Reg: TRegistry;
+begin
+ &nbsp; Reg := TRegistry.Create('software\microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION');
+ &nbsp; try
+ &nbsp; &nbsp; Reg.WriteInteger('','Admind.exe',ModeIE11)
+ &nbsp; finally
+ &nbsp; &nbsp; Reg.Free;
+ &nbsp; end;
+end;
+&nbsp;
+Properties of TWebBrowser
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Align
+
+Determines how the control aligns within its container (parent control).
+
+
+
+Anchors
+
+Specifies how the control is anchored to its parent.
+
+
+
+Cursor
+
+Specifies the image used to represent the mouse pointer when it passes into the region covered by the control.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+HelpKeyword
+
+Keyword for control's context-sensitive help topic.
+
+
+
+Hint
+
+Contains the text string that can appear when the user moves the mouse over the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+Silent
+
+Specifies whether the Web browser can display dialog boxes. 
+Set Silent to true to prevent the Web browser control from displaying dialog boxes.
+
+
+
+TabOrder
+
+Indicates the position of the control in its parent's tab order.
+
+
+
+TabStop
+
+Determines if the user can tab to a control.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Visible
+
+Determines whether the component appears on screen.
+
+
+
+Width
+
+Specifies the horizontal size of the control or form in pixels.
+
+
+
+
+&nbsp;
+Methods of TWebBrowser
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Busy
+
+Indicates whether the WebBrowser control is in the middle of a navigation or downloading operation.
+
+
+
+Refresh
+
+Reloads the current document. 
+Call Refresh to reload the current document. This is useful when the Web browser is displaying the resource at an URL that may have changed. 
+
+
+
+GoBack
+
+Navigates to the previous item in the history list. 
+Call GoBack to return to the last document in the history list. GoBack has no effect unless the history list contains additional documents. 
+
+
+
+GoForward
+
+Navigates to the next item in the history list. 
+Call GoForward to return to the next document in the history list. GoForward reverses the effect of the last GoBack command. 
+
+
+
+GoHome
+
+Navigates to the current start page. 
+Call GoHome to navigate to the url called by Navigate.
+
+
+
+Navigate
+
+Navigates to a resource identified by a path name or URL. 
+Use Navigate to locate and download a specific resource. Navigate can send an HTTP message to a specified URL and display the results or simply display the results of a specified file. 
+&nbsp;
+URL specifies the UNC path name of a file or the Uniform Resource Locator of an Internet resource that the Web browser should display. Headers contains any headers sent to the servers when the URL represents an HTTP URL. HTTP headers specify such things as the intended action required of the server, the type of data, and so on. PostData contains the data sent to the server when using Navigate to generate an HTTP POST message. If PostData is NULL, Navigate generates an HTTP GET message. PostData is ignored if URL does not specify an HTTP URL.
+
+
+
+Repaint
+
+Call Repaint to repaint the entire control.
+
+
+
+SetFocus
+
+Gives the input focus to the control. When a control has focus, it receives keyboard events.
+
+
+
+
+&nbsp;
+Events of TWebBrowser
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+BeforeNavigate
+
+Occurs immediately before the Web browser navigates to a new resource. 
+Write an OnBeforeNavigate event handler to redirect or cancel a change to a different URL. This event may occur as the result of a call to the Navigate method, or the user clicking a link.
+
+
+
+NavigateComplete
+
+Occurs immediately after the Web browser successfully navigates to a new location. 
+Write an OnNavigateComplete event handler to take specific action when the Web browser successfully navigates to a new resource. The event can occur before the document is fully downloaded, but when it occurs at least part of the document must be received and a viewer for the document created.
+
+
+
+OnEnter
+
+Occurs when the control receives the input focus. Use the OnEnter event handler to cause any special processing to occur when a control becomes active.
+
+
+
+OnExit
+
+Occurs when the input focus shifts away from the control to another control. Use the OnExit event handler to provide special processing when the control ceases to be active.
+
+
+
+
+
+
+
+

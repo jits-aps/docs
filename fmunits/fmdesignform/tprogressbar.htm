@@ -1,0 +1,269 @@
+
+
+
+TProgressBar
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Form Designer&nbsp;&gt;
+   
+      TProgressBar
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+TProgressBar displays a simple progress bar.
+&nbsp;
+Use TProgressBar to add a progress bar to a form. Progress bars provide users with visual feedback about the progress of a procedure within an application. As the procedure progresses, the rectangular progress bar gradually fills from left to right with the system highlight color.
+&nbsp;
+Object Hierarchy
+TProgressBar - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TProgressBar
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Align
+
+Determines how the control aligns within its container (parent control).
+
+
+
+Anchors
+
+Specifies how the control is anchored to its parent.
+
+
+
+BorderWidth
+
+Specifies the width of the control's border.
+
+
+
+Constraints
+
+Specifies the size constraints for the control.
+
+
+
+Cursor
+
+Specifies the image used to represent the mouse pointer when it passes into the region covered by the control.
+
+
+
+Enabled
+
+Controls whether the control responds to mouse and keyboard events.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+HelpKeyword
+
+Keyword for control's context-sensitive help topic.
+
+
+
+Hint
+
+Contains the text string that can appear when the user moves the mouse over the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Min
+Max
+
+Specifies the lower (Min) and upper (Max) limit of the range of possible progress positions.
+&nbsp;
+Use Min along with the Max property to establish the range of possible positions of the progress bar. When the process tracked by the progress bar is complete, the value of Position should equal Max.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+Orientation
+
+Specifies whether the progress bar is oriented vertically or horizontally.
+
+
+
+Position
+
+Specifies the current position of the progress bar.
+&nbsp;
+You can read Position to determine how far the process tracked by the progress bar has advanced from Min toward Max. Set Position to cause the progress bar to display a position between Min and Max. For example, when the process tracked by the progress bar completes, set Position to Max so that it appears completely filled. When a progress bar is created, Min and Max represent percentages, where Min is 0 (0% complete) and Max is 100 (100% complete). If these values are not changed, Position is the percentage of the process that has already been completed.
+
+
+
+Smooth
+
+Specifies whether the progress bar is smooth or segmented.
+
+
+
+State
+
+Specifies the current state of the progress bar: pbsNormal, pbsError, or pbsPaused. 
+
+
+
+TabOrder
+
+Indicates the position of the control in its parent's tab order.
+
+
+
+TabStop
+
+Determines if the user can tab to a control.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Visible
+
+Determines whether the component appears on screen.
+
+
+
+Width
+
+Specifies the horizontal size of the control or form in pixels.
+
+
+
+
+&nbsp;
+Methods of TProgressBar
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Repaint
+
+Call Repaint to repaint the entire control.
+
+
+
+
+&nbsp;
+Events of TProgressBar
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnEnter
+
+Occurs when the control receives the input focus. Use the OnEnter event handler to cause any special processing to occur when a control becomes active.
+
+
+
+OnExit
+
+Occurs when the input focus shifts away from the control to another control. Use the OnExit event handler to provide special processing when the control ceases to be active.
+
+
+
+OnMouseDown
+
+Occurs when the user presses a mouse button with the mouse pointer over a control.
+
+
+
+OnMouseEnter
+
+Occurs when the user moves the mouse into a control.
+
+
+
+OnMouseLeave
+
+Occurs when the user moves the mouse outside of a control.
+
+
+
+OnMouseMove
+
+Occurs when the user moves the mouse pointer while the mouse pointer is over a control.
+
+
+
+OnMouseUp
+
+Occurs when the user releases a mouse button that was pressed with the mouse pointer over a component.
+
+
+
+
+
+
+
+

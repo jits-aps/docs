@@ -1,0 +1,434 @@
+
+
+
+TSmallIntField
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Table Designer&nbsp;&gt;
+   
+      TSmallIntField
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+TSmallIntField represents a signed 16-bit integer field in a dataset.
+&nbsp;
+TSmallIntField encapsulates the fundamental behavior common to small-integer fields. Small-integer fields can hold values in the range -32768 to 32767, and are used to hold values that are signed 16-bit whole numbers. Use this simple data type to denote option values by using the OptionList property.
+&nbsp;
+If you use the Table Designer at design time to create a persistent field component for the small integer field, you can access it by name at runtime. When using dynamic field components, you can access the TSmallIntField instance using the dataset's Fields property or FieldByName method.
+&nbsp;
+Object Hierarchy
+TSmallIntField - TField - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TField
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Alignment
+Run-time only
+
+Use Alignment to specify the position of the field's data within data-aware controls. These are the possible values:
+&nbsp;
+
+
+Value
+
+Meaning
+
+
+
+taLeftJustify
+
+Align data to the left side of the control
+
+
+
+taCenter
+
+Center data horizontally in the control
+
+
+
+taRightJustify
+
+Align data to the right side of the control
+
+
+
+
+
+
+
+AsBoolean
+Run-time only
+
+Represents the field's value as a boolean value.
+
+
+
+AsDateTime
+Run-time only
+
+Represents the field's value as a TDateTime value.
+
+
+
+AsFloat
+Run-time only
+
+Represents the field's value as a double value.
+
+
+
+AsInteger
+Run-time only
+
+Represents the field's value as a 32-bit integer.
+
+
+
+AsString
+Run-time only
+
+Represents the field's value as a string.
+
+
+
+AsVariant
+Run-time only
+
+Represents the Value of the field as a Variant.
+
+
+
+CurValue
+Run-time only
+
+Represents the current value of the field (as a Variant) in a Validate event
+Read the CurValue property to retrieve the value of the field that is currently assigned.
+&nbsp;
+Note! This property is only supported in a validate event.
+
+
+
+DataType
+Run-time only
+
+Identifies the TFieldType of the field component.
+
+
+
+DefaultValue
+
+Use the DefaultValue property to access or define the default value for the field definition. The expression used
+for the default value must be a simple literal constant or one of the following default SQL parameters:
+CURRENT_ACCID
+CURRENT_ACCNAME
+CURRENT_DATABASE
+CURRENT_DATE
+CURRENT_STOCKID
+CURRENT_TIME
+CURRENT_TIMESTAMP
+CURRENT_USERNAME
+
+
+
+DisplayLabel
+
+Contains the text to display as Field Name in a data-aware controls.
+
+
+
+DisplayText
+Run-time only
+
+Represents the field's value as it is displayed in a data-aware control.
+
+
+
+DisplayWidth
+
+Specifies the number of characters that should be used to calculate the column width for the field when it is displayed by TGrid.
+
+
+
+FieldName
+
+Indicates the name of the physical column in the underlying table or query result to which a field component is bound.
+
+
+
+Index
+Run-time only
+
+Indicates the field component's index in the Fields property of the dataset.
+
+
+
+IsNull
+Run-time only
+
+Indicates whether the field has a value assigned to it.
+
+
+
+MaxValue
+MinValue
+
+Limits the maximum and minimum value in the integer field.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+OptionList
+
+Contains the individual options presented to the user in a text box. The OptionList is a TStringList object, so the TStringList methods may be used to list the options you want the system to present to the user. The system recursively checks this property setting during validation.
+&nbsp;
+At RunTime use the DisplayText property to get the current text field value. &nbsp;
+
+
+
+OldValue
+
+Represents the posted value of the field (as a Variant)
+Read the OldValue property to retrieve the value of the field that was obtained from the dataset before any edits were posted.
+
+
+
+Origin
+
+The Origin property distinguishes the name of the field as it appears in its dataset from the name of the field in the base table on which it is based. For example, in a query that uses the following SQL statement, the value of Origin is CUSTOMERS.NO.
+&nbsp;
+SELECT NO AS &quot;ID&quot; FROM CUSTOMERS
+
+
+
+ReadOnly
+
+Determines whether the field can be modified.
+
+
+
+Required
+
+Specifies whether a nonblank value for a field is required.
+
+
+
+TableRelation
+
+Use this property to define relationships (links) to other tables. For instance, if you want to provide a lookup into another table. This property contents following sub properties:
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+IndexFieldName
+
+Specifies the Field Name from the related table, the field has to be linked to. The field must be an indexed field that contain in the index specified by the TableIndex property.
+
+
+
+TableIndex
+
+Specified the Index Name from the related table.
+If no index is specified the primary index will be used.
+
+
+
+TableName
+
+Specified the Table Name the field has to be linked to.
+
+
+
+TableRange
+
+If the field name, specified by the IndexFieldName property, is not the first field in the index, specified by the TableIndex property, you must define a range for the previous fields in the current index. At design time, use the Table Range Editor by clicking on the assistant button in the Object Inspector.
+
+
+
+
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Text
+Run-time only
+
+Contains the string to display in a data-aware control when the field is in edit mode.
+
+
+
+ValidateRelation
+
+Specifies whether or not the system should validate the users entry based on the information already in the table set up through the TableRelation property.
+
+
+
+Validating
+Run-time only
+
+Specifies whether the field is in validate mode.
+The field is in validate mode, when the OnValidate event is executed.
+
+
+
+Value
+
+Represents the data in a field component. Use Value to read data directly from and write data directly to a field component at runtime. For example, use the Value property to affect the contents of a field that is not Visible.
+
+
+
+Visible
+
+Determines whether the field appears in TGrid control.
+
+
+
+
+&nbsp;
+Methods of TField
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Assign
+
+Copies the Value property from another field component.
+
+
+
+Clear
+
+Sets the value of the field to NULL.
+
+
+
+FindRelation
+
+Call this method to search for a record in the related TDataSet, specified by the TableRelation property, who containing the specified field values. If the search is successful, FindRelation positions the cursor on the matching record and returns true. Otherwise the cursor is not moved, and FindKey returns false.
+
+
+
+FocusControl
+
+Forces a form's focus to the first data-aware component associated with the field object.
+
+
+
+Relation
+
+Use the Relation method to get the related TDataSet when a field has a relation to another table, specified by the TableRelation property.
+&nbsp;
+Example:
+&nbsp;
+procedure ZipCodeValidate(Sender: TField);
+begin
+ &nbsp; if (not Sender.IsNull) and (Sender.FindRelation) then
+ &nbsp; &nbsp; City.AsString := Sender.Relation.FieldByName('City').AsString;
+end;
+
+
+
+
+&nbsp;
+Events of TField
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnChange
+
+Occurs immediately after the data in the field is written to the record buffer.
+
+
+
+OnGetText
+
+Occurs when the DisplayText or Text properties of the field are referenced.
+&nbsp;
+Write an OnGetText handler to perform custom processing for the DisplayText and Text properties. Use OnGetText to format the Value of the field differently when it must be edited from the format used when simply displaying the value, or use OnGetText to display something other than the field's value when it is displayed.
+&nbsp;
+If there is no OnGetText handler, the value of the DisplayText and Text properties is simply the value of the AsString property.
+
+
+
+OnSetText
+
+Occurs when the Text property is assigned a value.
+&nbsp;
+Write an OnSetText event handler to specify processing that occurs whenever Text receives a new value. If there is an OnGetText event handler that formats the Value of the field in some special way for editing purposes, OnSetText should reverse the process when parsing the edited string.
+&nbsp;
+If there is no OnSetText handler, the Text property is set by setting the AsString property.
+
+
+
+OnValidate
+
+Occurs just before the data is written to the record buffer.
+&nbsp;
+Write an OnValidate event handler to validate changes made to the data in the field, just before the data is written to the current record buffer. To reject the current value of the field from the OnValidate event handler, raise an exception by calling the ErrorMsg procedure.
+
+
+
+
+
+
+
+

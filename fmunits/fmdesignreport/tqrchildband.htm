@@ -1,0 +1,212 @@
+
+
+
+TQRChildBand
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Rapport Designer&nbsp;&gt;
+   
+      TQRChildBand
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+Use the TQRChildBand component to create a band that sticks to the bottom of another band. This is useful if you want some controls to move down depending on the vertical expansion of some other controls. Place the expanding controls on one band and put any controls that should move down on a Child band. 
+&nbsp;
+If you want to make sure the two bands always print on the same page use the LinkBand property to connect them.
+The easiest way to add a child band is via the Design Menu. Right click on the band who need a child band, and select Has Child.
+&nbsp;
+Object Hierarchy
+TQRChildBand - TQRCustomBand - TCustomControl - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TQRChildBand
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AlignToBottom
+
+Use AlignToBottom to force a band to print at the bottom of a page instead of at the top. QuickReport will leave room for a page footer band if such exists. If this property is True for a detail band the effect will be that only one detail band is printed per page.
+
+
+
+Color
+
+This sets the background color. Use the Font properties to change text color.
+
+
+
+Enabled
+
+Determines whether the component appear at runtime.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text in the band.
+If this is not set it defaults to the parentâs font. The band font may be overridden by setting text control properties
+
+
+
+ForceNewColumn
+
+If true, the band will always start a new column (this will be a new page in single column reports)
+Useful for making reports with many summaries more readable.
+
+
+
+ForceNewPage
+
+If true, the band will always start on a new page. Useful for placing summaries at the top of pages.
+
+
+
+Frame
+
+&lt;description missing&gt;
+
+
+
+HasChild
+
+Use this property to create a child band witch will be placed automatically below its parent and associated with it via the âparentâ property.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+KeepOnOnePage
+
+This will stop the band breaking across a page boundary. If the band grows to be bigger than an entire page, it will break, and force this option to false.
+
+
+
+Left
+
+Is controlled by the report designer and has no effect.
+
+
+
+LinkBand
+
+Linked bands will always print together. That is, they will not be separated by page breaks. In practice, a copy of the linked band is always made before this is printed.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParentBand
+
+Specifies the parent band. (master band)
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+PreCalculateHeight
+
+This is for painting the backgrounds of expanding bands. Only works if 'KeepOnOnePage' is true.
+
+
+
+Size
+
+This property has two options, width and height. Width is a read-only property, height may be set in code.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Is controlled by the report designer and has no effect.
+
+
+
+TransparentBand
+
+This will suppress the printing of band backgrounds in case there is a background image on the report.
+
+
+
+Width
+
+Is controlled by the report designer and has no effect.
+
+
+
+
+&nbsp;
+Events of TQRChildBand
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AfterPrint
+
+Called when the band has completed printing.
+
+
+
+BeforePrint
+
+Called before the band prints. You may stop the band printing by setting parameter PrintBand to false.
+
+
+
+
+
+
+
+

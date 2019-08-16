@@ -1,0 +1,212 @@
+
+
+
+TDBScript
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TDBScript
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+Use the TDBScript component to prepare and execute a SQL/PSM script. The parameter values for the script are automatically discovered when preparing the script, and then can be assigned values to be used when the script is executed. In addition, the component can executed scripts that return result sets and the returned result set can be navigated and updated just like any other dataset. 
+&nbsp;
+Object Hierarchy
+TDBScript - TComponent - TPersistent - TObject
+&nbsp;
+Script Example
+&nbsp;
+SCRIPT (IN ExpiryDate DATE)
+BEGIN
+ &nbsp; DECLARE Result CURSOR FOR stmt;
+ &nbsp; DECLARE EntryNo INTEGER;
+ &nbsp; DECLARE Balance DECIMAL(0,2);
+ &nbsp; DECLARE UpdatePoints STATEMENT;
+&nbsp;
+ &nbsp; EXECUTE IMMEDIATE
+ &nbsp; 'CREATE TEMPORARY TABLE &quot;Result&quot; AS
+ &nbsp; &nbsp;SELECT CustNo,MAX(EntryNo) AS &quot;LastEntry&quot;,SUM(Points) AS &quot;Points&quot;
+ &nbsp; &nbsp;FROM SalesEntries WHERE CustNo&lt;&gt;null AND &quot;Date&quot;&lt;=? AND Points&lt;&gt;NULL
+ &nbsp; &nbsp;GROUP BY CustNo HAVING Points&gt;0 WITH DATA' USING ExpiryDate;
+&nbsp;
+ &nbsp; EXECUTE IMMEDIATE
+ &nbsp; 'INSERT INTO Result
+ &nbsp; &nbsp;SELECT CustNo,0,SUM(Points)
+ &nbsp; &nbsp;FROM SalesEntries WHERE &quot;Date&quot;&gt;? AND Points&lt;0 AND CustNo IN (SELECT CustNo FROM Result)
+ &nbsp; &nbsp;GROUP BY CustNo' USING ExpiryDate;
+&nbsp;
+ &nbsp; PREPARE stmt FROM
+ &nbsp; 'SELECT CustNo,MAX(LastEntry) AS &quot;EntryNo&quot;,SUM(Points) AS &quot;Balance&quot;
+ &nbsp; &nbsp;FROM Result GROUP BY CustNo HAVING Balance&gt;0';
+&nbsp;
+ &nbsp; PREPARE UpdatePoints FROM
+ &nbsp; 'UPDATE SalesEntries SET Points=Points-? WHERE EntryNo=?';
+&nbsp;
+ &nbsp; OPEN Result;
+ &nbsp; FETCH FIRST FROM Result;
+ &nbsp; WHILE NOT EOF(Result) DO
+ &nbsp; &nbsp; FETCH FROM Result ('EntryNo') INTO EntryNo;
+ &nbsp; &nbsp; FETCH FROM Result ('Balance') INTO Balance;
+ &nbsp; &nbsp; EXECUTE UpdatePoints USING Balance,EntryNo;
+ &nbsp; &nbsp; FETCH NEXT FROM Result;
+ &nbsp; END WHILE;
+ &nbsp; CLOSE Result;
+ &nbsp; UNPREPARE stmt;
+&nbsp;
+ &nbsp; EXECUTE IMMEDIATE
+ &nbsp; 'DROP TABLE Result';
+END
+&nbsp;
+Properties of TDBScript
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+DatabaseName
+
+Use only this property if you want to connect the component to another database.
+&nbsp;
+Specify the name of the TDatabase component to link to. The DatabaseName property should match the DatabaseName property of an existing TDatabase component or should specify a valid local path name, for local sessions.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParamCount
+Read only
+
+Use the ParamCount property to determine how many parameters are in the Params property.
+
+
+
+Params
+
+Use the Params property to specify the parameters for an SQL statement. The Params property is a zero-based array of TParam objects. Index specifies the array element to access.
+&nbsp;
+Note! &nbsp;An easier way to set and retrieve parameter values when the name of each parameter is known is to call the ParamByName method.
+
+
+
+SessionName
+
+Use only this property if you want to connect the component to another database server.
+&nbsp;
+Specify the TSession component to link to this component. If the SessionName property is blank, the component is automatically linked to the default session. To link the component with a different TSession component, the SessionName property must match the SessionName property of an existing TSession component.
+
+
+
+SQL
+
+Use the SQL property to specify the script that the TDBScript component executes when its ExecScript method is called. The script must contain, at a minimum, the following SQL/PSM:
+SCRIPT
+BEGIN
+END
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+
+&nbsp;
+Methods of TDBScript
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Assign
+
+Copies the contents of another, similar object.
+
+
+
+ConvertSQL
+
+Call ConvertSQL to convert a series of SQL statements separated by semicolons (;) in the SQL property into a proper ElevateDB script with the following &nbsp;structure:
+&nbsp;
+SCRIPT
+BEGIN
+EXECUTE IMMEDIATE 'SQL statement';
+END
+&nbsp;
+The converted script is placed back into the SQL property when the conversion is complete. In the converted ElevateDB script, each statement will be enclosed within an EXECUTE IMMEDIATE statement, with the statement to be executed enclosed in single quotes ('). 
+
+
+
+DropTemporaryTables
+
+This method will drop all temporary tables created by the script.
+
+
+
+ExecScript
+
+Call the ExecScript method to execute the script currently assigned to the SQL property. If the script returns a result set, then the ExecScript method will automatically call the Open method to open the script's result set.
+&nbsp;
+The ExecScript method prepares the script in the SQL property for execution if it has not already been prepared. To speed performance in situations where a script will be executed multiple times with parameters, an application should ordinarily call the Prepare method before calling the ExecScript method for the first time.
+
+
+
+ParamByName
+
+Call the ParamByName method to locate a specific parameter by the name of the parameter. If a parameter is found with the same name, a reference to the parameter is returned, otherwise an exception is raised. The search against the parameter names is case-insensitive.
+
+
+
+Prepare
+
+Call the Prepare method to allocate resources for the execution of an SQL statement, parse the SQL statement, and perform the process of setting up the SQL statement for execution by opening up source tables, etc. The SQL statement is specified via the SQL property.
+&nbsp;
+The database will automatically prepares an SQL statement if it is executed without first being prepared.
+
+
+
+
+
+
+
+

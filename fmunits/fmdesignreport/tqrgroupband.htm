@@ -1,0 +1,230 @@
+
+
+
+TQRGroupBand
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Rapport Designer&nbsp;&gt;
+   
+      TQRGroupBand
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+The QRGroupBand component is similar to a header band, except it has an associated numerical expression whose value causes the group to break. A footer band can be associated with a group control so that the group can have a header and a footer.
+&nbsp;
+The group expression is evaluated on every record and if it changes from the previous value, the group âbreaksâ - that is the group header is printed. Expressions may be functions of database fields, system variables, functions and constants.
+&nbsp;
+Object Hierarchy
+TQRGroupBand - TQRCustomBand - TCustomControl - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TQRGroupBand
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AlignToBottom
+
+Use AlignToBottom to force a band to print at the bottom of a page instead of at the top. QuickReport will leave room for a page footer band if such exists. If this property is True for a detail band the effect will be that only one detail band is printed per page.
+
+
+
+Color
+
+This sets the background color. Use the Font properties to change text color.
+
+
+
+Enabled
+
+Determines whether the component appear at runtime.
+
+
+
+Expression
+
+Expressions may be functions of database fields, system variables, functions and constants.
+See Using expression for more information.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text in the band.
+If this is not set it defaults to the parentâs font. The band font may be overridden by setting text control properties.
+
+
+
+FooterBand
+
+This property should point to a TQRBand component which has its BandType set to rbGroupFooter. This band will print when the group has finished printing.
+
+
+
+ForceNewColumn
+
+If true, the band will always start a new column (this will be a new page in single column reports)
+Useful for making reports with many summaries more readable.
+
+
+
+ForceNewPage
+
+If true, the band will always start on a new page. Useful for placing summaries at the top of pages.
+
+
+
+Frame
+
+&lt;description missing&gt;
+
+
+
+HasChild
+
+Use this property to create a child band witch will be placed automatically below its parent and associated with it via the âparentâ property.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+KeepOnOnePage
+
+This will stop the band breaking across a page boundary. If the band grows to be bigger than an entire page, it will break, and force this option to false.
+
+
+
+Left
+
+Is controlled by the report designer and has no effect.
+
+
+
+LinkBand
+
+Linked bands will always print together. That is, they will not be separated by page breaks. In practice, a copy of the linked band is always made before this is printed.
+
+
+
+Master
+
+This property should point to the TQReport component or a sub band that has an associated dataset. The group will be driven by this dataset.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+PreCalculateHeight
+
+This is for painting the backgrounds of expanding bands. Only works if 'KeepOnOnePage' is true.
+
+
+
+ReprintOnNewPage
+
+If this is set to True, the band will repeat itself at the top of the next page IF it was the last group band on the previous page.
+
+
+
+Size
+
+This property has two options, width and height. Width is a read-only property, height may be set in code.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Is controlled by the report designer and has no effect.
+
+
+
+TransparentBand
+
+This will suppress the printing of band backgrounds in case there is a background image on the report.
+
+
+
+Width
+
+Is controlled by the report designer and has no effect.
+
+
+
+
+&nbsp;
+Events of TQRGroupBand
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AfterPrint
+
+Called when the band has completed printing.
+
+
+
+BeforePrint
+
+Called before the band prints. You may stop the band printing by setting parameter PrintBand to false.
+
+
+
+
+
+
+
+

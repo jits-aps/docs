@@ -1,0 +1,582 @@
+
+
+
+TQuery
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TQuery
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+Use the TQuery component to access or update one or more tables in the database using SQL statements. Please see the SQL Reference Guide for more information on the SQL support in the DBISAM database.
+&nbsp;
+Object Hierarchy
+TQuery - TDataSet - TComponent - TPersistent - TObject
+&nbsp;
+Example
+This example explains how you can show a DataSet created by a TQuery on a form:
+&nbsp;
+procedure FormCreate(Sender: TObject);
+begin
+ &nbsp; q := TQuery.Create;
+ &nbsp; q.SQL.Add('SELECT EntryNo,DocDate,DocType,DocNo,CustNo,VendorCode,GLAccNo,');
+ &nbsp; q.SQL.Add('a.Name AS &quot;GLAccName&quot;,Description,RefNo,Amount,VatAmount,DueDate');
+ &nbsp; q.SQL.Add('FROM GLEntries');
+ &nbsp; q.SQL.Add('LEFT OUTER JOIN GLAccounts a ON a.No=GLAccNo');
+ &nbsp; Form.DataSet := q;
+end;
+&nbsp;
+Properties of TQuery
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Active
+
+Specifies whether or not a dataset is open.
+
+
+
+BOF
+Read only
+
+BOF (beginning of file) indicates if the dataset is positioned at the first record. If BOF is true, the current record is unequivocally the first row in the dataset.
+
+
+
+CanModify
+Read only
+
+Indicates whether the dataset permits write access to data.
+
+
+
+CopyAppend
+
+Use the CopyOnAppend property to control whether the current or last record's contents should be copied &nbsp;automatically to any newly inserted or appended records.
+
+
+
+DatabaseName
+
+Use only this property if you want to connect the component to another database.
+&nbsp;
+Specify the name of the TDatabase component to link to. The DatabaseName property should match the DatabaseName property of an existing TDatabase component or should specify a valid local path name, for local sessions.
+
+
+
+EOF
+Read only
+
+EOF (end-of-file) indicates if the active record in a dataset is the last record. If EOF is true, the current record is unequivocally the last row in the dataset.
+
+
+
+FieldCount
+Read only
+
+Indicates the number of field components associated with the dataset.
+
+
+
+Fields
+Run-time only
+
+Lists the fields of the current dataset.
+&nbsp;
+Fields is a zero-based array of TField objects, each of which corresponds to a field in the current dataset. The first field in the dataset is Fields[0], the second is Fields[1], and so on.
+Note! The preferred method for retrieving and assigning field values is to use the FieldByName method.
+
+
+
+Filter
+
+Use Filter to specify a dataset filter. When filtering is applied to a dataset, only those records that meet a filter's conditions are available. Filter describes the filter condition. For example, the following filter condition displays only those records where the State field is 'CA' or 'MA':
+State = 'CA' or State = 'MA'
+&nbsp;
+When a filter is set, Blank records do not appear unless explicitly included in the filter. For example:
+State &lt;&gt; 'CA' or State = NULL
+&nbsp;
+When a field name contains spaces, you must enclose the field name in brackets. For example:
+&quot;Home State&quot; = 'CA' or &quot;Home State&quot; = 'MA'
+
+
+
+Filtered
+
+Specifies whether or not filtering is active for a dataset.
+
+
+
+FilterOptions
+
+Specifies whether or not filtering is case insensitive, and whether or not partial comparisons are permitted when filtering records.
+&nbsp;
+The following table lists the possible TFilterOptions values:
+&nbsp;
+
+
+Value
+
+Meaning
+
+
+
+foCaseInsensitive
+
+Literal strings in the filter are compared to string-valued fields case-insensitively.
+
+
+
+foNoPartialCompare
+
+Asterisks (*) in the filter are treated as literal characters rather than as wildcards. When filter options does not include foNoPartialCompare, strings that end in an asterisk signify a partial string match with the asterisk matching any number of characters.
+
+
+
+
+&nbsp;
+Example:
+FilterOptions := FilterOptions + foCaseInsensitive;
+FilterOptions := FilterOptions + foNoPartialCompare;
+
+
+
+MaxRowCount
+
+Use the MaxRowCount property to control the maximum number of rows that will be returned when executing an SQL SELECT statement. Setting this property to -1 will indicate that the number of rows returned is unlimited.
+&nbsp;
+Note! &nbsp;This property does not respect any DISTINCT, GROUP BY, or ORDER BY claues in the SQL statement. It is primarily useful for making sure that end users do not accidentally construct SQL queries that generate cartesian products or other types of queries that can cause the number of rows to be returned to be enormous.
+
+
+
+Modified
+Read only
+
+Indicates whether the active record is modified.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParamCount
+Read only
+
+Use the ParamCount property to determine how many parameters are in the Params property.
+
+
+
+Params
+
+Use the Params property to specify the parameters for an SQL statement. The Params proerty is a zero-based array of TParam objects. Index specifies the array element to access.
+&nbsp;
+Note! &nbsp;An easier way to set and retrieve parameter values when the name of each parameter is known is to call the ParamByName method.
+
+
+
+ReadOnly
+
+Use the ReadOnly property to specify that the contents of the query result set generated by a SELECT SQL statement cannot be edited by the application. By default, DBISAM allows all result sets, either live or canned, to be edited.
+
+
+
+RecCount
+Read only
+
+Indicates the total number of records associated with the dataset.
+
+
+
+RecNo
+
+Note! &nbsp;This property is no longer supported as it did in DBISAM. However, you can still assign a value in order to navigate to a specific logical row by using the method &quot;GotoRecNo&quot;.
+
+
+
+RemoteReadSize
+Read only
+
+Use the RemoteReadSize property to specify how many records should be read at once whenever a remote session needs to read records from a database server. This property is most useful when performing a sequential navigation of a large remote table or query result set on a database server. You should be careful to not set this property to too high of a value since doing so can result in excessive memory consumption and network traffic. This is especially true when the access to a remote table or query result set is mostly random and not sequential.
+
+
+
+RequestSensitive
+
+Use the RequestSensitive property to specify whether or not ElevateDB should attempt to return a sensitive result set when the current SELECT statement in the SQL property is excuted. The RequestSensitive property is False by default, meaning that an insensitive and read-only result set will be returned. Set the RequestSensitive property to True and the ReadOnly property to False to request a sensitive result set that can be modified.
+&nbsp;
+Note! &nbsp;Setting RequestSensitive to True does not guarantee that a sensitive result set will be returned by ElevateDB. A sensitive result set will be returned only if the SELECT statement syntax conforms to
+the syntax requirements for a sensitive result set. If the RequestSensitive property is True, but the syntax does not conform to the requirements, ElevateDB returns an insensitive result set. After executing the query, inspect the Sensitive property to determine whether the request for a sensitive result set was successful.
+
+
+
+RowsAffected
+Read only
+
+Use the RowsAffected property to determine how many rows were inserted, updated or deleted by the execution of the current SQL statement specified via the SQL property. If RowsAffected is 0, the SQL statement did not insert, update or delete any rows.
+&nbsp;
+Note! &nbsp;This property is only useful for INSERT, UPDATE, or DELETE SQL statements and will always be equal to the RecordCount property for any SELECT SQL statement that returns a result set.
+
+
+
+Sensitive
+Read only
+
+The Sensitive property indicates whether the current SELECT statement returned a sensitive (live) result set.
+
+
+
+SessionName
+
+Use only this property if you want to connect the component to another database server.
+&nbsp;
+Specify the TSession component to link to this component. If the SessionName property is blank, the component is automatically linked to the default session. To link the component with a different TSession component, the SessionName property must match the SessionName property of an existing TSession component.
+
+
+
+SQL
+
+Use the SQL property to specify the SQL statement that the TQuery component executes when its Open or ExecSQL methods are called.
+&nbsp;
+
+
+
+State
+Read only
+
+Indicates the current operating mode of the dataset. State determines what can be done with data in a dataset, such as editing existing records or inserting new ones. The dataset state constantly changes as an application processes data. 
+&nbsp;
+The following table lists all possible values in the TDataSetState type and describes what they indicate in the State property:
+&nbsp;
+
+
+Value
+
+Meaning
+
+
+
+dsInactive
+
+Dataset is closed, so its data is unavailable.
+
+
+
+dsBrowse
+
+Data can be viewed, but not changed. This is the default state of an open dataset.
+
+
+
+dsEdit
+
+Active record can be modified.
+
+
+
+dsInsert
+
+The active record is a newly inserted buffer that has not been posted. This record can be modified and then either posted or discarded.
+
+
+
+
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+
+&nbsp;
+Methods of TQuery
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Append
+
+Adds a new, empty record to the end of the dataset.
+
+
+
+Assign
+
+Copies the contents of another, similar object.
+
+
+
+Cancel
+
+Cancels modifications to the active record if those changes are not yet posted.
+
+
+
+Close
+
+Closes a dataset.
+
+
+
+ControlsDisabled
+
+Indicates whether data-aware controls update their display to reflect changes to the dataset.
+
+
+
+Delete
+
+Deletes the active record and positions the dataset on the next record.
+
+
+
+DisableControls
+
+Disables data display in data-aware controls associated with the dataset.
+Call DisableControls prior to iterating through a large number of records in the dataset to prevent data-aware controls from updating every time the active record changes. Disabling controls prevents flicker and speeds performance because data does not need to be written to the display.
+
+
+
+Edit
+
+Enables editing of data in the dataset.
+Call Edit to permit editing of the active record in a dataset. Edit determines the current state of the dataset. If the dataset is empty, Edit calls Insert. 
+
+
+
+EnableControls
+
+Re-enables data display in data-aware controls associated with the dataset.
+
+
+
+ExecSQL
+
+Call the ExecSQL method to execute the SQL statement currently assigned to the SQL property. Use the &nbsp;ExecSQL method to execute any type of SQL statement, including scripts comprised of multiple SQL statements. If the SQL statement is a SELECT SQL statement or it ends with a SELECT SQL statement (such as with scripts), then the ExecSQL method will automatically call the Open method to open the query result set returned by the SELECT statement.
+
+
+
+FieldByName
+
+Finds a field based on its name. Call FieldByName to retrieve field information for a field given its name. FieldName is the name of an existing field. FieldByName returns the TField component that represents the specified field. If the specified field does not exist, FieldByName raises an RunTime error.
+
+
+
+FindField
+
+Searches for a specified field in the dataset. Call FindField to determine if a specified field component exists in a dataset. FieldName is the name of the field for which to search. This name can be the the name of a simple field, the name of a subfield of an object field that has been qualified by the parent field's name, or the name of an aggregated field. 
+If FindField finds a field with a matching name, it returns the TField component for the specified field. Otherwise it returns nil.
+
+
+
+FindFirst
+
+Moves to the first record in the dataset, respecting any filters. FindFirst returns true if the active record is successfully changed.
+
+
+
+FindLast
+
+Moves to the last record in the dataset, respecting any filters. FindLast returns true if the active record is successfully changed.
+
+
+
+FindNext
+
+Moves to the next record in the dataset, respecting any filters. FindNext returns true if the active record is successfully changed.
+
+
+
+FindPrior
+
+Moves to the previous record in the dataset, respecting any filters. FindPrior returns true if the active record is successfully changed.
+
+
+
+First
+
+Moves to the first record in the dataset.
+
+
+
+FlushBuffers
+
+Use the FlushBuffers method to flush data to disk. If the table or query result set is opened exclusively, then the FlushBuffers method flushes all cached writes to disk and proceeds to instruct the operating system to flush all writes to disk also. If the table or query result set is opened shared, then FlushBuffers only instructs the operating system to flush all writes to disk since shared datasets do not cache any writes.
+
+
+
+GetBookmark
+GotoBookmark
+FreeBookmark
+
+In addition to moving from record to record in a dataset (or moving from one record to another by a specific number of records), it is often also useful to mark a particular location in a dataset so that you can return to it quickly when desired.
+&nbsp;
+The following code illustrates one use of bookmarking:
+&nbsp;
+procedure DoSomething (const q: TQuery)
+var
+ &nbsp; Bookmark: TBookmark;
+begin
+ &nbsp; { Allocate memory and assign a value }
+ &nbsp; Bookmark := q.GetBookmark;
+ &nbsp; { Turn off display of records in data controls }
+ &nbsp; q.DisableControls; 
+ &nbsp; try
+ &nbsp; &nbsp; q.First;
+ &nbsp; &nbsp; while not q.Eof do
+ &nbsp; &nbsp; begin
+ &nbsp; &nbsp; &nbsp; { Do your processing here }
+ &nbsp; &nbsp; &nbsp; q.Next;
+ &nbsp; &nbsp; end;
+ &nbsp; finally 
+ &nbsp; &nbsp; q.GotoBookmark(Bookmark);
+ &nbsp; { Turn on display of records in data controls }
+ &nbsp; &nbsp; q.EnableControls; 
+ &nbsp; { Deallocate memory for the bookmark }
+ &nbsp; &nbsp; q.FreeBookmark(Bookmark);
+ &nbsp; end;
+end;
+
+
+
+GotoRecNo
+
+Navigate to a specific logical row in the dataset
+
+
+
+Insert
+
+Inserts a new, empty record in the dataset.
+
+
+
+IsEmpty
+
+Indicates whether the dataset contains no records.
+
+
+
+Last
+
+Moves to the last record in the dataset.
+
+
+
+LoadFromStream
+
+This method copies the entire contents of a stream to an existing table or query result set. When loading a stream, the contents of the stream must have been created using the SaveToStream method or else an error exception will be raised. A stream is any TStream object such as TFileStream or TMemoryStream.
+
+
+
+Locate
+
+Locate moves the cursor to the first row matching a specified set of search criteria. In its simplest form, you pass Locate the name of a column to search, a field value to match. If Locate finds a match, the first record containing the match becomes the current record. Locate returns True if it finds a matching record, False if it does not. If a search fails, the current record does not change.
+&nbsp;
+The real power of Locate comes into play when you want to search on multiple columns and specify multiple values to search for. Search values are Variants, which means you can specify different data types in your search criteria. To specify multiple columns in a search string, separate individual items in the string with semicolons.
+&nbsp;
+Example:
+if not DataSet.Locate('Description;UnitPrice',['Product A',58]) then
+ &nbsp; ErrorMsg('Record not found.');
+
+
+
+Next
+
+Moves to the next record in the dataset.
+
+
+
+Open
+
+Call the Open method to set the Active property for the dataset to true. When Active is true, data can be populated with data. It can read data from a database or other source (such as a provider). Depending on the CanModify property, active datasets can post changes.
+
+
+
+ParamByName
+
+Call the ParamByName method to locate a specific parameter by the name of the parameter. If a parameter is found with the same name, a reference to the parameter is returned, otherwise an exception is raised. The search against the parameter names is case-insensitive.
+
+
+
+Post
+
+Call the Post method to write a modified record to the database. Dataset methods that move from one record to another, such as First, Last, Next, and Prior will automatically call Post.
+
+
+
+Prepare
+
+Call the Prepare method to allocate resources for the execution of an SQL statement, parse the SQL statement, and perform the process of setting up the SQL statement for execution by opening up source tables, etc. The SQL statement is specified via the SQL property.
+&nbsp;
+The database will automatically prepares an SQL statement if it is executed without first being prepared.
+
+
+
+Prior
+
+Moves to the previous record in the dataset.
+
+
+
+Refresh
+
+Re-fetches data from the database to update a dataset's view of data.
+
+
+
+SaveToStream
+
+This method copies the contents of a table or query result set to a stream. The records that are copied can be controlled by setting a range or filter on the source table or query result set prior to calling the SaveToStream method. A stream is any TStream object such as TFileStream or TMemoryStream.
+
+
+
+
+
+
+
+

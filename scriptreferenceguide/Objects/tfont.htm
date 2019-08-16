@@ -1,0 +1,254 @@
+
+
+
+TFont
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TFont
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+This object encapsulates a system font. TFont describes font characteristics used when displaying text. TFont defines a set of characters by specifying the height, font family (typeface), attributes (such as bold or italic), and so on. 
+&nbsp;
+Object Hierarchy
+TFont - TPersistent - TObject
+&nbsp;
+Properties of TFont
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+CharSet
+
+Specifies the character set of the font.
+
+
+
+Color
+
+Specifies the color of the text.
+
+
+
+Height
+
+Specifies the height of the font.
+
+
+
+Name
+
+Identifies the typeface of the font. Use Name to specify the typeface of the font. If the font family described by Name includes multiple character sets, be sure to set the Charset property as well. 
+Note! If the combination of font family (typeface) and attributes (such as bold or italic) specifies a font that is not available on the system, the system substitutes a different font.
+
+
+
+Orientation
+
+Specifies text orientation.
+
+
+
+Pitch
+
+Specifies whether the characters in the font all have the same width. 
+&nbsp;
+Each typeface has an associated pitch. The characters in fixed-pitch fonts are all the same width. The characters in variable-pitch fonts differ in width. Fixed pitch fonts are generally used for representing source code, because they allow the indentation to line up properly. Variable pitch fonts are generally used to give text a more natural appearance 
+&nbsp;
+Here are the possible values for Pitch: 
+
+
+Value
+
+Description
+
+
+
+fpDefault
+
+The font pitch is set to the default value, which depends on the font specified in the Name property.
+
+
+
+fpFixed
+
+The font pitch is set to Fixed. All characters in the font have the same width.
+
+
+
+fpVariable
+
+The font pitch is set to Variable. The characters in the font have varying widths.
+
+
+
+
+
+
+
+Quality
+
+Specifies the font quality. 
+&nbsp;
+Here are the possible values for quality:
+
+
+Value
+
+Description
+
+
+
+fqDefault 
+
+The quality is determined by the system settings. 
+
+
+
+fqDraft
+
+For raster fonts, scaling is enabled; the font size can be increased but the quality may be lower. Also the font supports Bold, Italic, Underline or Strikeout if necessary. The quality is less important than when Proof is used. 
+
+
+
+fqProof
+
+The quality of the characters is important, so for the raster fonts, scaling is disabled and the font closest in size is chosen. 
+
+
+
+fqNonAntialiased
+
+The font is never antialiased.
+
+
+
+fqAntialiased
+
+The font is always antialiased if it supports it. The size of the font cannot be too small or too large.
+
+
+
+fqClearType
+
+The font is rendered using the ClearType antialiasing method.
+
+
+
+fqClearTypeNatural
+
+The font is rendered using the ClearTypeNatural antialiasing method.
+
+
+
+
+
+
+
+Size
+
+Specifies the height of the font in points.
+
+
+
+Style
+
+Determines whether the font is normal, italic, underlined, bold, and so on. 
+&nbsp;
+Use Style to add special characteristics to characters that use the font. Style is a set containing zero or more values from the following:
+
+
+Value
+
+Description
+
+
+
+fsBold
+
+The font is boldfaced.
+
+
+
+fsItalic
+
+The font is italicized.
+
+
+
+fsUnderline
+
+The font is underlined.
+
+
+
+fsStrikeOut
+
+The font is displayed with a horizontal line through it.
+
+
+
+
+&nbsp;
+How to change til Style at runtime:
+&nbsp;
+Label1.Font.Style := 0; // Clear the style
+Label1.Font.Style := fsBold + fsUnderline
+
+
+
+
+&nbsp;
+Methods of TFont
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Assign
+
+Copies the properties of another TFont object.
+
+
+
+
+
+
+
+

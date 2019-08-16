@@ -1,0 +1,263 @@
+
+
+
+TSMTP
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TSMTP
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+Use TSMTP to create a Simple Mail Transfer Protocol (SMTP) client. This component works without any mail programs. The objective of Simple Mail Transfer Protocol (SMTP) is to transfer mail reliably and efficiently.
+&nbsp;
+Example
+&nbsp;
+procedure SpeedButton1Click(Sender: TObject);
+var
+ &nbsp; e: TSMTP;
+begin
+ &nbsp; e := TSMTP.Create;
+ &nbsp; try
+ &nbsp; &nbsp; e.Host := 'smtp.mail.dk';
+ &nbsp; &nbsp; e.Recipients.Add('info@admind.dk');
+ &nbsp; &nbsp; e.Subject := 'E-mail titel';
+ &nbsp; &nbsp; e.Body := 'This is a test';
+ &nbsp; &nbsp; e.Connect;
+ &nbsp; &nbsp; e.Send;
+ &nbsp; finally
+ &nbsp; &nbsp; e.Disconnect;
+ &nbsp; &nbsp; e.Free;
+ &nbsp; end;
+end;
+&nbsp;
+Object Hierarchy
+TSMTP - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TSMTP
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AttachedFiles
+
+Use this TStringList property to specify attachments.
+
+
+
+AuthLogin
+
+Use this property when authentication is required.
+UserName and Password are used, when the AuthLogin is True
+
+
+
+BlindCopyTo
+
+Use this TStringList property to add carbon recipients for the message.
+
+
+
+Body
+
+Use this string property to enter the message.
+If you want to entering HTML text, set the HTML property to True.
+
+
+
+Connected
+Run-time only
+
+Use this property to determine whether the client is connected to the server.
+
+
+
+CopyTo
+
+Use this TStringList property to add carbon recipients for the message.
+
+
+
+FromAddress
+
+Use this property to specify a from address associated with the e-mail.
+
+
+
+FromName
+
+Use this property to specify a sender name associated with the e-mail.
+
+
+
+Host
+
+Host is a string property that identifies the IP address or host name for the SMTP server.
+The default value for this property is specified by the program options.
+
+
+
+HTML
+
+Determines whether the Body text contains HTML text.
+
+
+
+InlineImages
+
+Use the TStringList property to add image files that contains in the body HTML text.
+This property will be ignored if the property HTML is False (default).
+
+
+
+Password
+
+Password contains the authentication credentials provided when using the authentication mechanisms for the SMTP client.
+
+
+
+Port
+
+This property identifies the port number to use for the connection the SMTP server in Host.
+The default value for this property is specified by the program options.
+
+
+
+Recipients
+
+Use this TStringList property to add the recipients. If you want the user to enter the recipients, ignore this property and set ShowDialog to True.
+
+
+
+Subject
+
+Use this string property to enter a mail titel.
+
+
+
+UserName
+
+Username contains the authentication identity provided when using the authentication mechanisms for the SMTP client.
+
+
+
+TLS
+
+This property is an enumerated type that represents different methods of TLS encryption.
+&nbsp;
+
+
+Value
+
+Meaning
+
+
+
+utNoTLSSupport
+
+None encryption
+
+
+
+utUseImplicitTLS
+
+
+
+
+
+utUseRequireTLS
+
+
+
+
+
+utUseExplicitTLS
+
+
+
+
+
+
+
+
+
+
+&nbsp;
+Methods of TSMTP
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Connect
+
+Connect is a procedure that opens a connection to the SMTP server using the Host and Port properties. An exception will be raised if the connection fails or returns an invalid SMTP response code.
+Use the Timeout parameter to specify the connection timeout in milliseconds. Default value is -1.
+
+
+
+Create
+
+Creates and initializes a TSMTP instance.
+
+
+
+Disconnect
+
+Disconnect is a procedure used to disconnect from the peer for the connection.
+
+
+
+Free
+
+Destroys the TSMTP and frees its memory.
+
+
+
+Send
+
+Sends a message instance to the SMTP server.
+Note! You must connect to the SMTP server, before calling the Send method.
+
+
+
+
+
+
+
+

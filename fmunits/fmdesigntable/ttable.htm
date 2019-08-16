@@ -1,0 +1,815 @@
+
+
+
+TTable
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Table Designer&nbsp;&gt;
+   
+      TTable
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+Use the TTable component to access records and fields in an underlying table. A TTable component can also work with a subset of records within a table using ranges and filters as well as access both disk-based tables specified by the Table Designer and in-memory tables.
+&nbsp;
+Object Hierarchy
+TTable - TDataSet - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TTable
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Active
+Run-time only
+
+Specifies whether or not a dataset is open.
+&nbsp;
+
+
+
+BOF
+Run-time only
+
+Use BOF (beginning of file) to determine if the dataset is positioned at the first record.
+
+
+
+CanModify
+
+Indicates whether the dataset permits write access to data.
+
+
+
+Caption
+
+Use Caption to specify the text string that labels the table.
+
+
+
+CopyOnAppend
+
+Use this property to control whether the current or last record's contents should be copied automatically to any newly inserted or appended records.
+
+
+
+DatabaseName
+
+Use the DatabaseName property to specify the name of the TDatabase component to link to this dataset. If the DatabaseName property is not defined, the dataset is automatically linked to the default database. To link the dataset to another database, the DatabaseName must match the DatabaseName property of an existing TDatabase component or should specify a valid local path name, for local sessions.
+
+
+
+EOF
+Run-time only
+
+Use EOF (end-of-file) to determine if the active record in a dataset is the last record.
+
+
+
+Exclusive
+Run-time only
+
+Use the Exclusive property to True to specify that a table should be opened exclusively when calling the Open method or when setting the Active property to True. When the Exclusive property is set to True and the application successfully opens the table, no other application can access the table. If the table for which the application has requested exclusive access is already in use by another application, an exception is raised.
+
+
+
+Exists
+Run-time only
+
+The Exists property indicates whether the underlying table exists. This property uses the current DatabaseName and TableName properties to determine the location of the table.
+
+
+
+FieldCount
+Run-time only
+
+Indicates the number of field components associated with the dataset.
+
+
+
+FieldDefs
+Run-time only
+
+The FieldDefs property lists the field definitions for a dataset. While an application can examine FieldDefs to explore the field definitions for a table, it should not change these definitions unless creating a new table with the CreateTable method. To access fields and field values in a table, use the Fields property and the FieldByName method.
+&nbsp;
+Please see the TDBISAMFieldDefs object for more information.
+
+
+
+Fields
+Run-time only
+
+Lists the fields of the current dataset.
+&nbsp;
+Fields is a zero-based array of TField objects, each of which corresponds to a field in the current dataset. The first field in the dataset is Fields[0], the second is Fields[1], and so on.
+Note! The preferred method for retrieving and assigning field values is to use the FieldByName method.
+
+
+
+Filter
+Run-time only
+
+Specifies the text of the current filter for a dataset.
+&nbsp;
+Use Filter to specify a dataset filter. When filtering is applied to a dataset, only those records that meet a filter's conditions are available. Filter describes the filter condition. For example, the following filter condition displays only those records where the State field is 'CA' or 'MA':
+&nbsp;
+Example:
+&quot;State&quot; = 'CA' or &quot;State&quot; = 'MA'
+&nbsp;
+The FilterOptions property controls case sensitivity and filtering on partial comparisons.
+
+
+
+Filtered
+Run-time only
+
+Specifies whether or not filtering is active for a dataset.
+
+
+
+FilterOptions
+Run-time only
+
+Specifies whether or not filtering is case insensitive, and whether or not partial comparisons are permitted when filtering records.
+&nbsp;
+
+
+Value
+
+Meaning
+
+
+
+foCaseInsensitive
+
+Literal strings in the filter are compared to string-valued fields case-insensitively.
+
+
+
+foNoPartialCompare
+
+Asterisks (*) in the filter are treated as literal characters rather than as wildcards. When filter options does not include foNoPartialCompare, strings that end in an asterisk signify a partial string match with the asterisk matching any number of characters.
+
+
+
+
+
+
+
+IndexDefs
+
+The IndexDefs property lists the index definitions for a dataset. While an application can examine IndexDefs to explore the index definitions for a table, it should not change these definitions unless creating a new table with the CreateTable method. To set the active index for a table, use the IndexName or IndexFieldNames property.
+&nbsp;
+Please see the TDBISAMIndexDefs object for more information.
+
+
+
+IndexFieldCount
+Run-time only
+
+Indicates the number of fields that comprise the current key.
+
+
+
+IndexFieldNames
+Run-time only
+
+Use the IndexFieldNames property as an alternative method to the IndexName property of specifying the active index for a table. Each column name should be separated with a semicolon. Any column names specified in the IndexFieldNames property must already be indexed, and must exist in the index in the order specified, from left to right.
+
+
+
+IndexFields
+Run-time only
+
+Lists the fields of the current index.
+&nbsp;
+IndexFields is a zero-based array of TField objects, each of which corresponds to a field in the current index. The first field in the index is IndexFields[0], the second is IndexFields[1], and so on.
+Note! Do not set IndexFields directly. Instead use the IndexName or IndexFieldNames property to order datasets on the fly at runtime.
+
+
+
+IndexName
+Run-time only
+
+Use the IndexName property to specify the active index for a table. If the IndexName property is empty (the default), the active index is set to the primary index. If the IndexName property is set to a valid index name, then that index is used to determine the sort order of records, otherwise an exception will be raised.
+
+
+
+LastAutoIncValue
+
+The LastAutoIncValue property indicates the last auto-increment value used for the table. This read-only property can be examined to determine what value will be assigned to the next auto-increment field when a record is appended to the table.
+&nbsp;
+Note!
+This property is read-only, you must use the Table Designer in order to change it. Also, this property does not require that the table be open in order to return a value. This allows the property to be examined without opening the table.
+
+
+
+LookupForm
+
+Use this property to define the form you want to use as a lookup form. When a field from another table has a relation to this table, the runtime user can make a lookup by the edit component.
+
+
+
+Modified
+Run-time only
+
+Indicates whether the active record is modified.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ReadOnly
+
+Use the ReadOnly property to prevent any updates in the table. The default value is False, meaning users can insert, update, and delete data in the table.
+
+
+
+RecCount
+Run-time only
+
+Indicates the total number of records associated with the dataset.
+
+
+
+RecNo
+
+Note! &nbsp;This property is no longer supported as it did in DBISAM. However, you can still assign a value in order to navigate to a specific logical row by using the method &quot;GotoRecNo&quot;.
+
+
+
+RemoteReadSize
+Run-time only
+
+Use the RemoteReadSize property to specify how many records should be read at once whenever a remote session needs to read records from a database server. This property is most useful when performing a sequential navigation of a large remote table or query result set on a database server. You should be careful to not set this property to too high of a value since doing so can result in excessive memory consumption and network traffic. This is especially true when the access to a remote table or query result set is mostly random and not sequential.
+
+
+
+SessionName
+Run-time only
+
+Use the SessionName property to specify name of the TSession component to link to this dataset. If the SessionName is not defined, the dataset is automatically linked to the default session. To link the dataset to another connection, the SessionName &nbsp;must match the SessionName property of an existing TSession component.
+
+
+
+State
+Run-time only
+
+Indicates the current operating mode of the dataset. State determines what can be done with data in a dataset, such as editing existing records or inserting new ones. The dataset state constantly changes as an application processes data.
+&nbsp;
+
+
+Value
+
+Meaning
+
+
+
+dsInactive
+
+Dataset is closed, so its data is unavailable.
+
+
+
+dsBrowse
+
+Data can be viewed, but not changed. This is the default state of an open dataset.
+
+
+
+dsEdit
+
+Active record can be modified.
+
+
+
+dsInsert
+
+The active record is a newly inserted buffer that has not been posted. This record can be modified and then either posted or discarded.
+
+
+
+dsSetKey
+
+Record searching is enabled, or a SetRange operation is under way. A restricted set of data can be viewed, and no data can be edited or inserted.
+
+
+
+dsFilter
+
+An OnFilterRecord event is in progress. A restricted set of data can be viewed. No data can edited or inserted.
+
+
+
+
+
+
+
+StoreDefs
+Run-time only
+
+For internal use only.
+
+
+
+TableName
+
+Use the TableName property to specify the name of the table.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+
+&nbsp;
+Methods of TTable
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AlterTable
+
+Call the AlterTable method to alter the structure of a table using the field definitions and index definitions specified in the FieldDefs and IndexDefs properties, respectively.
+&nbsp;
+Note! It is strongly recommended that youâre using the Table Designer, when you want to change a disk-based table.
+
+
+
+Append
+
+Adds a new, empty record to the end of the dataset.
+
+
+
+ApplyRange
+
+Call the ApplyRange method to cause a range established with the SetRangeStart and SetRangeEnd or EditRangeStart and EditRangeEnd methods to take effect. When a range is in effect, only those records that fall within the range are available for viewing and editing.
+
+
+
+Assign
+
+Copies the contents of another, TTable object.
+
+
+
+Cancel
+
+Cancels modifications to the active record if those changes are not yet posted.
+
+
+
+CancelRange
+
+Call the CancelRange method to remove a range currently applied to a table using the SetRange or ApplyRange methods. Cancelling a range reenables access to all records in the table.
+
+
+
+Close
+
+Closes a dataset.
+
+
+
+ControlDisabled
+
+Indicates whether data-aware controls update their display to reflect changes to the dataset.
+
+
+
+CreateTable
+
+Call the CreateTable method to create a table using the field definitions and index definitions specified in the FieldDefs and IndexDefs properties, respectively. CreateTable will not overwrite an existing table and will instead raise an exception if it encounters an existing table with the same name. To avoid this error, check the Exists property before calling the CreateTable method.
+&nbsp;
+Note! It is strongly recommended that youâre using the Table Designer, when you want to change a disk-based table.
+
+
+
+Delete
+
+Deletes the active record and positions the dataset on the next record.
+
+
+
+DeleteTable
+
+Call the DeleteTable method to delete an existing table. A table must be closed before this method can be called. Deleting a table erases any data the table contains and destroys the table's structure information.
+&nbsp;
+Note! Don't delete tables there are specified by the Table Designer. Instead delete the table by the Design Units.
+
+
+
+DisableControls
+
+Disables data display in data-aware controls associated with the dataset.
+
+
+
+Edit
+
+Enables editing of data in the dataset.
+
+
+
+EditKey
+
+Call the EditKey method to put the table in dsSetKey state while preserving the current contents of the current search key buffer. To set the current search values, you can use the IndexFields property to iterate over the fields used by the active index.
+
+
+
+EditRangeStart
+
+Call the EditRangeStart method to change the starting value for an existing range. To specify a starting range value, call the FieldByName method after calling the EditRangeStart method. After assigning a new starting value, call the ApplyRange method to activate the modified range.
+
+
+
+EditRangeEnd
+
+Call the EditRangeEnd method to change the ending value for an existing range. To specify an end range value, call the FieldByName method after calling the EditRangeEnd method. After assigning a new ending value, call the ApplyRange method to activate the modified range.
+
+
+
+EmptyTable
+
+Call the EmptyTable method to delete all records from the table. The table may be open or closed when executing this method. If the table is open, then is must have been opened exclusively (Exclusive=True) or an exception will be raised.
+
+
+
+EnableControls
+
+Re-enables data display in data-aware controls associated with the dataset.
+
+
+
+FieldByName
+
+Finds a field based on its name.
+&nbsp;
+Call FieldByName to retrieve field information for a field given its name. FieldName is the name of an existing field. FieldByName returns the TField component that represents the specified field. If the specified field does not exist, FieldByName raises an exception.
+
+
+
+FindField
+
+Searches for a specified field in the dataset.
+&nbsp;
+FindField is the same as the FieldByName method, except that it returns nil rather than raising an exception when the field is not found.
+
+
+
+FindFirst
+
+Moves to the first record in the dataset. FindFirst returns true if the active record is successfully changed.
+
+
+
+FindKey
+
+Call the FindKey method to search for a specific record in a table using the active index. The IndexName or IndexFieldNames property specifies the active index. The KeyValues parameter contains a comma-delimited array of field values. Each value in the KeyValues parameter can be a literal, a variable, a null, or nil. If the number of values passed in the KeyValues parameters is less than the number of columns in the active index, the missing values are assumed to be null. If a search is successful, the FindKey method positions the table on the matching record and returns True. Otherwise the current table position is not altered, and FindKey returns False.
+&nbsp;
+Example:
+if not ZipCodes.FindKey(['2100']) then
+ &nbsp; ErrorMsg('ZipCode ''2100'' does not exist.');
+
+
+
+FindLast
+
+Moves to the last record in the dataset. FindLast returns true if the active record is successfully changed.
+
+
+
+FindNearest
+
+Call the FindNearest method search for a record in the table that is greater than or equal to the values specified in the KeyValues parameter using the active index. The IndexName or IndexFieldNames property specifies the active index. The KeyValues parameter contains a comma-delimited array of field values. If the number of values passed in the KeyValues parameter is less than the number of columns in the active index, the missing values are assumed to be null. FindNearest positions the table either on a record that exactly matches the search criteria, or on the first record whose values are greater than those specified in the search criteria.
+
+
+
+FindNext
+
+Moves to the next record in the dataset. FindNext returns true if the active record is successfully changed.
+
+
+
+FindPrior
+
+Moves to the previous record in the dataset. FindPrior returns true if the active record is successfully changed.
+
+
+
+First
+
+Moves to the first record in the dataset.
+
+
+
+FlushBuffers
+
+Use the FlushBuffers method to flush data to disk. If the table or query result set is opened exclusively, then the FlushBuffers method flushes all cached writes to disk and proceeds to instruct the operating system to flush all writes to disk also. If the table or query result set is opened shared, then FlushBuffers only instructs the operating system to flush all writes to disk since shared datasets do not cache any writes.
+
+
+
+GetBookmark
+GotoBookmark
+FreeBookmark
+
+In addition to moving from record to record in a dataset (or moving from one record to another by a specific number of records), it is often also useful to mark a particular location in a dataset so that you can return to it quickly when desired.
+&nbsp;
+The following code illustrates one use of bookmarking:
+&nbsp;
+procedure DoSomething (const Tbl: TTable)
+var
+ &nbsp; Bookmark: TBookmark;
+begin
+ &nbsp; { Allocate memory and assign a value }
+ &nbsp; Bookmark := Tbl.GetBookmark;
+ &nbsp; { Turn off display of records in data controls }
+ &nbsp; Tbl.DisableControls; 
+ &nbsp; try
+ &nbsp; &nbsp; Tbl.First;
+ &nbsp; &nbsp; while not Tbl.Eof do
+ &nbsp; &nbsp; begin
+ &nbsp; &nbsp; &nbsp; { Do your processing here }
+ &nbsp; &nbsp; &nbsp; Tbl.Next;
+ &nbsp; &nbsp; end;
+ &nbsp; finally
+ &nbsp; &nbsp; Tbl.GotoBookmark(Bookmark);
+ &nbsp; { Turn on display of records in data controls }
+ &nbsp; &nbsp; Tbl.EnableControls; 
+ &nbsp; { Deallocate memory for the bookmark }
+ &nbsp; &nbsp; Tbl.FreeBookmark(Bookmark);
+ &nbsp; end;
+end;
+
+
+
+GotoKey
+
+Use the GotoKey method to move to a record specified by search values assigned with previous calls to the SetKey or EditKey methods. The search is peformed using the active index. The IndexName or IndexFieldNames property specifies the active index. If the GotoKey method finds a matching record, it positions the table on the record and returns True. Otherwise the current table position remains unchanged, and GotoKey returns False.
+
+
+
+GotoNearest
+
+Call the GotoNearest method to position the table on the record that is either the exact record specified by the current search values, or on the first record whose values exceed those specified. The search is peformed using the active index. The IndexName or IndexFieldNames property specifies the active index. Before calling the GotoNearest method, an application must specify the search values by calling the SetKey or EditKey methods, which put the table into the dsSetKey state. The application then uses the FieldByName method to populate the search values.
+
+
+
+GotoRecNo
+
+Navigate to a specific logical row in the dataset
+
+
+
+Insert
+
+Inserts a new, empty record in the dataset.
+
+
+
+IsEmpty
+
+Indicates whether the dataset contains no records.
+
+
+
+Last
+
+Moves to the last record in the dataset.
+
+
+
+Locate
+
+Moves the cursor to the first record matching a specified set of search criteria. In its simplest form, you pass Locate the name of a field name and a field value to match.
+&nbsp;
+with CustTable do
+ &nbsp; if Locate('Company;Contact', ['Sight Diver','Mark Hargett']) then
+ &nbsp; &nbsp; InfoMsg('Record found.');
+&nbsp;
+Locate uses the fastest possible method to locate matching records. If the columns to search are indexed and the index is compatible with the search options you specify, Locate uses the index.
+
+
+
+LockSemaphore
+
+Call the LockSemaphore method to lock the semaphore specified by the Value paramater in the table. You may reference any semaphore value from 1-1024 in the Value parameter. This method allows the database developer to use semaphores on tables to convey concurrency information not available through normal locking methods. For example, it allows for synchronization of different batch processes that may require exclusive access to a given table.
+
+
+
+MoveBy
+
+Moves to another record relative to the active record in the dataset.
+
+
+
+Next
+
+Moves to the next record in the dataset.
+
+
+
+Open
+
+Opens the dataset.
+
+
+
+Post
+
+Write a modified record to the database.
+
+
+
+Prior
+
+Moves to the previous record in the dataset.
+
+
+
+Refresh
+
+Re-fetches data from the database to update a dataset's view of data.
+
+
+
+SetRange
+
+Call the SetRange method to specify a range and apply it to the table. A range is set using the active index. The IndexName or IndexFieldNames property specifies the active index. The StartValues parameter indicates the field values that designate the first record in the range. The EndValues parameter indicates the field values that designate the last record in the range. If either the StartValues or EndValues parameters has fewer elements than the number of fields in the active index, then the remaining entries are set to NULL.
+&nbsp;
+The SetRange method combines the functionality of the SetRangeStart, SetRangeEnd, and ApplyRange methods in a single method call.
+&nbsp;
+Example:
+ZipCodes.SetRange(['2000'],['2999']);
+
+
+
+UnLockSemaphore
+
+Call the UnlockSemaphore method to unlock the semaphore specified by the Value parameter for the table. The semaphore should have been locked previously using the LockSemaphore method.
+
+
+
+
+&nbsp;
+Events of TTable
+The flowing events will only be executed if the dataset is created by a TForm.
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AfterCancel
+
+Occurs after an application completes a request to cancel modifications to the active record.
+
+
+
+AfterClose
+
+Occurs after an application closes a dataset.
+
+
+
+AfterDelete
+
+Occurs after an application deletes a record or a selected number of records.
+
+
+
+AfterEdit
+
+Occurs after an application starts editing a record.
+
+
+
+AfterInsert
+
+Occurs after an application inserts a new record.
+
+
+
+AfterOpen
+
+Occurs after an application completes opening a dataset and before any data access occurs.
+
+
+
+AfterPost
+
+Occurs after an application writes the active record to the database or change log and returns to browse state.
+
+
+
+AfterScroll
+
+Occurs after an application scrolls from one record to another.
+
+
+
+BeforeCancel
+
+Occurs before an application executes a request to cancel changes to the active record.
+
+
+
+BeforeClose
+
+Occurs immediately before the dataset closes.
+
+
+
+BeforeDelete
+
+Occurs before an application attempts to delete the active record. If the user delete a selected number of records, the controls will be disabled, while it proceed the deletion. You can abort the deletion by calling the Abort or ErrorMsg procedure.
+
+
+
+BeforeEdit
+
+Occurs before an application form dataset enters edit mode for the active record.
+
+
+
+BeforeInsert
+
+Occurs before an application enters insert mode.
+
+
+
+BeforeOpen
+
+Occurs before an application executes a request to open a dataset.
+
+
+
+BeforePost
+
+Occurs before an application posts changes for the active record to the database.
+
+
+
+BeforeScroll
+
+Occurs before an application scrolls from one record to another.
+
+
+
+OnNewRecord
+
+Occurs when an application inserts or appends a new dataset record. This event is called as part of the insert or append process. You might use the OnNewRecord event to set initial values for a record.
+
+
+
+
+
+
+
+

@@ -1,0 +1,141 @@
+
+
+
+TJPEGImage
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TJPEGImage
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+Use TJPEGImage to read and write jpeg compressed image data. TJPEGImage handles the digital compression and decompression of still images for use in computer systems. It uses the data from an instance object, which contains the actual jpeg data source and is never modified. Each jpeg image object may share its instance data object with other instances of a jpeg image by creating copies using the Assign method. The jpeg data source handles reference counting for the jpeg image objects that are linked to it.
+&nbsp;
+TJPEGImage has an internal bitmap that represents the jpeg image. This internal image and the original source of the jpeg image are read only. TJPEGImage has properties that determine how each instance will handle color conversion, compression, decompression, performance, and so on.
+&nbsp;
+The following are characteristics of this object:
+&nbsp;
+&#8226;Has no canvas (so it cannot draw onto a canvas).&#8226;Provides no access to the internal bitmap image that it creates for the JPEG image.&#8226;Performs reference counting and handle sharing by means of the instance data source object.&nbsp;
+Object Hierarchy
+TJPEGImage - TGraphic - TPersistent - TObject
+&nbsp;
+Properties of TJPEGImage
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Empty
+
+Indicates whether the graphics object contains a graphic.
+
+
+
+FileExt
+
+Returns the current file extension identifier. (jpg)
+
+
+
+Grayscale
+
+Determines whether the image output of a JPEG image is black and white, or color.
+
+
+
+Height
+
+Specifies the vertical size of the graphic in pixels.
+
+
+
+Quality
+
+Indicates the compression quality of the JPEG image when writing out a jpeg image. Higher compression results in a poorer picture quality, but a smaller file size. This property is not used for reading in files.
+The higher the value (up to a maximum of 100), the better the image quality, but the larger the file size. The lower the value (to a minimum of 1), the smaller the resulting file size, but at the expense of picture quality.
+
+
+
+Width
+
+Determines the maximum width of the graphics object in pixels.
+
+
+
+
+&nbsp;
+Methods of TJPEGImage
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Assign
+
+Copies or converts an image object to a jpeg object.
+
+
+
+LoadFromFile
+
+Loads the jpeg image from a file.
+
+
+
+LoadFromStream
+
+Loads the jpeg image from a TStream object.
+
+
+
+SaveToFile
+
+Saves the jpeg data to a file.
+
+
+
+SaveToStream
+
+Saves the jpeg data to a TStream object.
+
+
+
+
+
+
+
+

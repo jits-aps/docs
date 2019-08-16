@@ -1,0 +1,134 @@
+
+
+
+TBitmap
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TBitmap
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+A bitmap is a powerful graphics object used to create, manipulate (scale, scroll, rotate, and paint), and store images in memory and as files on a disk.
+&nbsp;
+TBitmap contains an internal image of the bitmap graphic and automatically manages realization of the palette when drawn. 
+To draw a bitmap on a canvas, call the Draw or StretchDraw methods of a TCanvas object, passing a TBitmap as a parameter.
+&nbsp;
+Creating copies of a TBitmap is very fast since the handle is copied rather than the image. If the image is modified and the handle is shared by more than one TBitmap object, the image is copied before the modification is performed (that is, copy on write).
+&nbsp;
+Object Hierarchy
+TBitmap - TGraphic - TPersistent - TObject
+&nbsp;
+Properties of TBitmap
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Canvas
+
+Canvas allows drawing on the bitmap by providing a TCanvas object for this purpose.
+
+
+
+FileExt
+
+Returns the current file extension identifier. (bmp)
+
+
+
+Height
+
+Specifies the height of the image, in pixels.
+
+
+
+Width
+
+Specifies the width of the image, in pixels
+
+
+
+
+&nbsp;
+Methods of TBitmap
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Assign
+
+Copies a new bitmap image to the bitmap object.
+
+
+
+AssignStretch
+
+Copies a new bitmap image to the bitmap object so that the image fits in the specified size.
+
+
+
+LoadFromFile
+
+Loads the bitmap from a file into the bitmap object.
+
+
+
+LoadFromStream
+
+Loads the bitmap from a TStream into the bitmap object.
+
+
+
+SaveToFile
+
+Saves the bitmap to a file.
+
+
+
+SaveToStream
+
+Saves the bitmap to a TStream object.
+
+
+
+
+
+
+
+

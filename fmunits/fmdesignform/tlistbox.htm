@@ -1,0 +1,398 @@
+
+
+
+TListBox
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Form Designer&nbsp;&gt;
+   
+      TListBox
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+Description
+TListBox displays a collection of items in a scrollable list.
+Use TListBox to display a scrollable list of items that users can select, add, or delete. TListBox is a wrapper for the Windows listbox control.
+&nbsp;
+Object Hierarchy
+TListBox - TCustomListBox - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TCalendar
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Align
+
+Determines how the control aligns within its container (parent control).
+
+
+
+Anchors
+
+Specifies how the control is anchored to its parent.
+
+
+
+AutoComplete
+
+Determines whether the user can give focus to items by typing in the list.
+
+
+
+BorderStyle
+
+Determines whether the list box has a border.
+
+
+
+CheckBoxes
+
+Specifies whether check boxes appear next to the items in the list view.
+
+
+
+Color
+
+Specifies the background color of the control.
+
+
+
+Columns
+
+Specifies the number of columns, in a multi-column list box, that are visible without having to scroll.
+&nbsp;
+Use Columns to specify the number of columns, in a multi-column list box, that are visible without having to use the horizontal scroll bar.
+&nbsp;
+Multi-column list boxes have a horizontal scroll bar that allows users to view multiple columns as they wrap. The default value for Columns is 0, meaning that the list box is not multi-column. That is, users can scroll only vertically and the list of items will not wrap.
+&nbsp;
+For Columns values greater than 0, multiple columns accommodate the items as they wrap beyond the bottom of the list box. The Columns property specifies the number of columns that are visible without having to horizontally scroll the list box.
+&nbsp;
+The width of each column depends upon both the Width property and the number of Columns. 
+
+
+
+Constraints
+
+Specifies the size constraints for the control.
+
+
+
+Ctl3D
+
+Determines whether a control has a three-dimensional (3-D) or two-dimensional look.
+
+
+
+Cursor
+
+Specifies the image used to represent the mouse pointer when it passes into the region covered by the control.
+
+
+
+Enabled
+
+Controls whether the control responds to mouse and keyboard events.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text written on or in the control.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+HelpKeyword
+
+Keyword for control's context-sensitive help topic.
+
+
+
+Hint
+
+Contains the text string that can appear when the user moves the mouse over the control.
+
+
+
+ItemHeight
+
+Specifies the height in pixels of an item in the list box.
+
+
+
+ItemIndex
+Run-time only
+
+Specifies the index of the selected item.
+&nbsp;
+Read ItemIndex to determine which item is selected. The first item in the list has index 0, the second item has index 1, and so on. If no item is selected, the value of ItemIndex is -1. If the list control supports multiple selected items, ItemIndex is the index of the selected item that has focus. Set ItemIndex programmatically to select an item by passing in the index value.
+
+
+
+Items
+
+Contains the strings that appear in the list box.
+&nbsp;
+Use Items to add, insert, delete and move items. By default, the items in a list box are of type TStrings. Use this item type to access its methods or properties to manipulate the items in the list.
+&nbsp;
+For example, the following code adds the text in the edit box to the list box as an item:
+ListBox1.Items.Add(Edit1.Text);
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+MultiSelect
+
+Specifies whether the user can select more than one item.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParentColor
+
+Determines where a control looks for its color information.
+
+
+
+ParentCtl3D
+
+Determines where a component looks to determine if it should appear three dimensional.
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+SelCount
+Run-time only
+
+Indicates the number of selected items.
+&nbsp;
+Read SelCount to determine the number of items that are currently selected. If the value of the MultiSelect property is false, SelCount is 0 or 1. If MultiSelect is true, the value of SelCount can be greater than 1 as well.
+
+
+
+Selected
+Run-time only
+
+Indicates whether a particular item is selected.
+&nbsp;
+Use Selected to query the state of a particular item in the list box. If the item specified by the Index parameter is selected in the list box, the value of the Selected property is true. If the specified item is not selected, Selected is false. Set Selected to change the currently selected item.
+&nbsp;
+The Index parameter is the item referenced by its position in the list box, with the first item having an Index value of 0.
+&nbsp;
+An item is selected when the user highlights it. More than one item in the list box can be selected by setting the MultiSelect property to true. In this case, the Selected item is the one that has focus when the list box has input focus.
+
+
+
+Sorted
+
+Specifies whether the items in a list box are arranged alphabetically.
+
+
+
+TabOrder
+
+Indicates the position of the control in its parent's tab order.
+
+
+
+TabStop
+
+Determines if the user can tab to a control.
+
+
+
+TabWidth
+
+Specifies the size of the tabs in the list box.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Visible
+
+Determines whether the component appears on screen.
+
+
+
+Width
+
+Specifies the horizontal size of the control or form in pixels.
+
+
+
+
+&nbsp;
+Methods of TListBox
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Repaint
+
+Call Repaint to repaint the entire control.
+
+
+
+SetFocus
+
+Gives the input focus to the control. When a control has focus, it receives keyboard events.
+
+
+
+
+&nbsp;
+Events of TListBox
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnClick
+
+Occurs when the user clicks the control.
+
+
+
+OnDblClick
+
+Occurs when the user double-clicks the left mouse button when the mouse pointer is over the control.
+
+
+
+OnEnter
+
+Occurs when the control receives the input focus. Use the OnEnter event handler to cause any special processing to occur when a control becomes active.
+
+
+
+OnExit
+
+Occurs when the input focus shifts away from the control to another control. Use the OnExit event handler to provide special processing when the control ceases to be active.
+
+
+
+OnKeyDown
+
+Occurs when a user presses any key while the control has focus.
+&nbsp;
+Use the OnKeyDown event handler to specify special processing to occur when a key is pressed. The OnKeyDown handler can respond to keyboard keys, including function keys and keys combined with the SHIFT, ALT, and CTRL keys, and pressed mouse buttons. See TShiftState for a description of the Shift parameter.
+
+
+
+OnKeyPress
+
+Occurs when a key is pressed.
+
+
+
+OnKeyUp
+
+Occurs when the user releases a key that has been pressed.
+
+
+
+OnMouseDown
+
+Occurs when the user presses a mouse button with the mouse pointer over a control.
+
+
+
+OnMouseEnter
+
+Occurs when the user moves the mouse into a control.
+
+
+
+OnMouseLeave
+
+Occurs when the user moves the mouse outside of a control.
+
+
+
+OnMouseMove
+
+Occurs when the user moves the mouse pointer while the mouse pointer is over a control.
+
+
+
+OnMouseUp
+
+Occurs when the user releases a mouse button that was pressed with the mouse pointer over a component.
+
+
+
+
+
+
+
+

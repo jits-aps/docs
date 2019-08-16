@@ -1,0 +1,288 @@
+
+
+
+TTabSheet
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Form Designer&nbsp;&gt;
+   
+      TTabSheet
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+TTabSheet is an individual page in a TPageControl object.
+&nbsp;
+Use TTabSheet to represent a single page in a tabbed page control. Tab sheets are typically referred to as pages. TPageControl maintains an indexed array of its tab sheets in its Pages property. Users can click on a tab to activate the tab sheet. To add a new page to a TPageControl object at design time, right-click the TPageControl object and choose New Page.
+&nbsp;
+Object Hierarchy
+TTabSheet - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TTabSheet
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+BorderWidth
+
+Specifies the width of the control's border.
+
+
+
+Caption
+
+Specifies a text string that identifies the control to the user.
+
+
+
+Constraints
+
+Specifies the size constraints for the control.
+
+
+
+Cursor
+
+Specifies the background color of the control.
+
+
+
+Enabled
+
+Controls whether the control responds to mouse and keyboard events.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text written on or in the control.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+HelpKeyword
+
+Keyword for control's context-sensitive help topic.
+
+
+
+Highlighted
+
+Indicates whether the tab sheet appears highlighted.
+
+
+
+Hint
+
+Contains the text string that can appear when the user moves the mouse over the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+PageControl
+Run-time only
+
+Indicates the page control object that contains the tab sheet.
+&nbsp;
+Read PageControl to gain access to the page control object that uses the tab sheet. The properties and methods of the PageControl object can be used to locate the selected page, iterate through the other pages in the page control, or change the display properties of the tabs.
+&nbsp;
+Set PageControl to remove the tab sheet from its current page control (if any) and insert it into a new page control.
+&nbsp;
+Example:
+&nbsp;
+var
+ &nbsp; NewTabSheet: TTabSheet;
+begin
+ &nbsp; NewTabSheet := TTabSheet.Create;
+ &nbsp; NewTabSheet.Caption := 'New Page';
+ &nbsp; NewTabSheet.PageControl := MyPageControl;
+end;
+
+
+
+PageIndex
+
+Indicates the index of the tab sheet in the list of tab sheets maintained by the page control.
+&nbsp;
+Use PageIndex to determine where the tab sheet sits in its page control. Each tab sheet in a page control is automatically assigned a PageIndex when it is inserted in the page control. The first tab sheet receives a value of 0, the second has a value of 1, and so on. PageIndex values are reassigned if tab sheets are deleted or moved.
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+TabVisible
+
+Specifies whether the tab of the TTabSheet object appears in its TPageControl.
+&nbsp;
+Use TabVisible to temporarily remove a tab sheet from a page control. When TabVisible is false, the tab does not appear in the page control and its TabIndex property is -1. Setting TabVisible to true allows the user to see the tab of the tab sheet again.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Width
+
+Specifies the horizontal size of the control in pixels.
+
+
+
+
+&nbsp;
+Methods of TTabSheet
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Repaint
+
+Call Repaint to repaint the entire control.
+
+
+
+SetFocus
+
+Gives the input focus to the control. When a control has focus, it receives keyboard events.
+
+
+
+
+&nbsp;
+Events of TTabSheet
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnEnter
+
+Occurs when a control receives the input focus.
+
+
+
+OnExit
+
+Occurs when the input focus shifts away from one control to another.
+
+
+
+OnHide
+
+Occurs when the TabVisible property changes to false.
+
+
+
+OnMouseDown
+
+Occurs when the user presses a mouse button with the mouse pointer over a control.
+
+
+
+OnMouseEnter
+
+Occurs when the user moves the mouse into a control.
+
+
+
+OnMouseLeave
+
+Occurs when the user moves the mouse outside of a control.
+
+
+
+OnMouseMove
+
+Occurs when the user moves the mouse pointer while the mouse pointer is over a control.
+
+
+
+OnMouseUp
+
+Occurs when the user releases a mouse button that was pressed with the mouse pointer over a component.
+
+
+
+OnResize
+
+Occurs immediately after the control is resized.
+
+
+
+OnShow
+
+Occurs when the TabVisible property changes to true.
+
+
+
+
+
+
+
+

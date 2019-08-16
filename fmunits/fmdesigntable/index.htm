@@ -1,0 +1,287 @@
+
+
+
+Table Designer
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units&nbsp;&gt;
+   
+      Table Designer
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Generelt
+I Tabel Designeren oprettes og Ã¦ndres de tabeller som databasen indeholder. En tabel kan nÃ¦rmest sammenlignes med en data fil med et ubegrÃ¦nset antal records. (rÃ¦kker). &nbsp;F.eks. indeholder tabellen âCustomersâ alle de oprettede kunder, hvor hver kunde er en record. Hver record bestÃ¥r af felter (kolonner) som f.eks. navn, adresse, telefonnummer etc. Databasen kan indeholde mange tabeller, der hver isÃ¦r indeholder oplysninger om et sÃ¦rskilt emne. Hver tabel kan indeholde mange felter af forskellige typer, herunder tekst, tal, datoer og billeder.
+&nbsp;
+Tabel Designeren er opdelt i 2 faneblade: Under âFieldsâ oprettes de felter som tabellen skal indeholde og samtidig defineres tabellens primÃ¦re indeksering. Under &quot;Secondary Indexes&quot; defineres eventuelle sekundÃ¦re indekseringer. (Alternative sorteringer)
+&nbsp;
+Indeksering (NÃ¸gler)
+En tabels primÃ¦re indeks bestÃ¥r af et eller flere felter, der entydigt identificerer hver record, der gemmes i tabellen. Der er ofte et entydigt identifikationsnummer som f.eks. et id-nummer, et serienummer eller en kode, der fungerer som primÃ¦r nÃ¸gle. F.eks. har tabellen âCustomersâ feltet âNoâ som primÃ¦r indeks, fordi hver kunde har et entydigt kundenummer. Du bÃ¸r altid angive et primÃ¦r indeks for en tabel.
+&nbsp;
+
+VÃ¦rktÃ¸jer
+Via menupanelet (Ãverst) kan du Ã¥bne en Objektinspektor (Object Inspector), som viser felternes egenskaber. Herfra kan du Ã¦ndre indstillinger og definere relationer til andre tabeller. Ãverst i Objektinspektoren vises navnet pÃ¥ den aktuelle komponent (felt). For at fÃ¥ vist egenskaberne for selve tabellen vÃ¦lges &quot;Table: TTable&quot;. 
+&nbsp;
+Fields - Feltbeskrivelse
+&nbsp;
+
+
+Feltnavn
+
+Beskrivelse
+
+
+
+Field Name
+
+Her tastes feltnavnet.
+
+
+
+Type
+
+Her vÃ¦lges et af fÃ¸lgende felttyper:
+&nbsp;
+
+
+Type
+
+SQL betegnelse
+
+Object
+
+Beskrivelse
+
+
+
+String
+
+VARCHAR
+
+TStringField
+
+Anvendes til almindelige tekster op til 512 karakter.
+
+
+
+Code
+
+CHAR
+
+TStringField
+
+Denne felttype er specielt velegnet til alfa / numeriske identifikationsvÃ¦rdier. F.eks. Kundenumre, Bilagsnumre etc. I modsÃ¦tning til et almindeligt tekstfelt, vil du opnÃ¥ en korrekt sortering af talvÃ¦rdier og samtidig kan man ogsÃ¥ anvende bogstaver.
+
+
+
+Integer
+
+INTEGER
+
+TIntegerField
+
+Anvendes til at gemme 32 bit heltal (-2147483648..2147483647), som skal kunne bruges til beregninger.
+
+
+
+AutoInc
+
+AUTOINC
+
+TAutoIncField
+
+Denne felttype er den samme som Integer feltet men initialiseres automatisk med en entydig numerisk vÃ¦rdi. (LÃ¸benummer)
+
+
+
+Decimal
+
+DECIMAL
+
+TBCDField
+
+Anvendes til at gemme decimaltal (f.eks. valutabelÃ¸b), som skal kunne bruges til beregninger. Denne felttype har en begrÃ¦nsning pÃ¥ 4 decimaler.
+
+
+
+Float
+
+FLOAT
+
+TFloatField
+
+Anvendes til at gemme 64 bit decimaltal (-5.0 x 10^324 .. 1.7 x 10^308), som skal kunne bruges til beregninger.
+
+
+
+Option
+
+SMALLINT
+
+TSmallIntField
+
+Anvendes til at gemme 16 bit heltal (-32768..32767). Felttypen har en speciel OptionList egenskab, hvor talvÃ¦rdierne kan erstattes med faste tekst vÃ¦rdier. Felttypen er specielt velegnet til felter, hvor der er faste valgmuligheder. (Options)
+
+
+
+Boolean
+
+BOOLEAN
+
+TBooleanField
+
+Anvendes til at gemme booleske vÃ¦rdier, der kan vÃ¦re den ene af to mulige vÃ¦rdier: f.eks. Ja/Nej eller True/False.
+
+
+
+Date
+
+DATE
+
+TDateField
+
+Anvendes til at gemme dato vÃ¦rdier.
+
+
+
+Time
+
+TIME
+
+TTimeField
+
+Anvendes til at gemme klokkeslet vÃ¦rdier.
+
+
+
+BLOB
+
+BLOB
+
+TBLOBField
+
+Denne felttype har en variabel stÃ¸rrelse og kan gemme op til 2 gigabyte udefineret data. Det er ikke muligt at indeksere felter af denne type.
+
+
+
+Graphic
+
+BLOB
+&nbsp;
+
+TGraphicField
+
+Anvendes til at gemme grafik/ billeder. Denne felttype er den samme som BLOB feltet men anvender TGraphicField objektet i script editoren.
+
+
+
+Memo
+
+CLOB
+
+TMemoField
+
+Anvendes til at gemme tekster der er lÃ¦ngere end 512 tegn, eller til tekst med RTF-formatering. Denne felttype er den samme som BLOB feltet men anvender TMemoField objektet i script editoren.
+
+
+
+
+
+
+
+Size
+
+Angiv stÃ¸rrelse pÃ¥ feltet (antal maksimale karakter) for fÃ¸lgende felttyper: âStringâ og âCodeâ. 
+BemÃ¦rk! Felttypen Decimal anvender stÃ¸rrelse til at fastsÃ¦tte antal decimaler. DBISAM databasen tillader hÃ¸jst 4 decimaler for denne felttype.
+
+
+
+Index
+
+Her vÃ¦lges om feltet skal indgÃ¥ i det primÃ¦re indeks.
+
+
+
+Description
+
+Her har du mulighed for at taste en bemÃ¦rkning til egen information.
+
+
+
+
+&nbsp;
+SekundÃ¦r indeksering
+Under fanebladet âSecondary Indexesâ kan alternative sorteringer defineres. I tabellen Customers er det primÃ¦re indeks kundenummeret. Men hvis vi nu gerne vil kunne se kunderne sorteret efter Navn, tilfÃ¸jes et sekundÃ¦r indeks hvor âNameâ er det indekserede felt.
+Det betyder at man via kundelisten kan Ã¦ndre Sorteringen ved at vÃ¦lge menuen Vis og menupunktet Sortering. Systemet husker den valgte sortering til nÃ¦ste gang samme vindue Ã¥bnes.
+&nbsp;
+Et andet eksempel pÃ¥ alternative sorteringer er, hvis man har et vindue som skal vise afgrÃ¦nset records (records hvor et eller flere af felterne har en bestemt vÃ¦rdi). F.eks. indeholder tabellen &quot;GLEntries&quot; alle finansposteringer som er indekseret efter et lÃ¸benummer (AutoInc Field). Men for at kunne designe et vindue som viser posteringerne for en bestemt finanskonto, oprettes et sekundÃ¦r indeks som sorterer posterne efter kontonumre. NÃ¥r du kalder formen via en knap eller et menupunkt, vÃ¦lges det aktuelle indeks i propertien âRunTableIndexâ og herefter defineres selve afgrÃ¦nsningen via propertien âRunTableRangeâ.
+&nbsp;
+Secondary Indexes - Feltbeskrivelse
+&nbsp;
+
+
+Feltnavn
+
+Beskrivelse
+
+
+
+Index Name
+
+Her tastes et navn som kendetegner indekseringen. F.eks. ByName
+
+
+
+Indexed Fields
+
+Her vÃ¦lges de felter som der skal sorteres efter. Hvis indekset indeholder flere felter, skal feltnavne vÃ¦re adskilt med et semikolon.
+Tryk F6 eller klik pÃ¥ opslagsknappen i feltet for at se de tilgÃ¦ngelige felter.
+
+
+
+Case-Insensitive
+
+SÃ¦t et flueben i feltet hvis der IKKE skal skelnes imellem store og smÃ¥ bogstaver i tekst felter (Strings). Det anbefales at anvende denne indstilling ved indeks som indeholder Navne, Adresser etc. (Felter som skal vises i alfabetisk orden)
+
+
+
+Descending
+
+SÃ¦t et flueben i feltet hvis du Ã¸nsker en omvendt sortering. 
+
+
+
+
+&nbsp;
+Event handlers
+I Script Editoren har du mulighed for at programmere egne event handlers, baseret pÃ¥ tabellen og de felter som er oprettet. Applikationssproget som anvendes, understÃ¸tter de grundlÃ¦ggende strukturer fra programmeringssproget Pascal, herunder definering af procedurer, funktioner, variabler og konstanter.
+&nbsp;
+En event handler er en procedure, som afvikles nÃ¥r en given hÃ¦ndelse er indtruffet. F.eks. ved validering af data som indsÃ¦ttes i et felt. NÃ¥r du designer en tabel, kan du via Objektinspectoren se hvilke events (hÃ¦ndelser), der er knyttet til de enkelte felter og til selve tabellen. For at oprette et event, skal du klikke pÃ¥ knappen i feltet udfra det Ã¸nskede event, og herefter generes automatisk en ny procedure i editoren. Det er sÃ¥ din opgave at definere den hÃ¦ndelse som skal afvikles.
+
+
+
+

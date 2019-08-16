@@ -1,0 +1,156 @@
+
+
+
+TGIFImage
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TGIFImage
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+Use TGIFImage to read and write GIF image data. The object has no canvas (so it cannot be drawn upon). However, load a GIF file into a TImage component and let the TImage component display the GIF.
+&nbsp;
+Example
+&nbsp;
+procedure FormCreate(Sender: TObject);
+var
+ &nbsp; GIF: TGIFImage;
+begin
+ &nbsp; GIF := TGIFImage.Create;
+ &nbsp; try
+ &nbsp; &nbsp; GIF.LoadFromFile('c:\test.gif');
+ &nbsp; &nbsp; Image1.Picture.Assign(GIF);
+ &nbsp; finally
+ &nbsp; &nbsp; GIF.Free;
+ &nbsp; end;
+end;
+&nbsp;
+About GIF
+GIF is an acronym for Graphics Interchange Format, an image file format created by CompuServe for conveniently storing and displaying image libraries online. Because of its near-photographic quality and relatively small file size, GIF has become one of the most widely used image file formats on the Internet today. GIF has undergone two major revisions since its inception in 1987, the most recent being the GIF89a specification.
+GIF uses the Lempel-Ziv-Welch (LZW) compression method to store and reduce single or multiple images within the file by up to 40% of their original size. These images can contain up to 256 colors, and they do not lose any of their original quality when undergoing compression, which can reduce an image by as much as 40% of its original size. Even though GIF is a &quot;lossless&quot; format, images that are imported from other file formats and converted to GIF may lose some of their quality in the transition from True Color to 256-color. GIF files also possess transparency attributes so that one color in the image is not displayed. This allows users to create clear backdrops for their images, letting a web-pageâs background colors show through. GIF also supports image interlacing, allowing users to watch the image &quot;fade-in&quot; as it downloads.
+&nbsp;
+If multiple images are stored within a GIF file, they can be viewed sequentially much like a slide show or a small animated movie. The way they appear is defined by control extensions built into the file.
+&nbsp;
+Object Hierarchy
+TGIFImage - TGraphic - TPersistent - TObject
+&nbsp;
+Properties of TGIFImage
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Empty
+
+Indicates whether the graphics object contains a graphic.
+
+
+
+FileExt
+
+Returns the current file extension identifier. (gif)
+
+
+
+Height
+
+Specifies the vertical size of the graphic in pixels.
+
+
+
+Width
+
+Determines the maximum width of the graphics object in pixels.
+
+
+
+
+&nbsp;
+Methods of TGIFImage
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Add
+
+Use the Add method to add images to a GIF. It returns the index of the added image, or -1 if it fails. The image is added to the end of the GIF as the last frame. The source parameter specifies the image to add and can be any TGraphic descendant that can be converted automatically to a TBitmap.
+
+
+
+Assign
+
+Copies or converts an image object to a GIF object.
+
+
+
+Clear
+
+Clears all images from the GIF.
+
+
+
+LoadFromFile
+
+Loads the GIF image from a file.
+
+
+
+LoadFromStream
+
+Loads the GIF image from a TStream object.
+
+
+
+SaveToFile
+
+Saves the GIF data to a file.
+
+
+
+SaveToStream
+
+Saves the GIF data to a TStream object.
+
+
+
+
+
+
+
+

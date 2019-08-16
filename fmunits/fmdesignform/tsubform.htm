@@ -1,0 +1,328 @@
+
+
+
+TSubForm
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Form Designer&nbsp;&gt;
+   
+      TSubForm
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+The TSubForm component is used to show a sub dataset on a form. 
+&nbsp;
+For example, in a form based on a customer table (master) which show one record at a time, there may be many records for each customer in another table (detail). To make a form that also shows the detail records for each master record, place a SubForm component on the form and connect its SubTableName property to the child table. Then setup the relation between the main and child table, by the SubTableIndex and SubTableRange properties.
+&nbsp;
+Object Hierarchy
+TSubForm - TCustomControl - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TSubForm
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Align
+
+Determines how the control aligns within its container (parent control).
+
+
+
+AllowDelete
+
+Use this property to tell the system whether or not it should let users delete records from the dataset, specified by the SubTableName property.
+
+
+
+AllowInsert
+
+Use this property to tell the system whether or not it should let users add records into the dataset, specified by the SubTableName property.
+
+
+
+Anchors
+
+Specifies how the control is anchored to its parent.
+
+
+
+Cursor
+
+Specifies the image used to represent the mouse pointer when it passes into the region covered by the control.
+
+
+
+DataSet
+Run-time only
+
+Identifies the TDataSet component who is a common ancestor of the table, specified by the TableName property or the sub forms Local Dataset.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text written on or in the control.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+HelpKeyword
+
+Keyword for control's context-sensitive help topic.
+
+
+
+Hint
+
+Contains the text string that can appear when the user moves the mouse over the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParentControl
+
+Use this property if you want the parent form to perform the Insert, Delete and Scroll requests. It means, if the user selects Insert, the system will insert a new master record, even when the SubForm has focus.
+&nbsp;
+Note! &nbsp;The properties AllowInsert and AllowDelete will be controlled by the parent form, when ParentControl is True.
+
+
+
+ParentReadOnly
+
+Determines where a control looks for whether the user can change the value.
+
+
+
+ReadOnly
+
+Use this property to tell the system whether to let users modify data while using this form.
+
+
+
+SaveLocalData
+
+Use this property, if you have created a local dataset and want the system to store data entered by the end-user. This property has no effect, if the form is connected to a physical table.
+&nbsp;
+Note! &nbsp;The data will be saved on the clients computer, and will not be available for others clients, who is connected to the same database.
+
+
+
+SubTableIndex
+
+Use the IndexName property to specify the active index for a table, specified by the TableName property. The index is used to determine the sort order of the records. If the IndexName property is empty (the default), the active index is set to the primary index.
+
+
+
+SubTableName
+
+Specified the table from which this subform will display records.
+
+
+
+SubTableRange
+
+Use the TableRange property to specify a range to the table, specified by the TableName property. The range works only on indexed fields and can be a constant or a field value from the parent dataset (main form). Each statement should by separated with a semicolon. Example: VendorCode=Code;StockID=CURRENT_STOCKID
+&nbsp;
+At design time, use the Table Range Editor by clicking on the assistant button in the Object Inspector.
+
+
+
+TabOrder
+
+Indicates the position of the control in its parent's tab order.
+
+
+
+TabStop
+
+Determines if the user can tab to a control.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Visible
+
+Determines whether the component appears on screen.
+
+
+
+Width
+
+Specifies the horizontal size of the control or form in pixels.
+
+
+
+
+&nbsp;
+Methods of TSubForm
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Repaint
+
+Call Repaint to repaint the entire control.
+
+
+
+
+&nbsp;
+Events of TSubForm
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AfterDelete
+
+Occurs after a form deletes a record or a selected number of records.
+
+
+
+AfterEdit
+
+Occurs after a form starts editing a record.
+
+
+
+AfterInsert
+
+Occurs after a form inserts a new record.
+
+
+
+AfterPost
+
+Occurs after a form writes the active record to the dataset.
+
+
+
+AfterScroll
+
+Occurs after a form scrolls the dataset from one record to another.
+
+
+
+BeforeDelete
+
+Occurs before a form attempts to delete the active record. If the user deletes a selected number of records, the controls will be disabled, while it proceed the deletion. You can abort the deletion by calling the Abort or ErrorMsg procedure.
+
+
+
+BeforeEdit
+
+Occurs before a form dataset enters edit mode for the active record.
+
+
+
+BeforeInsert
+
+Occurs before a form dataset enters insert mode.
+
+
+
+BeforePost
+
+Occurs before a form posts changes for the active record to the dataset.
+
+
+
+BeforeScroll
+
+Occurs before a form scrolls the dataset from one record to another.
+
+
+
+OnNewRecord
+
+Occurs when the subform inserts or appends a new dataset record. This event is called as part of the insert or append process. You might use the OnNewRecord event to set initial values for a record.
+
+
+
+OnValidate
+
+Occurs just before the data is written to the subform datasets record buffer. Write an OnValidate event handler to validate changes made to the data in the field, just before the data is written to the current record buffer. To reject the current value of the field from the OnValidate event handler, raise an exception by calling the ErrorMsg procedure.
+&nbsp;
+Example:
+procedure SubForm1Validate(Sender: TObject; DataSet: TDataSet; Field: TField);
+begin
+ &nbsp; if Field = DataSet.FieldByName('Date') then
+ &nbsp; &nbsp; if Field.AsDateTime &lt; EncodeDate(2010,1,1) then
+ &nbsp; &nbsp; &nbsp; ErrorMsg('Date is too old.');
+end;
+&nbsp;
+Note! If you want to write a global OnValidate event handler to a specific field use instead the tables OnValidate handler.
+
+
+
+
+
+
+
+

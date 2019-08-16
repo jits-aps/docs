@@ -1,0 +1,201 @@
+
+
+
+TQRShape
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Rapport Designer&nbsp;&gt;
+   
+      TQRShape
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+The TQRShape component is accessible by the Design Palette and represents a geometric shape that can be drawn. This component introduces properties to describe the pen used to outline the shape and the brush used to fill it. 
+&nbsp;
+Object Hierarchy
+TQRShape - TCustomControl - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TQRShape
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Brush
+
+Specifies the color and pattern used for filling the shape control.
+Brush is a TBrush object that represents the color and pattern that fill the interior of the shape. Use the properties and methods of TBrush to change the color or pattern of the shape object.
+
+
+
+Enabled
+
+Determines whether the component appear at runtime.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text.
+If not explicitly set, the control takes its font from its parent.
+
+
+
+Frame
+
+Display a visible frame around the shape. This property controls the appearance of the frame, which sides it is drawn on and so on.
+
+
+
+Height
+
+Specifies the vertical size of the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+Pen
+
+Specifies the pen used to outline the shape control.
+Read Pen to obtain the TPen object that represents the color and style of the line used to outline the shape. Use the properties of Pen to change the color or style.
+
+
+
+RoundFactor
+
+Specifies the radius of the corners when the Shape property is set to grsRoundRect.
+
+
+
+Shape
+
+Specifies the shape of the control. Set Shape to the geometric shape that should be drawn on the form. The Shape property has these possible options:
+
+
+Option
+
+Description
+
+
+
+qrsRectangle
+
+The shape is a rectangle. (Default)
+
+
+
+qrsCircle
+
+The shape is a circle.
+
+
+
+qrsVertLine
+
+The shape is a vertical rule
+
+
+
+qrsHorLine
+
+The shape is a horizontal rule
+
+
+
+qrsTopAndBottom
+
+The shape is a top and bottom line of a rectangle
+
+
+
+qrsRightAndLeft
+
+The shape is a right and left line of a rectangle
+
+
+
+qrsRoundRect
+
+The radius of the corners is set with the RoundFactor property. 0,2 gives a reasonable curve.
+
+
+
+
+
+
+
+Size
+
+All printable components share the Size property. If AutoSize is False you can use this property to set the exact size of the component. This property also contains the position of the component relative to its parent band.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Text
+
+This text will be printed as a prefix to the data value.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Width
+
+Specifies the horizontal size of the control.
+
+
+
+
+
+
+
+

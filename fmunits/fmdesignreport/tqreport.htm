@@ -1,0 +1,495 @@
+
+
+
+TQReport
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Rapport Designer&nbsp;&gt;
+   
+      TQReport
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+When you create reports in the Report designer at design time, they are implemented as descendants of TQReport.
+&nbsp;
+This component is a container for all the other printing components. It represents the paper on which your report will be printed. Its Page property lets you set up the dimensions of the paper you are going to print on, while the SQL property specifies a source of data that the report will iterate through.
+&nbsp;
+Note! You cannot drop a TQReport component onto an ordinary form. Instead insert a new Report design unit, by the Design Units window.
+&nbsp;
+Band components
+These are container components, representing horizontal strips across report. Bands can be associated with a physical position on a page â for example the top â and also reflect the master/detail relationships in the database that is being displayed. For example, in the same way that there might be many sales records for a given customer record, so a band containing data about an individual sale might appear many times for each occurrence of a band containing customer data.
+&nbsp;
+Object Hierarchy
+TQReport - TCustomControl - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TQReport
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Bands
+
+Use the Bands property to set which bands will appear in the report. Setting an element to âtrueâ has the same effect as dropping the corresponding control on the report at design mode.
+
+
+
+Cursor
+
+Inherited from TControl. Has no effect.
+
+
+
+DataSet
+Run-time only
+
+Identifies the TDataSet component who is a result of the SQL statement, specified by the SQL property.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text.
+This is the default font for the report. It will be used whenever a font is not specifically set differently for a band or control.
+
+
+
+Frame
+
+&lt;Description missing&gt;
+
+
+
+Functions
+
+Every report control may have a set of user-defined functions (UDFâs) associated with it. To add functions in design time use the property editor from the object inspector.
+
+
+
+Height
+
+Specifies the height (in pixels) of the report design areal. This property has no effect at runtime.
+
+
+
+HelpKeyword
+
+Inherited from TControl. Has no effect.
+
+
+
+Hint
+
+Inherited from TControl. Has no effect.
+
+
+
+Left
+
+Specifies the design form location at design time.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+Options
+
+There are four options to control the printing of page headers and footers, to set compression on the printer and to toggle the filling of band backgrounds.
+&nbsp;
+
+
+Option
+
+Description
+
+
+
+FirstPageHeader
+
+If true, the page header is printed on the first page, else it is not.
+
+
+
+LastPageFooter
+
+If true, the page &nbsp;footer is printed on the last page, else it is not.
+
+
+
+Compression
+
+Use the printerâs compressed mode.
+
+
+
+FillBandBackground
+
+If this is set the printer renders the band backgrounds, else it does not.
+
+
+
+
+
+
+
+Page
+
+This defines the properties of the printing surface. These may be set in design mode using the object inspector or during runtime.
+
+
+
+PrintIfEmpty
+
+&lt;description missing&gt;
+
+
+
+PrinterSettings
+
+These control the printer actions. They may be set in the object inspector at design time or using code.
+&nbsp;
+
+
+Option
+
+Description
+
+
+
+Collate
+
+Sets the collate option of the printer.
+
+
+
+ColorOption
+
+Sets the colour options of the printer.
+
+
+
+Copies
+
+Number of copies to print.
+
+
+
+CustomBincode
+
+Use this bin code if 'UseCustonBincode' is true.
+
+
+
+CustomPapercode
+
+Use this paper code if 'UseCustonPapercode' is true.
+
+
+
+Duplex
+
+Used if 'ExtendedDuplex' is 0 (zero)
+
+
+
+ExtendedDuplex
+
+If not zero, used to set the Duplex mode.
+
+
+
+FirstPage
+
+First page to print
+
+
+
+LastPage
+
+Last page to print
+
+
+
+MemoryLimit
+
+If this value is exceeded during report creation, temp files are created. By setting this value high (10Mb) one can suppress temp files.
+
+
+
+OutputBin
+
+Integer code, one of the built-in codes. Used only if UseCustomBincode is false.
+
+
+
+PrintMetafile
+
+Obsolete
+
+
+
+PrintQuality
+
+Sets the print quality printer option.
+
+
+
+PrinterName
+
+Sets the default printer
+
+
+
+UseCustomBincode
+
+Set to true to use the CustomBincode value.
+
+
+
+UseCustomPapercode
+
+Set to true to use the CustomPapercode value.
+
+
+
+UseStandardPrinter
+
+Forces the current default printer to be used directly.
+
+
+
+
+
+
+
+SQL
+
+Use the SQL property to request a main dataset based on one or more tables in the database. The SQL property may contain multiple SQL statements as long as they are separated by semicolons (;) Please see the SQL Reference Guide for more information on the SQL support.
+&nbsp;
+Note! &nbsp;If the reports ârequestâ form contains a local dataset or a dataset specified by the TableName property, you will have access to the field values, by using the fields name as parameters in the SQL WHERE statement.
+
+
+
+ShowProgress
+
+Enables or disables the progress indicator.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the design form location at design time.
+
+
+
+Units
+
+The current units of length â millimeters, inches, pixels, character width in current font. The âNativeâ value is used internally and is equal to 1/100 mm.
+
+
+
+Width
+
+Specifies the width (in pixels) of the report design areal. This property has no effect at runtime.
+
+
+
+Zoom
+
+This magnifies or shrinks the display in the IDE. This property has no effect at runtime.
+
+
+
+
+&nbsp;
+Methods of TQReport
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Export
+
+Use the Export method to save the result of the report to the file, specified by the FileName parameter. The flowing file types are supported:
+&nbsp;
+
+
+Extension
+
+Description
+
+
+
+.TXT
+
+Text file (ASCII)
+
+
+
+.CSV
+
+Comma separated text file
+
+
+
+.XLS
+
+Excel file format
+
+
+
+.RTF
+
+RTF File (Word document)
+
+
+
+.PDF
+
+PDF document
+
+
+
+.HTM
+
+HTML document
+
+
+
+
+
+
+
+Preview
+
+Use the Preview method to generate the report and bring up an on screen preview of it. From the preview window the user can choose to print the report.
+
+
+
+Print
+
+Starts the printing of the report. Printing will take place to the default printer unless the PrinterName property has been set.
+
+
+
+NewColumn
+
+Use the NewColumn method to force a report to move onto the top of the next column. If the report is currently printing the last column of the page, or the report is a single column report, a NewPage call will automatically be issued. It is advised to always call NewColumn instead of NewPage directly.
+
+
+
+NewPage
+
+Forces the printer to start a new page. See also NewColumn.
+
+
+
+
+&nbsp;
+Events of TQRReport
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AfterPreview
+
+Occurs after completion of a preview.
+
+
+
+AfterPrint
+
+Occurs after completion of a print.
+
+
+
+BeforePrint
+
+Occurs before printing. Printing may be cancelled by setting parameter 'PrintReport' to false.
+
+
+
+BeforeRun
+
+Occurs before running (previewing / printing) the report.
+Use this event to validate request data and reset/initiate report variables.
+
+
+
+OnEndPage
+
+Occurs whenever a page completes.
+
+
+
+OnNeedData
+
+Occurs when the report need a record. If this event handler exists, the report will call it on every record. The report ends when the parameter MoreData is set to false.
+
+
+
+OnSendEmail
+
+Occurs when the user want to send a preview (saved as PDF) by e-mail. Write a SendEmail event handler to provide a customized e-mail. Use the paramter &quot;AttachedFile&quot; to get the path and file name of the saved PDF file.
+
+
+
+OnStartPage
+
+Occurs when the report created a new page. The OnStartPage event is called just after a new page has been created. You can print or draw anything on the page or reset/initiate any calculations you need to perform during printing of the page.
+
+
+
+
+
+
+
+

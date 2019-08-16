@@ -1,0 +1,204 @@
+
+
+
+TCanvas
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TCanvas
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+Use TCanvas as a drawing surface for objects that draw an image of themselves. Standard window controls such as edit controls or list boxes do not require a canvas, as they are drawn by the system.
+&nbsp;
+TCanvas provides properties, events and methods that assist in creating an image by
+&#8226;Specifying the type of brush, pen and font to use&#8226;Drawing and filling a variety of shapes and lines&#8226;Writing text&#8226;Rendering graphic images&#8226;Enabling a response to changes in the current image&nbsp;
+Object Hierarchy
+TCanvas - TPersistent - TObject
+&nbsp;
+Properties of TCanvas
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Brush
+
+The value of Brush is a TBrush object. Set the properties of the TBrush object to specify the color and pattern or bitmap to use when filling in spaces on the canvas.
+Note! Setting the Brush property assigns the specified TBrush object, rather than replacing the current TBrush object.
+
+
+
+Font
+
+The value of Font is a TFont object. Set the properties of the TFont object to specify the font face, color, size, style, and any other aspects of the font.
+Note! Setting the Font property assigns the specified TFont object, rather than replacing the current TFont object.
+
+
+
+Pen
+
+The value of Pen is a TPen object. Set the properties of the TPen object to specify the color, style, width, and mode of the pen.
+Note! Setting the Pen property assigns the specified TPen object, rather than replacing the current TPen object.
+
+
+
+PenPosX
+PenPosY
+
+Read PenPosX or PenPosY to learn the current drawing position of the Pen. This is the starting point of a line drawn by the LineTo method. Setting the PenPosY or PenPosY property is equivalent to calling the MoveTo method.
+
+
+
+Pixels
+
+Read Pixels to learn the color on the drawing surface at a specific pixel position within the current clipping region. If the position is outside the clipping rectangle, reading the value of Pixels returns -1.
+&nbsp;
+Write Pixels to change the color of individual pixels on the drawing surface. Use Pixels for detailed effects on an image. Pixels may also be used to determine the color that should be used for the FillRect method.
+&nbsp;
+Not every device context supports the Pixels property. Reading the Pixels property for such a device context will return a value of -1. Setting the Pixels property for such a device context does nothing.
+
+
+
+
+&nbsp;
+Methods of TCanvas
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Assign
+
+Copies the contents of another, similar object.
+
+
+
+CopyRect
+
+Copies part of an image from another canvas into the canvas. 
+&nbsp;
+Use CopyRect to transfer part of the image on another canvas to the image of the TCanvas object. X and Y specifies the location on the canvas where the source image will be copied. The Canvas parameter specifies the canvas with the source image. X1,Y1,X2,Y2 specifies a rectangle bounding the portion of the source canvas that will be copied. The portion of the source canvas is copied using the mode specified by CopyMode. 
+
+
+
+Draw
+
+Call Draw to draw a graphic on the canvas. Draw calls the Draw method of the graphic. The image is rendered into a rectangle determined by the size of the graphic, with the upper left corner at the point (X, Y). Graphics can be bitmaps, icons, or metafiles. If the graphic is a TBitmap object, the bitmap is rendered using the value of CopyMode.
+
+
+
+DrawCheckBox
+
+Draws a check box rectangle. If Checked is true, a check mark should appear inside the rectangle.
+
+
+
+DrawFocusRect
+
+Draws a rectangle in the style used to indicate that the object inside the rectangle has focus.
+
+
+
+Ellipse
+
+Call Ellipse to draw a circle or ellipse on the canvas. Specify the bounding rectangle either by giving the top left point at pixel coordinates (X1, Y1) and the bottom right point at (X2, Y2).
+If the bounding rectangle is a square, a circle is drawn. The ellipse is outlined using the value of Pen, and filled using the value of Brush.
+
+
+
+FillRect
+
+Use FillRect to fill a rectangular region using the current brush. The region is filled including the top and left sides of the rectangle, but excluding the bottom and right edges.
+
+
+
+LineTo
+
+Use LineTo to draw a line from PenPos up to, but not including the point (X,Y). LineTo changes the value of PenPos to (X,Y). The line is drawn using Pen.
+Note! If the current Pen does not have a style of psSolid, the line is drawn with a background specified by the current brush.
+
+
+
+MoveTo
+
+Use MoveTo to set the value of PenPos before calling LineTo. Calling MoveTo is equivalent to setting the PenPos property.
+
+
+
+Rectangle
+
+Use Rectangle to draw a rectangle using Pen and fill it with Brush. Specify the rectangle's coordinates by giving four coordinates that define the upper left corner at the point (X1, Y1) and the lower right corner at the point (X2, Y2). To fill a rectangular region without drawing the boundary in the current pen, use FillRect. To outline a rectangular region without filling it, use FrameRect or Polygon. To draw a rectangle with rounded corners, use RoundRect.
+
+
+
+RoundRect
+
+Use RoundRect to draw a rounded rectangle using Pen and fill it with Brush. The rectangle will have edges defined by the points (X1,Y1), (X2,Y1), (X2,Y2), (X1,Y2), but the corners will be shaved to create a rounded appearance. The curve of the rounded corners matches the curvature of an ellipse with width X3 and height Y3. To draw an ellipse instead, use Ellipse. To draw a true rectangle, use Rectangle.
+
+
+
+StretchDraw
+
+Call StretchDraw to draw a graphic on the canvas so that the image fits in the specified rectangle. StretchDraw calls the Draw method of the graphic. The graphic object determines how to fit into the rectangle. This may involve changing magnification and/or aspect ratio.
+Note! To render the graphic in its natural size, use the Draw method, instead. If the graphic is an icon, it is not stretched.
+
+
+
+TextHeight
+
+Use TextHeight to determine the height a string will occupy in the image. Other elements in the image such as lines, boxes, or additional lines of text can be positioned to accommodate the height of the text. TextHeight returns the height of the font, the ascenders plus the descenders, not the actual height of the specified string. If Font.Height is negative, then TextHeight is equal to abs(Font.Height) plus the internal leading of the font. If Font.Height is positive, then TextHeight equals Font.Height.
+
+
+
+TextOut
+
+Use TextOut to write a string onto the canvas. The string will be written using the current value of Font. Use the TextExtent method to determine the space occupied by the text in the image. To write only the text that fits within a clipping rectangle, use TextRect instead. After a call to TextOut, the PenPos property indicates the point at the top right of the text on the canvas.
+
+
+
+TextWidth
+
+Use TextWidth to determine the length a string will occupy in the image. TextWidth indicates whether a given string will fit in the available space. Other graphical elements in the image such as lines, or additional strings can be positioned to accommodate the width of the text.
+
+
+
+
+
+
+
+

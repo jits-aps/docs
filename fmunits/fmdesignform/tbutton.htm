@@ -1,0 +1,519 @@
+
+
+
+TButton
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Form Designer&nbsp;&gt;
+   
+      TButton
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General 
+Use TButton to put a standard push button on a form. TButton introduces several properties to control its behavior.
+&nbsp;
+Note To use a button that can remain in a depressed position, use instead TSpeedButton.
+&nbsp;
+Object Hierarchy
+TButton - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TButton
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Action
+
+Designates the action associated with the control.
+The following constants are defined for the RunAction property:
+&nbsp;
+
+
+Option
+
+Description
+
+
+
+akNone
+
+No action (write your own OnClick event handler)
+
+
+
+akRunUnit
+
+Runs a unit (form or report)
+
+
+
+akHelp
+
+Shows the online help for the current form
+
+
+
+akLookupOk
+
+Close a lookup form and returns ModalResult mrOk
+
+
+
+akLookupCancel
+
+Close a lookup form and returns ModalResult mrCancel
+
+
+
+akFormPrint
+
+Creates a report who shows the current dataset
+
+
+
+akFormCancel
+
+Close the parent form
+
+
+
+akReportPreview
+
+Used for request forms and preview the report
+
+
+
+akReportPrint
+
+Used for request forms and print the report
+
+
+
+akReportCancel
+
+Used for request forms and close the form
+
+
+
+
+
+
+
+Anchors
+
+Specifies how the control is anchored to its parent.
+
+
+
+AutoUpdate
+
+Use this property to tell the system to save the current record before it executes the action associated with this control.
+
+
+
+Cancel
+
+Determines whether the button will be execute when the Escape key is pressed.
+
+
+
+Caption
+
+Use Caption to specify the text string that labels the control. To underline a character in a Caption that labels a component, include an ampersand (&amp;) before the character. This type of character is called an accelerator character. The user can then select the component by pressing Alt while typing the underlined character. To display an ampersand character in the caption, use two ampersands (&amp;&amp;).
+
+
+
+Constraints
+
+Specifies the size constraints for the control.
+
+
+
+Cursor
+
+Specifies the image used to represent the mouse pointer when it passes into the region covered by the control. 
+
+
+
+Default
+
+Determines whether the button will be execute when the Enter key is pressed.
+
+
+
+Enabled
+
+Controls whether the control responds to mouse and keyboard.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text written on or in the control.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+HelpKeyword
+
+Keyword for control's context-sensitive help topic.
+
+
+
+Hint
+
+Contains the text string that can appear when the user moves the mouse over the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+MenuItems
+
+Use MenuItems to define a drop down menu that appears when the user clicks on a control. At design time, you can use the Menu property editor to set the menu items.
+
+
+
+ModalResult
+
+Determines whether and how a form reply a ShowModal call.
+The following constants are defined for the ModalResult property:
+&nbsp;
+
+
+
+Option
+
+Value
+
+Description
+
+
+
+
+
+mrNone
+
+0
+
+Used as a default value before the user exits.
+
+
+
+mrOk
+
+1
+
+The user exited with OK button.
+
+
+
+mrCancel
+
+2
+
+The user exited with the CANCEL button.
+
+
+
+mrAbort
+
+3
+
+The user exited with the ABORT button.
+
+
+
+mrRetry
+
+4
+
+The user exited with the RETRY button.
+
+
+
+mrIgnore
+
+5
+
+The user exited with the IGNORE button.
+
+
+
+mrYes
+
+6
+
+The user exited with the YES button.
+
+
+
+mrNo
+
+7
+
+The user exited with the NO button.
+
+
+
+mrAll
+
+12
+
+The user exited with the ALL button.
+
+
+
+mrNoToAll
+
+13
+
+The user exited with the NO TO ALL button.
+
+
+
+mrYesToAll
+
+14
+
+The user exited with the YES TO ALL button.
+
+
+
+
+
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+RunAsDetail
+
+Use this property as a parameter to the akRunUnit property to display the same record on the form you will launch from this control. The parent and the detail form must use the same table, specifies by the TableName property.
+
+
+
+RunTableIndex
+
+Use this property as a parameter to the akRunUnit action property to specific a table index for the form you will launch from this control.
+
+
+
+RunTableRange
+
+Use this property as a parameter to the akRunUnit action property to specific a table range for the form you will launch from this control. At design time, you can use the Table Range property editor to establish the string.
+
+
+
+RunUnitClass
+
+Use this property as a parameter to the akRunUnit action property to specific the unit class you want to run. (acForm or acReport)
+
+
+
+RunUnitName
+
+Use this property as a parameter to the akRunUnit action property to specific the unit name you want to run.
+
+
+
+TabOrder
+
+Indicates the position of the control in its parent's tab order.
+
+
+
+TabStop
+
+Determines if the user can tab to a control.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Visible
+
+Determines whether the component appears on screen.
+
+
+
+Width
+
+Specifies the horizontal size of the control or form in pixels.
+
+
+
+
+&nbsp;
+Methods of TButton
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Click
+
+Simulates a mouse click, as if the user had clicked the button.
+
+
+
+Repaint
+
+Call Repaint to repaint the entire control.
+
+
+
+SetFocus
+
+Gives the input focus to the control. When a control has focus, it receives keyboard events.
+
+
+
+
+&nbsp;
+Events of TButton
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnClick
+
+Occurs when the user activate the button.
+
+
+
+OnEnter
+
+Occurs when a control receives the input focus.
+
+
+
+OnExit
+
+Occurs when the input focus shifts away from one control to another.
+
+
+
+OnKeyDown
+
+Occurs when a user presses any key while the control has focus.
+&nbsp;
+Use the OnKeyDown event handler to specify special processing to occur when a key is pressed. The OnKeyDown handler can respond to keyboard keys, including function keys and keys combined with the SHIFT, ALT, and CTRL keys, and pressed mouse buttons. See TShiftState for a description of the Shift parameter.
+
+
+
+OnKeyPress
+
+Occurs when a key is pressed.
+
+
+
+OnKeyUp
+
+Occurs when the user releases a key that has been pressed.
+
+
+
+OnMouseDown
+
+Occurs when the user presses a mouse button with the mouse pointer over a control.
+
+
+
+OnMouseEnter
+
+Occurs when the user moves the mouse into a control.
+
+
+
+OnMouseLeave
+
+Occurs when the user moves the mouse outside of a control.
+
+
+
+OnMouseMove
+
+Occurs when the user moves the mouse pointer while the mouse pointer is over a control.
+
+
+
+OnMouseUp
+
+Occurs when the user releases a mouse button that was pressed with the mouse pointer over a component.
+
+
+
+
+
+
+
+

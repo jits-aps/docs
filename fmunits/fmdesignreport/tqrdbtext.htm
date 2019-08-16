@@ -1,0 +1,226 @@
+
+
+
+TQRDBText
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Rapport Designer&nbsp;&gt;
+   
+      TQRDBText
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+The TQRDBText component is accessible by the Design Palette and is used to print fields from a dataset created by a SQL statement. The component can print alphanumeric fields, floating point fields, date and time fields and memo fields.
+&nbsp;
+TQRDBText can expand vertically to make all text fit if there is too much text to fit in the original size. The AutoStretch property must be True for stretching to be allowed. A component can stretch over several pages.
+&nbsp;
+Formatting fields
+TQRDBText components use any formatting options defined for the field to which they are connected. Sometimes, however, you need to customise the display of a particular value; this can be achieved using TQRDBTextâs Mask property. This takes the same values as the FormatFloat function (for numeric fields) and FormatDateTime function (for date and time fields) â in fact, the report itself calls these functions to do the work.
+&nbsp;
+Object Hierarchy
+TQRDBText - TQRCustomLabel - TCustomControl - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TQRDBText
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AlignToBand
+
+By default components will print/align at the position set in the designer. But sometimes it is more practical to align components to the vertical edges of the band that it is placed on. When AlignToBand is True, the text component will align itself relative to its parent band instead of its own text rectangle.
+
+
+
+Alignment
+
+Determines where text is printed in the control - may be Left, Centre, or Right.
+
+
+
+AutoSize
+
+If this property is true, the control can increase its width to accommodate its text.
+
+
+
+AutoStretch
+
+If AutoStretch and WordWrap are both True, the component can expand vertically to accommodate its text. When the component expands in this way it also expands its parent band, provided that bandâs CanExpand property is set to True. A band can expand over multiple pages if necessary.
+&nbsp;
+Note that if a component expands it will not move other components on the same band down. If you have components whose desired position should depend on the length of a stretching text, you should place these in a child band. 
+&nbsp;
+Note also that this property cannot be used for components on any band that prints at the bottom of the page. This is typically the page footer, but also applies to any band that has had its AlignToBottom property set to True.
+
+
+
+Color
+
+Sets the background color of the label. Use the Font property to set text color etc.
+
+
+
+DataField
+
+This is the name of the database field to be printed. In design mode the object inspector will present a list of fields from the selected dataset.
+
+
+
+Enabled
+
+Determines whether the component appear at runtime.
+
+
+
+Field
+Run-time only
+
+Identifies the TField component the control is linked to.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text.
+If not explicitly set, the control takes its font from its parent.
+
+
+
+Frame
+
+All text components can display a visible frame around them. This property controls the appearance of the frame, which sides it is drawn on and so on.
+
+
+
+FullJustity
+
+Specifies full-justified, multiline text. In adjusted text, the spaces between words are stretched or sometimes compressed in order to align between both the left and right margins. This feature has no effect if AutoSize is True.
+
+
+
+Height
+
+Specifies the vertical size of the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Mask
+
+Use this property to format the output of the data field. If no mask is specified the component will use the default formatting for the field.
+
+
+
+MaxBreakChars
+
+Used on full-justified text and specifies the maximum number of characters per line may vary, before a line break is generated.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+Size
+
+All printable components share the Size property. If AutoSize is False you can use this property to set the exact size of the component. This property also contains the position of the component relative to its parent band.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Transparent
+
+Specifies whether the controls background will be transparent, so the surface of its parent will be visible âthroughâ the control.
+
+
+
+Width
+
+Specifies the horizontal size of the control.
+Note! This property will be ignored if AutoSize is true.
+
+
+
+WordWrap
+
+The WordWrap property controls how a line of text that is too long to fit in the width of the control is printed. If WordWrap is True the text will be wrapped to a new line. If the AutoStretch property is True this might make the control expand vertically. 
+If WordWrap is False the text will be clipped. WordWrap is True by Default.
+
+
+
+
+&nbsp;
+Events of TQRDBText
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnPrint
+
+Occurs before the component is about to be printed and gives you the possibility to change the text by changing the Value parameter. The change is not stored in the Caption property.
+
+
+
+
+
+
+
+

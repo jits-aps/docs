@@ -1,0 +1,286 @@
+
+
+
+TStringList
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TStringList
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description 
+Use a string list object to store and manipulate a list of strings.
+&nbsp;
+TStrings introduces many properties and methods to:
+&nbsp;
+&#8226;Add or delete strings at specified positions in the list.&#8226;Sort the strings in the list.&#8226;Access the string at a particular location.&#8226;Read the strings from or write the strings to a file or stream.&#8226;Associate an object with each string in the list.&#8226;Store and retrieve strings as name-value pairs.&nbsp;
+For an explanation of name-value pairs, refer to the NameValueSeparator property.
+&nbsp;
+Object Hierarchy
+TStringList - TStrings - TPersistent - TObject
+&nbsp;
+Properties of TStringList
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+CaseSensitive
+
+Controls whether strings are located, sorted, and identified as duplicates in a case-sensitive or case-insensitive manner.
+
+
+
+Count
+
+Introduces an abstract property to represent the number of strings in the list.
+
+
+
+DelimitedText
+
+Use DelimitedText to get or set all the strings in the TStringList object in a single string.
+&nbsp;
+When retrieving DelimitedText, the resulting value delimits individual strings in two ways: each string is surrounded (before and after) by the quote character specified by the QuoteChar property. In addition, individual strings are separated by the character specified by the Delimiter property. 
+When assigning DelimitedText, individual strings must be separated using QuoteChar at both ends, using Delimiter as a separator, or using both these methods.
+&nbsp;
+A space is always interpreted as a delimiter, regardless of the value of Delimiter, unless the space occurs between quote characters.
+
+
+
+Delimiter
+
+Specifies the delimiter used by the DelimitedText property.
+
+
+
+Duplicates
+
+Specifies whether duplicate strings can be added to sorted lists.
+&nbsp;
+
+
+Value
+
+Description
+
+
+
+dupIgnore
+
+Ignore attempts to add duplicate strings to the sorted list.
+
+
+
+dupError
+
+Raise an error when an attempt is made to add duplicate strings to the sorted list.
+
+
+
+dupAccept
+
+Permit duplicate strings in the sorted list.
+
+
+
+
+Set Duplicates before adding any strings to the list. Setting Duplicates to dupIgnore or dupError does nothing about duplicate strings that are already in the list.
+&nbsp;
+Note! Duplicates does nothing if the list is not sorted.
+
+
+
+Names
+
+Indicates the name part of strings that are name-value pairs.
+&nbsp;
+When the list of strings includes strings that are name-value pairs, read Names to access the name part of a string. Names is the name part of the string at Index, where 0 is the first string, 1 is the second string, and so on. If the string is not a name-value pair, Names contains an empty string.
+
+
+
+NameValueSeparator
+
+Indicates the character used to separate names from values.
+&nbsp;
+Strings that contain the NameValueSeparator character are considered name-value pairs. NameValueSeparator defaults to the equal sign (=). TStringList defines various methods for accessing names and values and for searching for specific names.
+&nbsp;
+Strings that are name-value pairs consist of a name part, the separator character, and a value part. Any spaces around the separator character are part of the name or value. This convention corresponds to the format used in many initialization files. For example:
+&nbsp;
+DisplayGrid=1
+SnapToGrid=1
+GridSizeX=8
+GridSizeY=8
+
+
+
+Objects
+
+Represents a set of objects that are associated one with each of the strings in the Strings property.
+&nbsp;
+Use the Objects property to get or set the object associated with the string at the position indicated by Index. Index gives the position of the string associated with the object, where 0 is the first string, 1 is the second string, and so on.
+
+
+
+QuoteChar
+
+Specifies the quote character used by the DelimitedText property.
+
+
+
+Sorted
+
+Specifies whether the strings in the list should be automatically sorted.
+
+
+
+Strings
+
+Default property that provides access to the strings in the list. Use Index to specify the position of a string, where 0 is the index of the first string, 1 is the index of the second string, and so on. The Count property provides an upper bound on the indexes you can specify.
+
+
+
+Text
+
+Lists the strings in the object as a single string with the individual strings delimited by carriage returns and line feeds.
+
+
+
+Values
+
+Represents the value part of a string associated with a given name, on strings that are name-value pairs.
+&nbsp;
+Example:
+ &nbsp; Value := StringList.Values['DisplayGrid'];
+
+
+
+
+&nbsp;
+Methods of TStringList
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Add
+
+Adds a new string to the list.
+
+
+
+AddObject
+
+Adds a string to the list, and associates an object with the string.
+
+
+
+Assign
+
+Sets the strings in the list, and possibly associated objects, from a source object.
+
+
+
+Clear
+
+Deletes all the strings from the list.
+
+
+
+Delete
+
+Removes the string specified by the Index parameter.
+
+
+
+IndexOf
+
+Returns the position of a string in the list.
+&nbsp;
+Call IndexOf to obtain the position of the first occurrence of a string that matches the parameter. A string matches the parameter if it is identical or, if CaseSensitive is false, if it differs only in case. 
+&nbsp;
+IndexOf returns the 0-based index of the string, where 0 is the first string, 1 is the second string, and so on. If the string does not have a match in the string list, IndexOf returns -1.
+
+
+
+Insert
+
+Inserts a string to the list at the position specified by Index.
+
+
+
+InsertObject
+
+Inserts a string into the list at the specified position, and associates it with an object.
+
+
+
+LoadFromFile
+
+Fills the list with lines of text read from a specified file.
+
+
+
+LoadFromStream
+
+Fills the list with lines of text read from a TStream object.
+
+
+
+Move
+
+Changes the position of a string in the list.
+
+
+
+SaveToFile
+
+Saves the strings in the list to the specified file.
+
+
+
+SaveToStream
+
+Writes the value of the Text property to a stream object.
+
+
+
+
+
+
+
+

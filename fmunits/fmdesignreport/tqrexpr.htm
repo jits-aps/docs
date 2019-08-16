@@ -1,0 +1,241 @@
+
+
+
+TQRExpr
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Rapport Designer&nbsp;&gt;
+   
+      TQRExpr
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+The TQRExpr component is accessible by the Design Palette and is similar to the TQRLabel, but prints the result of calculating an arithmetical expression which is stored in the Expression property.
+&nbsp;
+Using expressions
+Expressions can be used to combine and manipulate database fields, and perform advance formatting. Their syntax is rather like that of Object Pascal: the expressions can be of boolean, float, integer or string type. Note that date and time fields are converted into strings, and BLOB and memo fields are not supported in expressions. See Using expression for more information.
+&nbsp;
+Object Hierarchy
+TQRExpr - TQRCustomLabel - TCustomControl - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TQRExpr
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AlignToBand
+
+By default components will print/align at the position set in the designer. But sometimes it is more practical to align components to the vertical edges of the band that it is placed on. When AlignToBand is True, the text component will align itself relative to its parent band instead of its own text rectangle.
+
+
+
+Alignment
+
+Determines where text is printed in the control - may be Left, Centre, or Right.
+
+
+
+AutoSize
+
+If this property is true, the control can increase its width to accommodate its text.
+
+
+
+AutoStretch
+
+If AutoStretch and WordWrap are both True, the component can expand vertically to accommodate its text. When the component expands in this way it also expands its parent band, provided that bandâs CanExpand property is set to True. A band can expand over multiple pages if necessary.
+&nbsp;
+Note that if a component expands it will not move other components on the same band down. If you have components whose desired position should depend on the length of a stretching text, you should place these in a child band. 
+&nbsp;
+Note also that this property cannot be used for components on any band that prints at the bottom of the page. This is typically the page footer, but also applies to any band that has had its AlignToBottom property set to True.
+
+
+
+Color
+
+Sets the background color of the label. Use the Font property to set text color etc.
+
+
+
+Currency
+
+
+
+
+
+Enabled
+
+Determines whether the component appear at runtime.
+
+
+
+Expression
+
+This is the arithmetic expression to be calculated before printing. It may contain functions, database fields, system variables and constants. See Using expression for more information.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text.
+If not explicitly set, the control takes its font from its parent.
+
+
+
+Frame
+
+All text components can display a visible frame around them. This property controls the appearance of the frame, which sides it is drawn on and so on.
+
+
+
+Height
+
+Specifies the vertical size of the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Mask
+
+Use this property to format the output of the result. If no mask is specified the component will use the default formatting for the value. See TQRDBText mask for more information.
+
+
+
+Master
+
+This specifies indirectly which dataset is to govern the control. The Expression will be evaluated for every record of the specified dataset. This property should point at a TQRReport component or a sub band that has an associated dataset.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+ResetAfterPrint
+
+Set this property to True to force the controlâs value to 0 (zero) after it prints. This useful for aggregating controls.
+
+
+
+Size
+
+All printable components share the Size property. If AutoSize is False you can use this property to set the exact size of the component. This property also contains the position of the component relative to its parent band.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Transparent
+
+Specifies whether the controls background will be transparent, so the surface of its parent will be visible âthroughâ the control.
+
+
+
+Width
+
+Specifies the horizontal size of the control.
+Note! This property will be ignored if AutoSize is true.
+
+
+
+WordWrap
+
+The WordWrap property controls how a line of text that is too long to fit in the width of the control is printed. If WordWrap is True the text will be wrapped to a new line. If the AutoStretch property is True this might make the control expand vertically. 
+If WordWrap is False the text will be clipped. WordWrap is True by Default.
+
+
+
+
+&nbsp;
+Methods of TQRExpr
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Reset
+
+Call this method to set the value of the expression to 0. The controlâs value may be reset to 0 after printing by setting the ResetAfterPrint (see Properties table above) property.
+
+
+
+
+&nbsp;
+Events of TQRExpr
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnPrint
+
+Occurs before the component is about to be printed and gives you the possibility to change the text by changing the Value parameter. The change is not stored in the Caption property.
+
+
+
+
+
+
+
+

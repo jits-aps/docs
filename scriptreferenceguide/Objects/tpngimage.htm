@@ -1,0 +1,140 @@
+
+
+
+TPNGImage
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TPNGImage
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+TPngImage encapsulates a PNG (Portable Network Graphics) graphic. 
+&nbsp;
+Use TPngImage to read and write PNG graphics. A PNG image supports transparency and a variety of compression options. The object has no canvas (so it cannot be drawn upon). However, load a PNG file into a TImage component and let the TImage component display the PNG.
+&nbsp;
+Example
+&nbsp;
+procedure FormCreate(Sender: TObject);
+var
+ &nbsp; PNG: TPNGImage;
+begin
+ &nbsp; PNG := TPNGImage.Create;
+ &nbsp; try
+ &nbsp; &nbsp; PNG.LoadFromFile('c:\test.png');
+ &nbsp; &nbsp; Image1.Picture.Assign(PNG);
+ &nbsp; finally
+ &nbsp; &nbsp; PNG.Free;
+ &nbsp; end;
+end;
+&nbsp;
+Object Hierarchy
+TPNGImage - TGraphic - TPersistent - TObject
+&nbsp;
+Properties of TPNGImage
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Empty
+
+Indicates whether the graphics object contains a graphic.
+
+
+
+FileExt
+
+Returns the current file extension identifier. (png)
+
+
+
+Height
+
+Specifies the vertical size of the graphic in pixels.
+
+
+
+Width
+
+Determines the maximum width of the graphics object in pixels.
+
+
+
+
+&nbsp;
+Methods of TPNGImage
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Assign
+
+Copies or converts an image object to a PNG object.
+
+
+
+LoadFromFile
+
+Loads the PNG image from a file.
+
+
+
+LoadFromStream
+
+Loads the PNG image from a TStream object.
+
+
+
+SaveToFile
+
+Saves the PNG data to a file.
+
+
+
+SaveToStream
+
+Saves the PNG data to a TStream object.
+
+
+
+
+
+
+
+

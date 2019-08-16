@@ -1,0 +1,269 @@
+
+
+
+THTTP
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      THTTP
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+THTTP is a client implementation of the Hypertext Transfer Protocol (HTTP) as described in the Internet Standards documents: 
+&nbsp;
+RFC 1945 - Hypertext Transfer Protocol version 1.0 [HTTP/1.0]
+RFC 2616 - Hypertext Transfer Protocol version 1.1 [HTTP/1.1]
+&nbsp;
+THTTP also supports the Secure Hypertext Transport protocol (HTTPS) as described in the Internet Standards document: 
+&nbsp;
+RFC 2660 - The Secure HyperText Transfer Protocol
+&nbsp;
+The SSL certificate is located in the program directory and will automatic be used when the property SSL is True.
+&nbsp;
+Example
+&nbsp;
+procedure SpeedButton1Click(Sender: TObject);
+var
+ &nbsp; HTTP: THTTP;
+ &nbsp; Reply: TMemoryStream;
+begin
+ &nbsp; HTTP := THTTP.Create;
+ &nbsp; Reply := TMemoryStream.Create;
+ &nbsp; try
+ &nbsp; &nbsp; try
+ &nbsp; &nbsp; &nbsp; HTTP.Get('http://www.somedomain.org/getvalue.php',Reply);
+ &nbsp; &nbsp; except
+ &nbsp; &nbsp; &nbsp; ErrorMsg('Connection fault.'); 
+ &nbsp; &nbsp; end;
+ &nbsp; &nbsp; StrValue := Reply.DataString;
+ &nbsp; finally
+ &nbsp; &nbsp; HTTP.Free;
+ &nbsp; &nbsp; Reply.Free;
+ &nbsp; end;
+end;
+&nbsp;
+Object Hierarchy
+THTTP - TComponent - TPersistent - TObject
+&nbsp;
+Properties of THTTP
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Connected
+Run-time only
+
+Use this property to determine whether the client is connected to the server.
+
+
+
+ContentType
+
+Determines the header field content type value who indicates the media type of the entity-body sent to the HTTP server.
+Example when you POST form data: application/x-www-form-urlencoded
+
+
+
+HandleRedirects
+
+Indicates if the HTTP client can handle redirections to an alternate resource location.
+&nbsp;
+HandleRedirects is a Boolean property that indicates if the HTTP client should handle redirects in a response from the HTTP server. Redirects are indicated by the ResponseCode property having a value in the range 300 to 307. The maximum number of redirects is 15.
+
+
+
+Host
+
+Host is a string property used to generate the Host header, as defined in RFC 2616, and indicates the Internet host and port
+number of the resource accessed in a HTTP request.
+
+
+
+ReadTimeout
+
+Determines millseconds to wait for successful Get/Post reply. Default value is -1 with means that no timeout is specified.
+
+
+
+ResponseCode
+
+Specifies the response code received from a HTTP server.
+List of HTTP status codes by Wikipedia
+
+
+
+ResponseText
+
+Specifies the text for a response received from a HTTP server.
+ResponseText is a read-only String property that specifies the textual message for a response received from a HTTP server.
+
+
+
+SSL
+
+Use this property when authentication through a SSL (Secure Sockets Layer) certificate is required.
+Note! The SSL certificate is located in the program directory and will automatic be used when SSL is True.
+
+
+
+SSLVersion
+
+This property is an enumerated type that represents the valid SSL Version for SSL connection.
+&nbsp;
+
+
+Value
+
+Meaning
+
+
+
+sslvSSLv2
+
+
+
+
+
+sslvSSLv23
+
+
+
+
+
+sslvSSLv3
+
+
+
+
+
+sslvTLSv1
+
+
+
+
+
+sslvTLSv1_1
+
+
+
+
+
+sslvTLSv1_2
+
+
+
+
+
+
+
+
+
+UserAgent
+
+UserAgent is a String property that contains the client which initiates a request. These are often browsers, editors, spiders (web-traversing robots), or other
+end user tools. UserAgent is used for statistical purposes, the tracing of protocol violations, and automated recognition of user
+agents for the sake of tailoring responses to avoid particular user agent limitations.
+
+
+
+UserName
+Password
+
+User identity / credentials for the HTTP request.
+
+
+
+
+&nbsp;
+Methods of THTTP
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Create
+
+Creates and initializes a THTTP instance.
+
+
+
+Disconnect
+
+Disconnect is a procedure used to disconnect from the peer for the connection.
+
+
+
+Free
+
+Destroys the THTTP and frees its memory.
+
+
+
+Get
+
+Get is used to retrieve the file or data for the resource specified by the URL parameter. URL is the fully-qualified location of the resource including the HTTP URL scheme identifier. For example: http://www.somedomain.org/resource.html. The reply is a TStream that is the destination for data retrieved from the specified URL.
+
+
+
+Patch
+
+Patch (like PUT) may have side-effects on other resources
+
+
+
+Post
+
+Post is used to send data, specified by the Data parameter, to the resource location specified by the URL parameter.
+&nbsp;
+This method prepares an HTTP request from the values in Data, and ensures that the content conforms to the default encoding used for HTML forms. This includes setting the content type to the value 'application/x-www-form-urlencoded' when it has been omitted or contains the value 'text/html'. Form field names and values in Data should appear in the order used in the original HTML document with the field name separated from the field value by the '=' character.
+
+
+
+Put
+
+Put is used to send data, specified by the Data parameter, to the resource location specified by the URL parameter.
+&nbsp;
+If URL refers to an existing server resource, the values in Data are considered to be a modified version of the server resource. When URL does not exist on the server, a new server resource is created for the values in Data. Put differs from Post through its use of the values in URL. For a Put operation, the value in URL always refers to the values included in the Reply content.
+
+
+
+
+
+
+
+

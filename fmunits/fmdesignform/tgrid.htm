@@ -1,0 +1,464 @@
+
+
+
+TGrid
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Form Designer&nbsp;&gt;
+   
+      TGrid
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+Put a TGrid object on a form to display and edit the records from a database table or query. Applications can use the data grid to insert, delete, or edit data in the database, or simply to display it. Edits that are made in the data grid are not posted to the underlying dataset until the user moves to a different record or closes the form.
+&nbsp;
+Object Hierarchy
+TGrid - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TGrid
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Align
+
+Determines how the control aligns within its container (parent control).
+
+
+
+AllowEdit
+
+Indicates whether the grid is used for display only, or whether the user can edit data using the grid.
+
+
+
+AllowExport
+
+Determines whether the user can export data to another application through the copy / paste functions.
+
+
+
+AllowSearch
+
+Determines whether the user can filtering records, which means that only records that meet a filterâs conditions are available.
+
+
+
+Anchors
+
+Specifies how the control is anchored to its parent.
+
+
+
+AutoSplitKey
+
+Use this property to have the system automatically create a numeric key value. The first value is 10000 and the next is 20000 etc. A new record placed between the current record and the previous record will get an average value.
+&nbsp;
+The system will automatically choose the first integer field in the current index that is not ranged to a master dataset of a fixed value. If not fields in the current index are available, the system will raise a runtime error.
+
+
+
+BorderStyle
+
+Determines whether a single line border is drawn around the grid.
+
+
+
+Canvas
+Run-time only
+
+Specifies the TCanvas object that presents a drawing surface for the control. 
+Use the properties of the TCanvas object to draw or paint on the surface of the control. Canvas is often used in the OnDrawColumnCell event handler.
+
+
+
+Color
+
+Specifies the background color of the control.
+
+
+
+Column
+
+The Columns property is an indexed collection of TColumn objects. Use the properties of the TColumn objects to specify the display attributes or field bindings of individual columns in the grid. The field binding of a column designates a field within the dataset specified by the form. Columns can be set at design time through the Columns editor, or programmatically at runtime.
+
+
+
+Constraints
+
+Specifies the size constraints for the control.
+
+
+
+Ctl3D
+
+Determines whether a control has a three-dimensional (3-D) or two-dimensional look.
+
+
+
+Cursor
+
+Specifies the image used to represent the mouse pointer when it passes into the region covered by the control.
+
+
+
+Enabled
+
+Controls whether the control responds to mouse and keyboard events.
+
+
+
+FixedColor
+
+Specifies the background color of the fixed rows and columns in the grid.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text written on or in the control.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+HelpKeyword
+
+Keyword for control's context-sensitive help topic.
+
+
+
+Hint
+
+Contains the text string that can appear when the user moves the mouse over the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParentColor
+
+Determines where a control looks for its color information.
+
+
+
+ParentCtl3D
+
+Determines where a component looks to determine if it should appear three dimensional.
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+ParentReadOnly
+
+Determines where a control looks for whether the user can change the value.
+
+
+
+ReadOnly
+
+Determines whether the user can change the value in a cell. This property has no effect if AllowEdit is False.
+
+
+
+RowHeight
+
+Specifies the height of each row of this grid, in pixels.
+
+
+
+RowSelect
+
+Determines where the user select an entire row, or individual cells. If True AllowEdit is ignored.
+
+
+
+TabOrder
+
+Indicates the position of the control in its parent's tab order.
+
+
+
+TabStop
+
+Determines if the user can tab to a control.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+TitleFont
+
+Contains a TFont object and specifies the attributes of text used to draw the column titles in the grid.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Visible
+
+Determines whether the component appears on screen.
+
+
+
+WantTabs
+
+Determines whether the user can tab between the columns.
+
+
+
+Width
+
+Specifies the horizontal size of the control or form in pixels.
+
+
+
+
+&nbsp;
+Methods of TGrid
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Repaint
+
+Call Repaint to repaint the entire control.
+
+
+
+SetFocus
+
+Gives the input focus to the control. When a control has focus, it receives keyboard events.
+
+
+
+
+&nbsp;
+Events of TGrid
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnCellClick
+
+Occurs when the user releases the mouse in one of the cells of the grid.
+
+
+
+OnColEnter
+
+Occurs when focus moves to a new cell in the grid.
+
+
+
+OnColExit
+
+Occurs just before a cell in the grid loses input focus.
+
+
+
+OnDblClick
+
+Occurs when the user double-clicks the left mouse button when the mouse pointer is over the control.
+
+
+
+OnDrawColumnCell
+
+Write an OnDrawCell event handler to draw the contents of all the cells in the grid. Draw on the cell using the methods of the Canvas property. The x and y parameters indicates the location of the cell on the canvas. The Column parameter indicate the current column. The State parameter represents information about the cell. It is a set that includes one or more of the states listed in the following table.
+&nbsp;
+
+
+Value
+
+Meaning
+
+
+
+gdSelected
+
+The cell is currently selected.
+
+
+
+gdFocused
+
+The cell has input focus.
+
+
+
+gdFixed
+
+The cell is in the fixed region of the grid / matrix
+
+
+
+
+&nbsp;
+Example:
+if State and gdFocused = gdFocused then
+ &nbsp; with Matrix1 do &nbsp; 
+ &nbsp; begin
+ &nbsp; &nbsp; Canvas.Pen.Color := clRed;
+ &nbsp; &nbsp; Canvas.Brush.Style := bsClear;
+ &nbsp; &nbsp; Canvas.Rectangle(x1,y1,x2,y2);
+ &nbsp; end;
+&nbsp;
+If DefaultDrawing is true, the data will already be drawn in the cell before the OnDrawColumnCell event, and the grid draws a focus rectangle around selected cells after the OnDrawColumnCell event.
+
+
+
+OnEditButtonClick
+
+Write an OnEditButtonClick event handler to bring up an appropriate list or dialog when the user presses the ellipsis button in a grid cell. The OnEditButtonClick event handler can set the value of the field based on the user response to the list or dialog. Use the SelectedField property to access the TField component whose value should be set.
+
+
+
+OnEnter
+
+Occurs when a control receives the input focus.
+
+
+
+OnExit
+
+Occurs when the input focus shifts away from one control to another.
+
+
+
+OnGetText
+
+Occurs when the grid requests the value of a cell.
+Write an OnGetText handler to perform custom processing for the contents of the cell. Set the Text parameter to the string for the cell specified by the Column parameters. The value of DisplayText is False when the cell enters edit mode, otherwise it is True. If there is no OnGetText handler, the grid uses the field value specified by the DataField property.
+
+
+
+OnKeyDown
+
+Occurs when a user presses any key while the control has focus.
+&nbsp;
+Use the OnKeyDown event handler to specify special processing to occur when a key is pressed. The OnKeyDown handler can respond to keyboard keys, including function keys and keys combined with the SHIFT, ALT, and CTRL keys, and pressed mouse buttons. See TShiftState for a description of the Shift parameter.
+
+
+
+OnKeyPress
+
+Occurs when a key is pressed.
+
+
+
+OnKeyUp
+
+Occurs when the user releases a key that has been pressed.
+
+
+
+OnMouseDown
+
+Occurs when the user presses a mouse button with the mouse pointer over a control.
+
+
+
+OnMouseEnter
+
+Occurs when the user moves the mouse into a control.
+
+
+
+OnMouseLeave
+
+Occurs when the user moves the mouse outside of a control.
+
+
+
+OnMouseMove
+
+Occurs when the user moves the mouse pointer while the mouse pointer is over a control.
+
+
+
+OnMouseUp
+
+Occurs when the user releases a mouse button that was pressed with the mouse pointer over a component.
+
+
+
+OnTitleClick
+
+Occurs when the user releases the mouse in one of the column headers.
+
+
+
+
+
+
+
+

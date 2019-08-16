@@ -1,0 +1,147 @@
+
+
+
+TPicture
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TPicture
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+TPicture contains a bitmap, icon, metafile graphic, or user-defined graphic. 
+&nbsp;
+TPicture is a TGraphic container, used to hold a graphic, the type of which is specified in the Graphic property. It is used in place of a TGraphic if the graphic can be of any TGraphic class. LoadFromFile and SaveToFile are polymorphic. For example, if the TPicture is holding an Icon, it is valid to LoadFromFile a bitmap file, where the class TIcon can only read .ICO files. 
+&nbsp;
+If the TPicture contains a bitmap graphic, the Bitmap property specifies the graphic. If the TPicture contains an icon graphic, the Icon property specifies the graphic. If the TPicture contains a metafile graphic, the Metafile property specifies the graphic. 
+&nbsp;
+The properties of TPicture indicate the type of graphic that the picture object contains, and its size. The methods of TPicture are used to load, save, and manipulate graphics. 
+&nbsp;
+To draw a picture on a canvas, call the Draw or StretchDraw methods of a TCanvas object, passing the Graphic property of a TPicture as a parameter. 
+&nbsp;
+Example
+&nbsp;
+var
+ &nbsp;pic: TPicture;
+begin
+ &nbsp; pic := TPicture.Create;
+ &nbsp; with TOpenDialog.Create do
+ &nbsp; &nbsp; try
+ &nbsp; &nbsp; &nbsp; PictureDialog := True;
+ &nbsp; &nbsp; &nbsp; if Execute then
+ &nbsp; &nbsp; &nbsp; begin
+ &nbsp; &nbsp; &nbsp; &nbsp; Pic.LoadFromFile(FileName);
+ &nbsp; &nbsp; &nbsp; &nbsp; Image1.Picture.Assign(pic);
+ &nbsp; &nbsp; &nbsp; end;
+ &nbsp; &nbsp; finally
+ &nbsp; &nbsp; &nbsp; Free;
+ &nbsp; &nbsp; &nbsp; pic.Free;
+ &nbsp; &nbsp; end;
+end;
+&nbsp;
+Object Hierarchy
+TPicture - TPersistent - TObject
+&nbsp;
+Properties of TPicture
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Bitmap
+
+Specifies the contents of the picture object as a bitmap graphic (.BMP file format).
+
+
+
+Graphic
+
+Specifies the TGraphic object that contains the picture.
+
+
+
+Height
+
+Specifies the vertical size (in pixels) of the graphic.
+
+
+
+Icon
+
+Specifies the contents of the TPicture object as an icon graphic (.ICO file format).
+
+
+
+Width
+
+Specifies the horizontal size (in pixels) of the picture.
+
+
+
+
+&nbsp;
+Methods of TPicture
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+LoadFromFile
+
+Loads a graphic image stored in a file.
+This method reads the file specified in FileName and loads the data into the graphics object.
+
+
+
+LoadFromStream
+
+Loads a graphic image stored in a memory stream.
+This method reads data from a TMemoryStream object and loads the data into the graphics object.
+
+
+
+SaveToFile
+
+Saves a graphics image to a file.
+
+
+
+
+
+
+
+

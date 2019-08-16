@@ -1,0 +1,362 @@
+
+
+
+TViewPDF
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Form Designer&nbsp;&gt;
+   
+      TViewPDF
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+Use TViewPDF to view and print PDF documents.
+This control has been implemented in version 7 and is developed by WPCubed GmbH.
+&nbsp;
+Object Hierarchy
+TViewPDF - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TViewPDF
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Align
+
+Determines how the control aligns within its container (parent control).
+
+
+
+Anchors
+
+Specifies how the control is anchored to its parent.
+
+
+
+BorderStyle
+
+Determines whether the edit control has a single line border around the client area.
+
+
+
+Cursor
+
+Specifies the image used to represent the mouse pointer when it passes into the region covered by the control.
+
+
+
+DataField
+
+Use DataField to bind the memo control to a field in the parent form dataset.
+
+
+
+Enabled
+
+Controls whether the control responds to mouse and keyboard events.
+
+
+
+Field
+Run-time only
+
+Identifies the TField component the memo is linked to.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+HelpKeyword
+
+Keyword for control's context-sensitive help topic.
+
+
+
+Hint
+
+Contains the text string that can appear when the user moves the mouse over the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+Page
+Run-time only
+
+Specifies the page currently displayed by the control.
+Use this property to change the current page number.
+
+
+
+PageCount
+Run-time only
+
+Indicates the number of pages in the document.
+
+
+
+ScrollBars
+
+Determines whether the control has scroll bars.
+&nbsp;
+
+
+Value
+
+Description
+
+
+
+ssNone
+
+The control has no scroll bars.
+
+
+
+ssHorizontal
+
+The control has a single scroll bar on the bottom edge.
+
+
+
+ssVertical
+
+The control has a single scroll bar on the right edge.
+
+
+
+ssBoth
+
+The control has a scroll bar on both the bottom and right edges.
+
+
+
+
+
+
+
+TabOrder
+
+Indicates the position of the control in its parent's tab order.
+
+
+
+TabStop
+
+Determines if the user can tab to a control.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Visible
+
+Determines whether the component appears on screen.
+
+
+
+WantTabs
+
+Determines whether the user can insert tab characters into the text.
+
+
+
+Width
+
+Specifies the horizontal size of the control or form in pixels.
+
+
+
+
+&nbsp;
+Methods of TViewPDF
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+FindText
+
+This method searchs for the substring &quot;Text&quot; in the document. When found, it returns True. &nbsp;and select substring and scroll to it.
+If FromStart is True, the search starts from the beginning of the document. If CaseSensitive is True (default = False), a character case is taken into account when comparing strings. if HighLight is True (default), the found text will be highlighted.
+
+
+
+LoadFromFile
+
+Loads document from a file.
+
+
+
+LoadFromStream
+
+Loads document from a Stream.
+
+
+
+Print
+
+Print the loaded document.
+Use the parameter Range to choose which pages to print. If not empty, this string is interpreted as page range, i.e. &quot;1-3,7,15&quot;. It is also possible to specify the number of copies with &quot;*&quot;, i.e. &quot;1-3*2&quot; to print two copies of the pages 1 to 3.
+
+
+
+PrintDialog
+
+Display the print dialog.
+
+
+
+
+&nbsp;
+Events of TViewPDF
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnChangeViewPage
+
+Occurs after a new page is displayed.
+Use the parameter PageNo to get the new page number.
+
+
+
+OnDblClick
+
+Occurs when the user double-clicks the left mouse button when the mouse pointer is over the control.
+
+
+
+OnEnter
+
+Occurs when the control receives the input focus. Use the OnEnter event handler to cause any special processing to occur when a control becomes active.
+
+
+
+OnError
+
+Occurs when the control cannot show the document.
+Use the parameter Msg to get the error message.
+
+
+
+OnExit
+
+Occurs when the input focus shifts away from the control to another control. Use the OnExit event handler to provide special processing when the control ceases to be active.
+
+
+
+OnKeyDown
+
+Occurs when a user presses any key while the control has focus.
+&nbsp;
+Use the OnKeyDown event handler to specify special processing to occur when a key is pressed. The OnKeyDown handler can respond to keyboard keys, including function keys and keys combined with the SHIFT, ALT, and CTRL keys, and pressed mouse buttons. See TShiftState for a description of the Shift parameter.
+
+
+
+OnKeyPress
+
+Occurs when a key is pressed.
+
+
+
+OnKeyUp
+
+Occurs when the user releases a key that has been pressed.
+
+
+
+OnMouseDown
+
+Occurs when the user presses a mouse button with the mouse pointer over a control.
+
+
+
+OnMouseMove
+
+Occurs when the user moves the mouse pointer while the mouse pointer is over a control.
+
+
+
+OnMouseUp
+
+Occurs when the user releases a mouse button that was pressed with the mouse pointer over a component.
+
+
+
+OnNeedPassword
+
+Occurs when loading an encrypted PDF file and need a password.
+Define the password by the parameter Password.
+
+
+
+
+&nbsp;
+
+
+
+

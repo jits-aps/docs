@@ -1,0 +1,468 @@
+
+
+
+TEditBox
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Form Designer&nbsp;&gt;
+   
+      TEditBox
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description 
+Use a TEditBox object to put an edit control on a form. Edit controls are used to display and retrieve data that users type. TEditBox permits only a single line of text. If you want the control to contain text that would require multiple lines, consider using a TMemo object. TEditBox uses the Text property to represent the contents of the field. If the control is not associated to a data field, use the Text property to read or specify the text value that appears within the control. The Text property is only accessible by the script library.
+&nbsp;
+Object Hierarchy
+TEditBox - TCustomEdit - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TEditBox
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Alignment
+
+Determines how the text is aligned within the memo control.
+
+
+
+Anchors
+
+Specifies how the control is anchored to its parent.
+
+
+
+AutoComplete
+
+AutoComplete is using when the PickList is assigned and will position to matching the PickList values as you type, saving you keystrokes. 
+As you type, the ItemIndex property is updated with the list entry that matches the characters you have entered. As you type, different list entries may match, and ItemIndex changes accordingly.
+
+
+
+BorderStyle
+
+Determines whether the edit control has a single line border around the client area.
+
+
+
+ButtonStyle
+
+Determines whether and how the user can select values from another list.
+&nbsp;
+
+
+Value
+
+Meaning
+
+
+
+ebsAuto
+
+If the edit box is associated with a lookup field or has a value assigned to its PickList property, the edit box displays a button. (default)
+
+
+
+ebsEllipsis
+
+The edit box displays an ellipsis button that the user can click to choose a value. Clicking the ellipsis button triggers an OnEditButtonClick event.
+
+
+
+ebsNone
+
+No dropdown or ellipsis button is provided. The user cannot select the field content from a list.
+
+
+
+
+
+
+
+CharCase
+
+Determines the case of the text within the edit control.
+
+
+
+Color
+
+Specifies the background color of the control.
+
+
+
+Ctl3D
+
+Determines whether a control has a three-dimensional (3-D) or two-dimensional look.
+
+
+
+Cursor
+
+Specifies the image used to represent the mouse pointer when it passes into the region covered by the control.
+
+
+
+DataField
+
+Specifies the field from which the edit control displays data.
+
+
+
+DropDownRows
+
+Specifies the number of lines displayed in the drop down list. This property is used only if ButtonStyle is set to ebsAuto and the pick list is assigned.
+
+
+
+DropDownWidth
+
+Specifies the horizontal size of the dropdown box in pixels.
+The default value is 0 that means, the width is automatically based on the contents of the picklist.
+
+
+
+Enabled
+
+Controls whether the control responds to mouse and keyboard events.
+
+
+
+Field
+Run-time only
+
+Identifies the TField component the control is linked to.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text written on or in the control.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+HelpKeyword
+
+Keyword for control's context-sensitive help topic.
+
+
+
+Hint
+
+Contains the text string that can appear when the user moves the mouse over the control.
+
+
+
+ItemIndex
+Run-time only
+
+Specifies the index of the selected item from the PickList. 
+Read ItemIndex to determine which item is selected. The first item in the list has index 0, the second item has index 1, and so on. If no item is selected, the value of ItemIndex is -1.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+MaxLength
+
+Specifies the maximum number of characters that can appear in the edit control.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParentColor
+
+Determines where a control looks for its color information.
+
+
+
+ParentCtl3D
+
+Determines where a component looks to determine if it should appear three dimensional.
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+ParentReadOnly
+
+Determines where a control looks for whether the user can change the value.
+
+
+
+PasswordChar
+
+Indicates the character, if any, to display in place of the actual characters typed in the control.
+
+
+
+PickList
+
+Lists values that the user can select. The PickList property points to a TStringList object. If ButtonStyle is ebsAuto, these strings appear in the drop down list.
+
+
+
+ReadOnly
+
+Determines whether the user can change the text of the edit control.
+
+
+
+SelLength
+Run-time only
+
+Specifies the number of characters (bytes) that are selected.
+
+
+
+SelStart
+Run-time only
+
+Specifies the position of the first selected character in the text.
+
+
+
+SelText
+Run-time only
+
+Specifies the selected portion of the edit control's text.
+
+
+
+TabOrder
+
+Indicates the position of the control in its parent's tab order.
+
+
+
+TabStop
+
+Determines if the user can tab to a control.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Text
+Run-time only
+
+Contains a text string associated with the control.
+Use the Text property to read the Text of the control or specify a new string for the Text value.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Visible
+
+Determines whether the component appears on screen.
+
+
+
+Width
+
+Specifies the horizontal size of the control or form in pixels.
+
+
+
+
+&nbsp;
+Methods of TEditBox
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Repaint
+
+Call Repaint to repaint the entire control.
+
+
+
+SetFocus
+
+Gives the input focus to the control. When a control has focus, it receives keyboard events.
+
+
+
+
+&nbsp;
+Events of TEditBox
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnChange
+
+Occurs when the text for the edit control may have changed.
+
+
+
+OnClick
+
+Occurs when the user clicks the control.
+
+
+
+OnDrawItems
+
+Occurs when an item in the dropdown box needs to be displayed. 
+&nbsp;
+Write an OnDrawItem event handler to draw the items in the dropdown list. An OnDrawItem event handler can add graphic elements to the list items, or replace the list item text by graphics. 
+Draw the items on the Canvas using the coordinates provided by the X1,Y1,X2,Y2 parameters.
+
+
+
+OnEditButtonClick
+
+Occurs when the user clicks the ellipsis button. Use this event handler to bring up an appropriate list or dialog.
+
+
+
+OnEnter
+
+Occurs when the control receives the input focus. Use the OnEnter event handler to cause any special processing to occur when a control becomes active.
+
+
+
+OnExit
+
+Occurs when the input focus shifts away from the control to another control. Use the OnExit event handler to provide special processing when the control ceases to be active.
+
+
+
+OnGetText
+
+Occurs when the editbox requests the value.
+Write an OnGetText handler to perform custom processing for the contents of the edit box. The parameter value of DisplayText is False when the edit box enters edit mode, otherwise it is True. If there is no OnGetText handler, the edit box uses the field value, specified by the DataField property or the string, specified by the Text property.
+
+
+
+OnKeyDown
+
+Occurs when a user presses any key while the control has focus.
+&nbsp;
+Use the OnKeyDown event handler to specify special processing to occur when a key is pressed. The OnKeyDown handler can respond to keyboard keys, including function keys and keys combined with the SHIFT, ALT, and CTRL keys, and pressed mouse buttons. See TShiftState for a description of the Shift parameter.
+
+
+
+OnKeyPress
+
+Occurs when a key is pressed.
+
+
+
+OnKeyUp
+
+Occurs when the user releases a key that has been pressed.
+
+
+
+OnMouseDown
+
+Occurs when the user presses a mouse button with the mouse pointer over a control.
+
+
+
+OnMouseEnter
+
+Occurs when the user moves the mouse into a control.
+
+
+
+OnMouseLeave
+
+Occurs when the user moves the mouse outside of a control.
+
+
+
+OnMouseMove
+
+Occurs when the user moves the mouse pointer while the mouse pointer is over a control.
+
+
+
+OnMouseUp
+
+Occurs when the user releases a mouse button that was pressed with the mouse pointer over a component.
+
+
+
+OnSelectItem
+
+Occurs when the user selects a string in the drop down list.
+
+
+
+
+
+
+
+

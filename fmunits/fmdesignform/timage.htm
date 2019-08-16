@@ -1,0 +1,262 @@
+
+
+
+TImage
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Form Designer&nbsp;&gt;
+   
+      TImage
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+Use TImage to display a graphical image on a form. Use TImage to represent the value of graphic fields or use the TPicture object in the Picture property to specify the actual bitmap, con, metafile, or other graphic object displayed by TImage. Properties and methods of TPicture can be used for such things as loading an image from file, clearing the image in the TImage, and assigning an image for another control. TImage introduces several properties to determine how the image is displayed within the boundaries of the TImage object.
+&nbsp;
+Object Hierarchy
+TImage - TGraphicControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TImage
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Align
+
+Determines how the control aligns within its container (parent control).
+
+
+
+Anchors
+
+Specifies how the control is anchored to its parent.
+
+
+
+AutoSize
+
+Specifies whether the control sizes itself automatically to accommodate the dimensions of the image.
+
+
+
+Canvas
+Run-time only
+
+Indicates whether the image is centered in the image control.
+&nbsp;
+Canvas is the TCanvas object on which the image for the TImage component is drawn. The painting of the image specified in the Picture property is automatic and does not require manual intercession for the picture to appear. You can use properties and methods of TCanvas to do such things as draw lines, draw images, and write text to the TImage control's canvas.
+&nbsp;
+Note! Canvas is only available if the Picture property represents a TBitmap object. Trying to read Canvas when Picture represents another type of graphic image causes TImage to raise an RunTime error.
+
+
+
+Center
+
+Indicates whether the image is centered in the image control.
+
+
+
+Constraints
+
+Specifies the size constraints for the control.
+
+
+
+Cursor
+
+Specifies the image used to represent the mouse pointer when it passes into the region covered by the control.
+
+
+
+DataField
+
+Use DataField to bind the image control to a field in the parent form dataset.
+
+
+
+Enabled
+
+Controls whether the control responds to mouse, keyboard, and timer events.
+
+
+
+Field
+Run-time only
+
+Specifies the TField component the image is linked to.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+HelpKeyword
+
+Keyword for control's context-sensitive help topic.
+
+
+
+Hint
+
+Contains the text string that can appear when the user moves the mouse over the control.
+
+
+
+IncrementalDisplay
+
+Specifies whether successive approximations of the image should be drawn during slow operations. Set IncrementalDisplay to true on large compressed images that take a long time to load or on images that may be altered by a computationally slow process. When IncrementalDisplay is true, partial renderings of the image are drawn periodically during slow operations such as loading. Set IncrementalDisplay to false to wait until the entire operation is complete before drawing the image.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+Picture
+
+Use Picture to specify the image for the TImage component. Picture is a reference to a TPicture object. Use properties and methods of TPicture to specify a bitmap, icon, metafile, or user-defined graphic to be displayed by the image control. Setting Picture at design time brings up the Picture Editor, which can be used to specify the file that contains the image.
+
+
+
+Proportional
+
+Indicates whether the image should be changed, without distortion, so that it fits the bounds of the image control.
+
+
+
+Stretch
+
+Indicates whether the image should be changed so that it exactly fits the bounds of the image control.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Transparent
+
+Specifies whether the background of the image obscures objects below the image object.
+
+
+
+Visible
+
+Determines whether the component appears onscreen.
+
+
+
+Width
+
+Specifies the horizontal size of the control or form in pixels.
+
+
+
+
+&nbsp;
+Events of TImage
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnClick
+
+Occurs when the user clicks the control.
+
+
+
+OnDblClick
+
+Occurs when the user double-clicks the left mouse button when the mouse pointer is over the control.
+
+
+
+OnMouseDown
+
+Occurs when the user presses a mouse button with the mouse pointer over a control.
+
+
+
+OnMouseEnter
+
+Occurs when the user moves the mouse into a control.
+
+
+
+OnMouseLeave
+
+Occurs when the user moves the mouse outside of a control.
+
+
+
+OnMouseMove
+
+Occurs when the user moves the mouse pointer while the mouse pointer is over a control.
+
+
+
+OnMouseUp
+
+Occurs when the user releases a mouse button that was pressed with the mouse pointer over a component.
+
+
+
+
+
+
+
+

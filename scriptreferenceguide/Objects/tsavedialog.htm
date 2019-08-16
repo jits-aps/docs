@@ -1,0 +1,161 @@
+
+
+
+TSaveDialog
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TSaveDialog
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+TSaveDialog displays a modal Windows dialog box for selecting file names and saving files. The dialog does not appear at runtime until it is activated by a call to the Execute method. When the user clicks Save, the dialog closes and the selected file name is stored in the FileName property.
+&nbsp;
+Example
+&nbsp;
+var
+ &nbsp; d: TSaveDialog;
+begin
+ &nbsp; d := TSaveDialog.Create;
+ &nbsp; try
+ &nbsp; &nbsp; d.Filter := 'Text Files (*.txt)|*.txt|All Files|*.*';
+ &nbsp; &nbsp; if d.Execute then
+ &nbsp; &nbsp; &nbsp; Memo1.Lines.SaveToFile(d.FileName);
+ &nbsp; finally
+ &nbsp; &nbsp; d.Free;
+ &nbsp; end;
+end;
+&nbsp;
+Object Hierarchy
+TSaveDialog - TCommonDialog - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TSaveDialog
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Ctl3D
+
+Determines whether the dialog has a three-dimensional look.
+
+
+
+DefaultExt
+
+DefaultExt specifies a file extension that is appended automatically to the selected file name, unless the selected file name already includes a registered extension. If the user selects a file name with an extension that is unregistered, DefaultExt is appended to the unregistered extension.
+
+
+
+FileName
+
+The FileName property returns the name and complete directory path of the most recently selected file. The value of FileName is the same as the first item in the Files property.
+
+
+
+Filter
+
+The file-selection dialog includes a drop-down list of file types under the edit box. When the user picks a file type from the list, only files of the selected type are displayed in the dialog.
+&nbsp;
+To create file masks in program code, assign a value to the Filter property that consists of a description and a mask separated by a vertical bar (pipe) character. Do not include spaces around the vertical bar. See example at the top.
+
+
+
+FilterIndex
+
+Determines which of the file types in Filter is selected by default when the dialog opens. Set FilterIndex to 1 to choose the first file type in the list as the default, or set FilterIndex to 2 to choose the second file type as the default, and so forth. If the value of FilterIndex is out or range, the first file type listed in Filter is the default.
+
+
+
+InitialDir
+
+Determines the current directory when the dialog opens.
+
+
+
+Options
+OptionsEx
+
+This property is only for internal use.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Title
+
+Specifies the text in the dialog's title bar.
+
+
+
+
+&nbsp;
+&nbsp;
+Methods of TSaveDialog
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Create
+
+Creates and initializes a TSaveDialog instance.
+
+
+
+Execute
+
+Opens the Save As dialog, returning true when the user selects a file name and clicks Save. If the user cancels the save operation, Execute returns a false value.
+
+
+
+Free
+
+Destroys the TSaveDialog and frees its memory.
+
+
+
+
+
+
+
+

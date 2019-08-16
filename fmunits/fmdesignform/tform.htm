@@ -1,0 +1,936 @@
+
+
+
+TForm
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Form Designer&nbsp;&gt;
+   
+      TForm
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+When you create forms in the Form designer at design time, they are implemented as descendants of TForm.
+&nbsp;
+Object Hierarchy
+TForm - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TForm
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Actions
+Run-time only
+
+Specifies a list of standard TAction that implement user commands. Use this property to enable of disable a standard action or if you want the action to execute a customized script procedure.
+&nbsp;
+
+
+Index
+
+ShortCut
+
+Description
+
+
+
+0
+
+Ctrl+O
+
+Open Database
+
+
+
+1
+
+Ctrl+S
+
+Save
+
+
+
+2
+
+F1
+
+Help
+
+
+
+3
+
+F6
+
+Lookup
+
+
+
+4
+
+F7
+
+Search
+
+
+
+5
+
+Ctrl+C
+
+Copy
+
+
+
+6
+
+Ctrl+X
+
+Cut
+
+
+
+7
+
+Ctrl+V
+
+Paste
+
+
+
+8
+
+Ctrl+Z
+
+Undo
+
+
+
+9
+
+
+
+Clear (Delete)
+
+
+
+10
+
+Ctrl+A
+
+Select All
+
+
+
+11
+
+F8
+
+Copy Previous
+
+
+
+12
+
+F3
+
+Insert new record
+
+
+
+13
+
+F4
+
+Delete record
+
+
+
+14
+
+Ctrl+Home
+
+First record
+
+
+
+15
+
+
+
+Previous record
+
+
+
+16
+
+
+
+Next record
+
+
+
+17
+
+Ctrl+End
+
+Last record
+
+
+
+18
+
+F5
+
+Refresh
+
+
+
+19
+
+F11
+
+Cash Drawer (Kick-out)
+
+
+
+
+
+
+
+ActiveControl
+
+Use ActiveControl to get or set the control that has focus on the form. Only one control can have focus at a given time in an application. If the form does not have focus, ActiveControl is the control on the form that will receive focus when the form receives focus.
+
+
+
+AllowDelete
+
+Use this property to tell the system whether or not it should let users delete records from the dataset, specified by the TableName property.
+
+
+
+AllowInsert
+
+Use this property to tell the system whether or not it should let users add records into the dataset, specified by the TableName property.
+
+
+
+Anchors
+
+Specifies how the control is anchored to its parent.
+
+
+
+AutoScroll
+
+If AutoScroll is true, the scroll bars appear automatically when necessary. For example, if the user resizes the control so that some of its controls are partially obscured, scroll bars appear. If AutoScroll is false, scroll bars don't appear automatically. In this case, use the HorzScrollBar and &nbsp;VertScrollBar properties to make scroll bars appear.
+
+
+
+BorderIcons
+
+Specifies which icons appear on the title bar of the form.
+
+
+
+Canvas
+Run-time only
+
+Provides access to the drawing area of the form.
+Use the properties of the TCanvas object to draw on the client area of the form. Canvas is often used in the OnPaint event handler.
+
+
+
+Caption
+
+Use Caption to specify the text string that labels the form.
+
+
+
+Color
+
+Use Color to read or change the background color of the form.
+
+
+
+Constraints
+
+Specifies the size constraints for the control.
+
+
+
+Ctl3D
+
+Determines whether a control has a three-dimensional (3-D) or two-dimensional look.
+Ctl3D is provided for backward compatibility. It is not used by 32-bit versions of Windows or NT4.0 and later, with the exception of Windows XP Home, where it is used on occasion. On earlier platforms, Ctl3D controlled whether the control had a flat or beveled appearance.
+
+
+
+Cursor
+
+Specifies the image used to represent the mouse pointer when it passes into the region covered by the control.
+
+
+
+DataSet
+Run-time only
+
+Identifies the TDataSet component who is a common ancestor of the table, specified by the TableName property or the forms Local Dataset.
+
+
+
+Enabled
+Run-time only
+
+Determines whether the form can have focus.
+When using the &quot;ShowModal&quot; method, all other forms will be disabled until ModalResult is different from mrNone (0)
+
+
+
+Focused
+Run-time only
+
+Determines whether the control has input focus and responds to mouse an keyboard events.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text written on or in the control.
+
+
+
+Height
+
+Specifies the height (in pixels) of the form's client area.
+
+
+
+HelpKeyword
+
+Keyword for control's context-sensitive help topic.
+
+
+
+Hint
+
+Contains the text string that can appear when the user moves the mouse over the control.
+
+
+
+HorzScrollBar
+
+Represents the horizontal scroll bar for the scrolling windowed control. Use HorzScrollBar to hide, show, or manipulate the horizontal scroll bar for the scrolling windowed control.
+
+
+
+Icon
+
+Set the Icon property to provide an icon for the form. If Icon is not set, the system provides a default icon when the form is minimized.
+
+
+
+Left
+
+Specifies the form location at design time.
+
+
+
+LookupField
+
+Identifies the TField object from the dataset where a lookup has been made from.
+Note! This feature has been implemented in version 6.13.01
+
+
+
+LookupMode
+
+Identifies if the form is in lookup mode.
+
+
+
+MenuItems
+Run-time only
+
+Specifies a list of TMenuItem that constitute the forms pop-up menu. The pop-up menu appears when the user clicks the right mouse button. Use this property to customize the pop-up menu.
+
+
+
+ModalResult
+
+Represents the return value of a form that is used as a modal dialog. 
+Use ModalResult to close the form when it is displayed modally. By default, ModalResult is mrNone. Set ModalResult to any nonzero value to close the form. The value assigned to ModalResult becomes the return value of the ShowModal function call used to display the form. 
+&nbsp;
+Note: This property is modified automatically by the TButton control.
+If you call the Close method from a modal form, then ModalResult is automatically set to mrCancel.
+&nbsp;
+The following constants are defined for the ModalResult property:
+&nbsp;
+
+
+
+Option
+
+Value
+
+Description
+
+
+
+
+
+mrNone
+
+0
+
+Used as a default value before the user exits.
+
+
+
+mrOk
+
+1
+
+The user exited with OK button.
+
+
+
+mrCancel
+
+2
+
+The user exited with the CANCEL button.
+
+
+
+mrAbort
+
+3
+
+The user exited with the ABORT button.
+
+
+
+mrRetry
+
+4
+
+The user exited with the RETRY button.
+
+
+
+mrIgnore
+
+5
+
+The user exited with the IGNORE button.
+
+
+
+mrYes
+
+6
+
+The user exited with the YES button.
+
+
+
+mrNo
+
+7
+
+The user exited with the NO button.
+
+
+
+mrAll
+
+12
+
+The user exited with the ALL button.
+
+
+
+mrNoToAll
+
+13
+
+The user exited with the NO TO ALL button.
+
+
+
+mrYesToAll
+
+14
+
+The user exited with the YES TO ALL button.
+
+
+
+
+
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ReadOnly
+
+Use this property to tell the system whether to let users modify data while using this form.
+
+
+
+SaveLocalData
+
+Use this property, if you have created a local dataset and want the system to store data entered by the end-user. This property has no effect, if the form is connected to a physical table.
+&nbsp;
+Note! &nbsp;The data will be saved on the clients computer, and will not be available for others clients, who is connected to the same database.
+
+
+
+Sizeable
+
+Specified whether or not the form should have a border the user can resize.
+
+
+
+TableIndex
+
+Use the IndexName property to specify the active index for a table, specified by the TableName property. The index is used to determine the sort order of the records. If the IndexName property is empty (the default), the active index is set to the primary index.
+
+
+
+TableName
+
+Specified the table from which this form will display records.
+&nbsp;
+Note! Add a TSubForm component to the form, if you want the form to display a sub table (multiple views). For example, in a form based on a customer table (master) which show one record at a time, there may be many records for each customer in another table (detail). To make a form that also shows the detail records for each master record, place a SubForm component on the form and connect its SubTableName property to the child table. Then setup the relation between the main and child table, by the SubTableIndex and SubTableRange properties.
+
+
+
+TableRange
+
+Use the TableRange property to specify a range to the table, specified by the TableName property. The range works only on indexed fields and each statement should by separated with a semicolon. Example: DocType=0;DocNo=âINV00001â
+&nbsp;
+At design time, use the Table Range Editor by clicking on the assistant button in the Object Inspector.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+TimerInterval
+
+Determines how frequently the OnTimer event occurs. Each time the specified interval passes, the OnTimer event occurs. Use TimerInterval to specify an interval in milliseconds. The default value is zero (0). This means that the system will not execute the OnTimer event.
+
+
+
+Top
+
+Specifies the form location at design time.
+
+
+
+VertScrollBar
+
+Represents the vertical scroll bar for the scrolling windowed control. Use VertScrollBar to hide, show, or manipulate the vertical scroll bar for the scrolling windowed control.
+
+
+
+Width
+
+Specifies the width (in pixels) of the form's client area.
+
+
+
+WindowState
+
+Represents how the form appears on the screen.
+
+
+
+
+&nbsp;
+Methods of TForm
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Create
+
+Creates and initializes a new TForm object.
+
+
+
+CreateAsBackground
+
+Creates and initializes a new TForm object.
+Use this method if the window has to serve as a background form.
+
+
+
+CreateAsDetail
+
+Creates and initializes a new TForm object.
+Use this method if you want to create a new form who displays the same record as its owner. The owner form and the new form must use the same table, specifies by the TableName property.
+
+
+
+CallScript
+
+This method calls a script procedure or function that appears in the form unit and accepts const parameters.
+&nbsp;
+Example:
+with TForm.Create(ucForm,'My Form') do
+ &nbsp; CallScript('ShowText',['This is a test.']);
+&nbsp;
+Specify the parameters as an array; example: &nbsp;[âTextâ,100,23.5]. If the procedure, you want to execute, do not have any parameters, use &quot;NULL&quot; instead. CallScript does not support VAR parameters.
+
+
+
+PostScript
+
+This method âpostsâ a call to a script procedure that appears in the form unit and accepts const parameters. But the call will first be execute then the application is idle. An application is idle when it is not processing code. For example, an application is idle when it is waiting for input from the user.
+&nbsp;
+Specify the parameters as an array; example: &nbsp;[âTextâ,100,23.5]. If the procedure, you want to execute, do not have any parameters, use &quot;NULL&quot; instead. PostScript does not support VAR parameters.
+
+
+
+Repaint
+
+Call Repaint to repaint the entire form.
+
+
+
+SetFocus
+
+This method gives the form input focus. SetFocus calls the SetFocus method of the active control, if one exists. To determine whether the form has focus, use the Active property.
+
+
+
+ShowModal
+
+Shows a form as a modal dialog.
+&nbsp;
+Use ShowModal to show a form as a modal form. A modal form is one where the application can't continue to run until the form is closed. Thus, ShowModal does not return until the form closes. When the form closes, it returns the value of the ModalResult property. To close a modal form, set its ModalResult property to a nonzero value.
+&nbsp;
+Example:
+with TForm.Create(Form,ucForm,'GLJnlNames') do
+ &nbsp; try
+ &nbsp; &nbsp; if ShowModal = mrOk then
+ &nbsp; &nbsp; begin
+ &nbsp; &nbsp; &nbsp; Form.DataSet.Edit;
+ &nbsp; &nbsp; &nbsp; ebName.Field.Text := DataSet.FieldByName('Name').AsString;
+ &nbsp; &nbsp; &nbsp; Form.DataSet.Post;
+ &nbsp; &nbsp; end;
+ &nbsp; finally
+ &nbsp; &nbsp; Close;
+ &nbsp; end;
+&nbsp;
+Note! If the form contains buttons with a ModalResult property set to a value other than mrNone, the form automatically closes when the user clicks one of those buttons and returns the ModalResult value as the return value of ShowModal.
+
+
+
+
+&nbsp;
+Events of TForm
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AfterDelete
+
+Occurs after a form deletes a record or a selected number of records.
+
+
+
+AfterEdit
+
+Occurs after a form starts editing a record.
+
+
+
+AfterInsert
+
+Occurs after a form inserts a new record.
+
+
+
+AfterPost
+
+Occurs after a form writes the active record to the dataset.
+
+
+
+AfterScroll
+
+Occurs after a form scrolls the dataset from one record to another.
+
+
+
+BeforeDelete
+
+Occurs before a form attempts to delete the active record. If the user delete a selected number of records, the controls will be disabled, while it proceed the deletion. You can abort the deletion by calling the Abort or ErrorMsg procedure.
+
+
+
+BeforeEdit
+
+Occurs before a form dataset enters edit mode for the active record.
+
+
+
+BeforeInsert
+
+Occurs before a form dataset enters insert mode.
+
+
+
+BeforePost
+
+Occurs before a form posts changes for the active record to the dataset.
+
+
+
+BeforeScroll
+
+Occurs before a form scrolls the dataset from one record to another.
+
+
+
+OnActivate
+
+Occurs when the form becomes active.
+
+
+
+OnCanResize
+
+Use OnCanResize to adjust the way a control is resized. If necessary, change the new width and height of the control in the OnCanResize event handler. The OnCanResize event handler also allows applications to indicate that the entire resize should be aborted.
+
+
+
+OnClick
+
+Occurs when the user clicks the control.
+
+
+
+OnClose
+
+Use OnClose to perform special processing when the form closes. A form is closed by the Close method or when the user chooses Close from the form's system menu. The TCloseEvent type points to a method that handles the closing of a form. The value of the Action parameter determines if the form actually closes. These are the possible values of Action:
+&nbsp;
+
+
+Value
+
+Meaning
+
+
+
+caNone
+
+The form is not allowed to close, so nothing happens.
+
+
+
+caFree
+
+The form is closed and all allocated memory for the form is freed. (default)
+
+
+
+caMinimized
+
+The form is minimized, rather that closed.
+
+
+
+
+
+
+
+OnCreate
+
+Occurs when the form is created.
+
+
+
+OnDblClick
+
+Occurs when the user double-clicks the left mouse button when the mouse pointer is over the control.
+
+
+
+OnDeactivate
+
+Occurs when the form loses focus.
+
+
+
+OnDestroy
+
+Occurs when the form is destroyed.
+
+
+
+OnDropFile
+
+Occurs when the user drops a file on the form by a drag/drop operation or paste a file from the clipboard.
+&nbsp;
+Write an OnDropFile event to specify what happens when the user drops a file. The parameter FileName specifies the name of the file, and FileData is a TStream object who contains the file data.
+
+
+
+OnKeyDown
+
+Occurs when a user presses any key while the control has focus.
+&nbsp;
+Use the OnKeyDown event handler to specify special processing to occur when a key is pressed. The OnKeyDown handler can respond to keyboard keys, including function keys and keys combined with the SHIFT, ALT, and CTRL keys, and pressed mouse buttons. See TShiftState for a description of the Shift parameter.
+
+
+
+OnKeyPress
+
+Occurs when a user presses an ASCII key while the control has focus.
+&nbsp;
+Use the OnKeyPress event handler to make something happen as a result of a single character key press.
+The Key parameter in the OnKeyPress event handler is of type Char; therefore, the OnKeyPress event registers the ASCII character of the key pressed. Keys that don't correspond to an ASCII Char value (Shift or F1, for example) don't generate an OnKeyPress event. Key combinations (such as Shift+A), generate only one OnKeyPress event (for this example, Shift+A results in a Key value of &quot;A&quot; if Caps Lock is off).
+&nbsp;
+Tip! To respond to non-ASCII keys or key combinations, use the &nbsp;OnKeyDown or OnKeyUp event handlers.
+
+
+
+OnKeyString
+
+Occurs when the form received data from a Barcode Reader (prefix=2) or a Magnet Card Reader (prefix=4).
+Note! This event will only be executed if the user has activated options âUse Barcode Readerâ and âUse Magnet Card Readerâ by the Program Options.
+
+
+
+OnKeyUp
+
+Occurs when the user releases a key that has been pressed.
+
+
+
+OnNewRecord
+
+Occurs when the form inserts or appends a new dataset record. This event is called as part of the insert or append process. You might use the OnNewRecord event to set initial values for a record.
+
+
+
+OnPaint
+
+Use OnPaint to perform special processing when the form is redrawn. Any special painting on the form should be done in this event. OnPaint occurs before any controls on the form are painted.
+
+
+
+OnRefresh
+
+Use OnRefresh to perform special processing when the user presses the Refresh button. If youâre writing your own OnRefresh event handler, the application will not update the records in the dataset, specified by the TableName property. Use the dataset Refresh method if you want to precede an update by the script.
+
+
+
+OnResize
+
+Occurs immediately after the control is resized.
+
+
+
+OnShow
+
+Use OnShow to perform special processing when the form has been created, refreshed or if a master dataset has changed the record from one to another in a master/detail relationship.
+
+
+
+OnShowCaption
+
+Use OnShowCaption to define the actual form caption by the Text parameter. This event will be executed when the form has been created and after the form dataset has changed the record from one to another.
+&nbsp;
+Example: 
+procedure FormShowCaption(Sender: TObject; var Text: String);
+begin
+ &nbsp; with Form.DataSet do
+ &nbsp; &nbsp; if not FieldByName('Name').IsNull then
+ &nbsp; &nbsp; &nbsp; Text := FieldByName('Name').Text + ' - ' + Text;
+end;
+
+
+
+OnTimer
+
+Occurs when a specified amount of time, determined by the TimerInterval property, has passed. Write an OnTimer event handler to execute an action at regular intervals.
+
+
+
+OnValidate
+
+Occurs just before the data is written to the form datasets record buffer. Write an OnValidate event handler to validate changes made to the data in the field, just before the data is written to the current record buffer. To reject the current value of the field from the OnValidate event handler, raise an exception by calling the ErrorMsg procedure.
+&nbsp;
+Example:
+procedure FormValidate(Sender: TObject; DataSet: TDataSet; Field: TField);
+begin
+ &nbsp; if Field = DataSet.FieldByName('Date') then
+ &nbsp; &nbsp; if Field.AsDateTime &lt; EncodeDate(2010,1,1) then
+ &nbsp; &nbsp; &nbsp; ErrorMsg('Date is too old.');
+end;
+&nbsp;
+Note! If you want to write a global OnValidate event handler to a specific field use instead the tables OnValidate handler.
+
+
+
+
+
+
+
+

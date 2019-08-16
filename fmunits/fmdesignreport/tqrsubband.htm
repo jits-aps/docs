@@ -1,0 +1,264 @@
+
+
+
+TQRSubBand
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Rapport Designer&nbsp;&gt;
+   
+      TQRSubBand
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+The TQRSubBand component is used to create a master/detail report.
+&nbsp;
+For example, in a report based on a customer table (master) which has one record per customer, there may be many transactions for each customer in another table (detail). To make a report that prints the detail records for each master record, place a TQRSubBand component on the report designer and make a SQL statement by the SQL editor. Then set the Master property to point to the report object. For each record in the master dataset/report the TQRSubBand will print all the records in the child dataset. 
+&nbsp;
+A sub detail band may be assigned a header and footer and by setting the FooterBand and HeaderBand properties. Multilevel master detail can be created by setting the Master property to point to another TQRSubBand.
+&nbsp;
+Example
+To set up a master/detail relationship where the detail set is a sub dataset, you must specify a SQL statement that uses parameters. These parameters refer to current field values on the master dataset.
+&nbsp;
+SQL - Master
+SELECT * FROM Customers;
+&nbsp;
+SQL - Detail
+SELECT * FROM GLEntries WHERE CustNo=:No;
+&nbsp;
+Note that the names of parameters begin with a colon and is the same as the name of the field in the master (Customers) table.
+&nbsp;
+Object Hierarchy
+TQRSubBand - TQRCustomBand - TCustomControl - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TQRSubBand
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AlignToBottom
+
+Use AlignToBottom to force a band to print at the bottom of a page instead of at the top. QuickReport will leave room for a page footer band if such exists. If this property is True for a detail band the effect will be that only one detail band is printed per page.
+
+
+
+Bands
+
+You can access the header and footer bands of the sub band through this property. The behaviour of the bands can be adjusted at run-time if desired. For instance one can use the âBeforePrintâ event to suppress the header/footer bands.
+
+
+
+Color
+
+This sets the background color. Use the Font properties to change text color.
+
+
+
+DataSet
+Run-time only
+
+Identifies the TDataSet component who is a result of the SQL statement, specified by the SQL property.
+
+
+
+Enabled
+
+Determines whether the component appear at runtime.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text in the band.
+If this is not set it defaults to the parentâs font. The band font may be overridden by setting text control properties
+
+
+
+FooterBand
+
+Set this property to point to a TQRBand component whose BandType is set to Footer. This can be done by setting the HasFooter property to True. The band will print when all the detail records have been printed for the current master record.
+
+
+
+ForceNewColumn
+
+If true, the band will always start a new column (this will be a new page in single column reports)
+Useful for making reports with many summaries more readable.
+
+
+
+ForceNewPage
+
+If true, the band will always start on a new page. Useful for placing summaries at the top of pages.
+
+
+
+Frame
+
+&lt;description missing&gt;
+
+
+
+HasChild
+
+Use this property to create a child band witch will be placed automatically below its parent and associated with it via the âparentâ property.
+
+
+
+HeaderBand
+
+Set this property to point to a TQRBand component whose BandType is set to Header. This can be done by setting the HasFooter property to True. The band will print before the detail records are printed for the current master record.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+KeepOnOnePage
+
+This will stop the band breaking across a page boundary. If the band grows to be bigger than an entire page, it will break, and force this option to false.
+
+
+
+Left
+
+Is controlled by the report designer and has no effect.
+
+
+
+LinkBand
+
+Linked bands will always print together. That is, they will not be separated by page breaks. In practice, a copy of the linked band is always made before this is printed.
+
+
+
+Master
+
+This property points to the master report component whose dataset is the master of this components dataset.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+PreCalculateHeight
+
+This is for painting the backgrounds of expanding bands. Only works if 'KeepOnOnePage' is true.
+
+
+
+PrintIfEmpty
+
+&lt;description missing&gt;
+
+
+
+SQL
+
+Use the SQL property to request a sub dataset based on one or more tables in the database. The SQL property may contain multiple SQL statements as long as they are separated by semicolons (;) Please see the SQL Reference Guide for more information on the SQL support.
+&nbsp;
+Note! &nbsp;You have access to the field values from the master dataset, by using the fields name as parameters in the SQL WHERE statement.
+
+
+
+Size
+
+This property has two options, width and height. Width is a read-only property, height may be set in code.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Is controlled by the report designer and has no effect.
+
+
+
+TransparentBand
+
+This will suppress the printing of band backgrounds in case there is a background image on the report.
+
+
+
+Width
+
+Is controlled by the report designer and has no effect.
+
+
+
+
+&nbsp;
+Events of TQRSubBand
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AfterPrint
+
+Called when the band has completed printing.
+
+
+
+BeforePrint
+
+Called before the band prints. You may stop the band printing by setting parameter PrintBand to false.
+
+
+
+
+&nbsp;
+
+
+
+

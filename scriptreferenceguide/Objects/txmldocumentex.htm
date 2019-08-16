@@ -1,0 +1,181 @@
+
+
+
+TXMLDocumentEx
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TXMLDocumentEx
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+TXMLDocumentEx represents an XML document and use an external DOM (Document Object Model) parser to analyze the XML document.
+&nbsp;
+Use TXMLDocumentEx to represent an XML document. TXMLDocumentEx can read an existing XML document from a file, it can be associated with an in-memory string that is the contents of an XML document, or it can create a new, empty XML document. You can use TXMLDocumentEx directly to load an XML document, read and edit it, and save any changes. 
+&nbsp;
+Object Hierarchy
+TXMLDocumentEx - TObject
+&nbsp;
+Example - How to create a XML document
+&nbsp;
+var
+ &nbsp; XML: TXMLDocumentEx;
+begin
+ &nbsp; XML := TXMLDocumentEx.Create;
+ &nbsp; try
+ &nbsp; &nbsp; XML.Encoding := 'UTF-8';
+ &nbsp; &nbsp; XML.NodeAutoIndent := True;
+ &nbsp; &nbsp; XML.CreateRoot('Vehicle');
+ &nbsp; &nbsp; XML.Root.AddChild('type').Text := 'VW Golf';
+ &nbsp; &nbsp; XML.Root.AddChild('model').Text := '1,6 TDI BMT';
+ &nbsp; &nbsp; XML.Root.AddChild('number').Text := 'VX36721';
+ &nbsp; &nbsp; XML.SaveToFile('FileName.xml');
+ &nbsp; finally
+ &nbsp; &nbsp; XML.Free;
+ &nbsp; end;
+end;
+&nbsp;
+Example - How to read a XML document
+&nbsp;
+var
+ &nbsp; XML: TXMLDocumentEx;
+ &nbsp; Node: TXMLNode;
+ &nbsp; VehicleType: string;
+ &nbsp; VehicleModel: string;
+ &nbsp; VehicleNumber: string;
+&nbsp;
+begin
+ &nbsp; XML := TXMLDocumentEx.Create;
+ &nbsp; try
+ &nbsp; &nbsp; XML.LoadFromFile('FileName.xml');
+ &nbsp; &nbsp; Node := XML.Root.ChildNodes.Find('type');
+ &nbsp; &nbsp; if Node &lt;&gt; nil then
+ &nbsp; &nbsp; &nbsp; VehicleType := Node.Text;
+ &nbsp; &nbsp; Node := XML.Root.ChildNodes.Find('model');
+ &nbsp; &nbsp; if Node &lt;&gt; nil then
+ &nbsp; &nbsp; &nbsp; VehicleModel := Node.Text;
+ &nbsp; &nbsp; Node := XML.Root.ChildNodes.Find('number');
+ &nbsp; &nbsp; if Node &lt;&gt; nil then
+ &nbsp; &nbsp; &nbsp; VehicleNumber := Node.Text;
+ &nbsp; finally
+ &nbsp; &nbsp; XML.Free;
+ &nbsp; end;
+end;
+&nbsp;
+Properties of TXMLDocumentEx
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Encoding
+
+Indicates the character set that the XML document uses to encode characters. It is a string such as 'UTF-8', 'UTF-16', or 'ISO-10646-UCS-2' that indicates the character set used in the document.
+
+
+
+NodeAutoIndent
+
+When formatting the XML text from the parsed set of nodes, child nodes are automatically indented from their parent nodes.
+
+
+
+Root
+
+Provides access to the root TXMLNode object of the XML document. 
+Use Root to access the root node of the XML document. Because XML documents are hierarchical in structure, Root is the entry point to all data in the XML document. Call the CreateRoot method to initializes a new document.
+
+
+
+Version
+
+Indicates the XML version that the document uses. 
+Version indicates the XML version number that the document uses. An XML version number is a string of the form 'n.m', where n is the major version number and m is the minor version number. 
+
+
+
+XML
+
+Specifies the content of the XML document associated with this TXMLDocument object. This property is a TStringList object. This means you can manipulate the XML line by line at runtime.
+
+
+
+
+&nbsp;
+Methods of TXMLDocumentEx
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+CreateRoot
+
+Creates a new root (element) that is associated with this document. 
+Call CreateRoot to create a new XML root node. This method replaces the entire data hierarchy with a new hierarchy of nodes. 
+
+
+
+LoadFromFile
+
+Loads an XML document from a file specified by FileName.
+
+
+
+LoadFromStream
+
+Loads an XML document from a TStream object.
+
+
+
+SaveToFile
+
+Saves the XML document to a file specified by FileName. 
+
+
+
+SaveToStream
+
+Saves the XML document to a TStream object. 
+Regardless of the encoding system of the original XML document, SaveToStream always saves the stream in UTF-16.
+
+
+
+
+
+
+
+

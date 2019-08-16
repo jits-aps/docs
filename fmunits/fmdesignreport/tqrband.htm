@@ -1,0 +1,362 @@
+
+
+
+TQRBand
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Rapport Designer&nbsp;&gt;
+   
+      TQRBand
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+QuickReport is a banded report generator. If you are unfamiliar with banded report generators you can think of them as small paper templates, which are arranged horizontally on a page and filled with data. Different templates are copied into different parts of the page/report. The printable components, TQRLabel, TQRDBText and so on, are designed to be placed on these bands. Placing these components directly on the report is not supported.
+&nbsp;
+Headers, footers, details and so on are expressed in QuickReport terms by the TQRBand.
+&nbsp;
+The easiest way to add bands is via the Design Menu. Right click on the report designer and you will see a list of common bands as menu items. Bands created this way get names that describe their function: DetailBand1, PageHeaderBand1 and so on. The BandType property of each band is also set automatically.
+&nbsp;
+Note! 
+While it is possible to add a band manually and set its BandType to rbSubDetail or rbGroupHeader, this is not recommended. These band types are intended for use only with TQRSubBand and TQRGroupBand components. Using them elsewhere may cause unexpected and undesirable effects when the report is printed.
+&nbsp;
+You can also add bands by selecting the TQRBand component on the component palette and dropping it on the report. Note that if you do it this way you must take care to set the BandType property to the desired band type, and you should also give the band a descriptive name. The Bands property of the container TQReport will update itself to reflect bands added to the report this way.
+&nbsp;
+Simple band types
+&nbsp;
+
+
+Band Type
+
+Description
+
+
+
+Page Header
+
+The first band usually printed on all pages. Whether it is printed on the first page printing is governed by the reportâs Options.FirstPageHeader property. The default is to print the first page header.
+
+
+
+Title
+
+A title band is the first band printed to a report (after the very first page header, if any). Itâs useful for printing the report title, data selection criteria, creation date and time and so on.
+
+
+
+Column Header
+
+The column header band is printed on top of each report column. In a regular single column report, this band is printed once per page, following the page header (and the title band for the first page). In a multi column report itâs printed once for each column. Itâs most useful for printing field names.
+
+
+
+Detail
+
+One detail band is printed for each record (row) of data in your dataset specified by the SQL statement. This is perhaps the most important band in your report and is usually what takes most of the space on the final output. You would typically put data-aware printable controls such as TQRDBText on this band.
+
+
+
+Summary
+
+After all detail bands has been printed you can print a summary band. This is often used for printing totals of numeric fields.
+
+
+
+Page Footer
+
+The last band printed on all pages. Last page printing is governed by the reportâs Options.LastPageFooter property. The default is to print the last page footer.
+
+
+
+
+&nbsp;
+As you add new bands to a report, you will notice that they automatically position themselves in the actual printing order. You will see that the Page Header band is on top, followed by the Title band, column header band and so on.
+&nbsp;
+Each band has its band type printed in small letters in its lower left corner. This allows you to identify the bands while designing the report. This text is not printed on the final report.
+&nbsp;
+Bands appear in the order in which they are printed. It is helpful to understand why the bands line up the way they do. Generally bands will print in at the frequency as shown above, although things become more complicated when you start to add sub details and group bands.
+&nbsp;
+Sizing the bands
+Bands derive their horizontal size from the containing TQReport object. Their Size.Width properties should be considered read only; values written to them are ignored. For a single column report, the width of all bands is set to the page width minus the left and right margins. In multi-column reports, the width of certain band types (Column Header, Detail, Sub Detail, Group Header and Group Footer) is adjusted to reflect the width available for a single column.
+&nbsp;
+However you can adjust the vertical size of the bands. Select a band and resize it with the mouse in the usual way or, if you want more accurate control, setting an exact value in the Size.Height property.
+&nbsp;
+Turning bands on and off
+You might sometimes want to disable printing of a certain band. This can be done, either at design time or at run time, by setting the TQRBand.Enabled property to False. 
+&nbsp;
+During report generation you can also temporarily disable printing of a band by creating an event handler for the bandâs BeforePrint event. This event handler takes a boolean parameter PrintBand that can be set to False to disable band printing â but just for that single instance. This feature can be used to perform simple filtering:
+&nbsp;
+procedure QRBand1BeforePrint(Sender: TObject; var PrintBand: Boolean);
+begin
+ &nbsp; PrintBand := Report.DataSet.FieldByName('TotalSales').AsFloat &gt; 3000000;
+end;
+&nbsp;
+Note! 
+When PrintBand is set to False for a detail band, the values for that record are not included in any aggregate TQRExr function, for example the SUM function.
+&nbsp;
+If you turn off a Page Footer band, it will have the effect of leaving a blank space at the bottom of each page â the Detail Bands will not expand to fill the space. To optimise performance, QuickReport doesnât check the length of the page footers all the time. So after you change the Enabled property of your Page Footer, call the report objectâs ResetPageFooterSize method to force QuickReport to update its page footer information.
+&nbsp;
+Object Hierarchy
+TQRBand - TQRCustomBand - TCustomControl - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TQRBand
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AlignToBottom
+
+Use AlignToBottom to force a band to print at the bottom of a page instead of at the top. QuickReport will leave room for a page footer band if such exists. If this property is True for a detail band the effect will be that only one detail band is printed per page.
+
+
+
+BandType
+
+Specifies the type of the band:
+&nbsp;
+
+
+Option
+
+Description
+
+
+
+rbTitle
+
+Printed on the first page of the report after the page header
+
+
+
+rbPageHeader
+
+Printed on top of each page. Printing on the first page can be switched off with the Options property
+
+
+
+rbDetail
+
+Printed once for every record/row in the connected dataset
+
+
+
+rbPageFooter
+
+Printed at the bottom of each page. Printing on the last page can be switched off with the Options property
+
+
+
+rbSummary
+
+Printed after all detail bands and potential group footers at the end of the report
+
+
+
+rbSubDetail
+
+Reserved for use by the TQRSubBand component. Do not set this band type manually
+
+
+
+rbColumnHeader
+
+Printed a the top of each column on every page in a multi column report. Printed once after the page header in a single column report
+
+
+
+rbGroupFooter
+
+Footer band for TQRGroupBand or TQRSubBand components
+
+
+
+rbGroupHeader
+
+Header band for TQRGroupBand or TQRSubBand components
+
+
+
+rbChild
+
+Reserved for use by the TQRChildBand component. Do not set this band type manually
+
+
+
+
+
+
+
+Color
+
+This sets the background color. Use the Font properties to change text color.
+
+
+
+Enabled
+
+Determines whether the component appear at runtime.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text in the band.
+If this is not set it defaults to the parentâs font. The band font may be overridden by setting text control properties
+
+
+
+ForceNewColumn
+
+If true, the band will always start a new column (this will be a new page in single column reports)
+Useful for making reports with many summaries more readable.
+
+
+
+ForceNewPage
+
+If true, the band will always start on a new page. Useful for placing summaries at the top of pages.
+
+
+
+Frame
+
+&lt;description missing&gt;
+
+
+
+HasChild
+
+Use this property to create a child band witch will be placed automatically below its parent and associated with it via the âparentâ property.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+KeepOnOnePage
+
+This will stop the band breaking across a page boundary. If the band grows to be bigger than an entire page, it will break, and force this option to false.
+
+
+
+Left
+
+Is controlled by the report designer and has no effect.
+
+
+
+LinkBand
+
+Linked bands will always print together. That is, they will not be separated by page breaks. In practice, a copy of the linked band is always made before this is printed.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+PreCalculateHeight
+
+This is for painting the backgrounds of expanding bands. Only works if 'KeepOnOnePage' is true.
+
+
+
+Size
+
+This property has two options, width and height. Width is a read-only property, height may be set in code.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Is controlled by the report designer and has no effect.
+
+
+
+TransparentBand
+
+This will suppress the printing of band backgrounds in case there is a background image on the report.
+
+
+
+Width
+
+Is controlled by the report designer and has no effect.
+
+
+
+
+&nbsp;
+Events of TQRBand
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AfterPrint
+
+Called when the band has completed printing.
+
+
+
+BeforePrint
+
+Called before the band prints. You may stop the band printing by setting parameter PrintBand to false.
+
+
+
+
+
+
+
+

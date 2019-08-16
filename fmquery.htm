@@ -1,0 +1,149 @@
+
+
+
+Database Query
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      &raquo;No topics above this level&laquo;
+      
+   
+      Database Query
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+Vinduet vÃ¦lges via menupunktet Funktioner / Database Query.
+&nbsp;
+Generelt
+En Database Query er en &quot;editor&quot;, hvorfra du har mulighed for at definere en SQL-forespÃ¸rgsel (Structured Query Language), som du opretter ved hjÃ¦lp af en SQL sÃ¦tning. Udover visning af data er det ogsÃ¥ muligt at indsÃ¦tte og opdatere data i databasen.
+&nbsp;
+NÃ¥r du har defineret en SQL sÃ¦tning, afvikles denne ved at aktivere knappen Execute. Ved en SELECT forespÃ¸rgsel, vises resultatet efterfÃ¸lgende under fanebladet Browse. Alternativt ved INSERT og UPDATE forespÃ¸rgsler, kvitteres afviklingen af disse med teksten Done. Hvis databasen ikke kan tolke din kommando, returneres en fejlmeddelelse. Det er muligt at afvikle flere forespÃ¸rgsler pÃ¥ Ã©n gang, ved at adskille dem med et semikolon.
+&nbsp;
+Eksempel
+SELECT * FROM Customers 
+WHERE Category='NEW' AND LastActivity BETWEEN DATE '2016-01-01' AND DATE '2016-01-31'
+&nbsp;
+I ovennÃ¦vnte eksempel Ã¸nsker vi at se alle kunder hvor feltet &quot;Kategori&quot; indeholder vÃ¦rdien &quot;NEW&quot; og datoen i feltet &quot;Sidste aktivitet&quot; er fra januar mÃ¥ned 2016. Som vist i eksemplet skal alle tabel og felt referencer passe med de navne som er anvendt i database strukturen. Disse navne stemmer nÃ¸dvendigvis ikke ens med de navne som vises i programmets forskellige vinduer. 
+&nbsp;
+
+
+
+
+For at skabe et bedre overblik over database strukturen, kan du Ã¥bne vinduet Database Explore. Herfra har du mulighed for at se navnene pÃ¥ de forskellige tabeller og felter. Hvis du dobbelt klikker pÃ¥ et navn, overfÃ¸res dette automatisk til editoren. For at aktivere Database Explore, klik pÃ¥ ikonet som vises Ã¸verst i vÃ¦rktÃ¸jslinien.
+&nbsp;
+
+
+
+
+&nbsp;
+Standard parameter
+FÃ¸lgende standard parametre kan anvendes i WHERE betingelsen og angives med et kolon foran.
+&nbsp;
+
+
+Navn
+
+Beskrivelse
+
+
+
+COMPANYNAME
+
+Firmanavn (registreret)
+
+
+
+CURRENT_ACCID
+
+Aktuelle afdelingsnummer
+
+
+
+CURRENT_ACCNAME
+
+Aktuelle afdelingsnavn
+
+
+
+CURRENT_STOCKID
+
+Aktuelle lagerlokationsnummer
+
+
+
+CURRENT_USERNAME
+
+Aktuelle brugernavn (som er logget ind)
+
+
+
+CURRENT_DATABASE
+
+Aktuelle databasenavn
+
+
+
+CURRENT_DATE
+
+Aktuelle dato
+
+
+
+CURRENT_TIME
+
+Aktuelle tid
+
+
+
+CURRENT_TIMESTAMP
+
+Aktuelle dato og tid
+
+
+
+
+&nbsp;
+Eksempel
+SELECT * FROM Registers WHERE DepartmentNo=:CURRENT_ACCID 
+&nbsp;
+Du kan lÃ¦se mere om SQL i afsnittet SQL Reference Guide, som indeholder en detaljeret gennemgang af de forskellige SQL kommandoer.
+&nbsp;
+Hent og Gem
+SÃ¥fremt du jÃ¦vnligt anvender faste SQL kommandoer, kan du med fordel gemme disse, for senere at kunne hente dem igen. Aktiver knappen Filer og herefter menupunktet IndsÃ¦t SQL fra fil for at hente og menupunktet Gem SQL til fil for at gemme den aktuelle forespÃ¸rgsel.
+&nbsp;
+Display Labels
+Ved visning af data, anvendes normalt de feltnavne og nummeriske vÃ¦rdier i &quot;option&quot; felter, som anvendes i databasen. Hvis du istedet Ã¸nsker at se resultatet med de danske oversÃ¦ttelser som er tilknyttet felterne, sÃ¦ttes et flueben i Display Labels, fÃ¸r at afvikler din SQL forespÃ¸rgsel.
+&nbsp;
+Live Result
+Anvend denne funktion hvis du Ã¸nsker at fÃ¥ vist et redigerbart resultat af en forespÃ¸rgsel. Dette betyder at du har mulighed for at redigere, slette eller oprette nye records i den viste tabel. Denne funktioner krÃ¦ver, at du ikke anvender &quot;joins&quot; kommandoer eller pÃ¥ anden mÃ¥de fletter flere tabellen sammen i din forespÃ¸rgsel.
+&nbsp;
+Generate Plan
+Det er muligt at fÃ¥ databasen til at specificere en &quot;plan&quot;, som viser hvordan din SQL kommando hÃ¥ndteres. Denne &quot;plan&quot; kan vÃ¦re et vigtigt redskab ved optimering af mere kompliceret SQL forespÃ¸rgsler. Det er kun SELECT, INSERT, UPDATE, og DELETE forespÃ¸rgsler som specificeres.
+&nbsp;
+Eksporter Data
+Hvis du Ã¸nsker at eksportere resultatet af en SQL forespÃ¸rgsel, kan du enten kopiere de viste data, via programmets Kopier og SÃ¦t ind funktioner. Alternativt kan du udlÃ¦se de viste data, ved at aktivere funktionen EksportÃ©r. &nbsp;VÃ¦lg menuen Funktioner og herefter menupunktet EksportÃ©r. &nbsp;
+
+
+
+

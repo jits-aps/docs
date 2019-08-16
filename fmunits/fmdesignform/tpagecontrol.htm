@@ -1,0 +1,359 @@
+
+
+
+TPageControl
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Form Designer&nbsp;&gt;
+   
+      TPageControl
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+Use TPageControl to create a multiple page dialog or tabbed notebook. TPageControl displays multiple overlapping pages that are TTabSheet objects. The user selects a page by clicking the page's tab that appears at the top of the control. To add a new page to a TPageControl object at design time, right-click the TPageControl object and choose New Page. 
+&nbsp;
+Note!  When using one of the page controls, if you want to restrict a user from switching to a tab, you cannot set TTabSheet.Enabled to false to accomplish that restriction. Instead, use the OnChanging event to prevent the user from selecting a tab.
+&nbsp;
+Object Hierarchy
+TPageControl - TCustomForm - TScrollingWinControl - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TPageControl
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+ActivePage
+
+Specifies the page currently displayed by the page control.
+&nbsp;
+Read ActivePage to determine which page is selected by the user. The user selects a page by clicking the mouse on its tab. Set ActivePage to bring a page to the foreground. Only one page can be active at a time.
+&nbsp;
+Note!  To change the ActivePage to the page that precedes or follows the active page, use the SelectNextPage method.
+
+
+
+Align
+
+Determines how the control aligns within its container (parent control).
+
+
+
+Anchors
+
+Specifies how the control is anchored to its parent.
+
+
+
+Constraints
+
+Specifies the size constraints for the control.
+
+
+
+Cursor
+
+Specifies the background color of the control.
+
+
+
+DefaultDrawing
+
+Specifies whether the tab control handles its own painting. Set DefaultDrawing to false and write an OnDrawTab event handler to customize the painting of tabs.
+
+
+
+Enabled
+
+Controls whether the control responds to mouse and keyboard events.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text written on or in the control.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+HelpKeyword
+
+Keyword for control's context-sensitive help topic.
+
+
+
+Hint
+
+Contains the text string that can appear when the user moves the mouse over the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+MultiLine
+
+Determines whether the tabs can appear on more than one row.
+&nbsp;
+Use MultiLine to determine how the tabs are displayed. If MultiLine is true, the tabs are displayed on more than one row when the number of tabs exceeds the number that fits across the top of the tab control. How many rows is determined by how many tabs are in the tab control. If MultiLine is false, the tabs are displayed on one row only, and the user must scroll the displayed scroll arrows to view all the tabs.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+PageCount
+Run-time only
+
+Indicates the number of pages in the TPageControl object. Use PageCount to determine the number of pages listed by the Pages property. If the MultiLine property is false, not all pages may have tabs visible to the user.
+
+
+
+Pages
+Run-time only
+
+Lists all the pages in the TPageControl.
+&nbsp;
+Use Pages to gain direct access to a particular page in the page control. For example, use Pages to disable individual pages in the page control. Specify which page to access using Index, where an Index of 0 specifies the first page, an Index of 1 specifies the second page, and so on. Each page is a TTabSheet object.
+&nbsp;
+Note!  Pages is a read-only property. To add a tab sheet to a page control at design time, right click and select New Page. To add a tab sheet to a page control at runtime, create the tab sheet and set its PageControl property to the page control.
+
+
+
+RaggedRight
+
+Specifies whether rows of tabs stretch to fill the width of the control.
+
+
+
+ScrollOpposite
+
+Determines how the rows of tabs are scrolled in a multi-line tab control.
+&nbsp;
+Set ScrollOpposite to determine where previous rows of tabs in a multi-line tab control move when the user selects a tab in another row. When ScrollOpposite is true, previous rows of tabs are moved to the bottom of the tab control if TabPosition is tpTop, or to the top if TabPosition is tpBottom. When ScrollOpposite is false, previous rows of tabs are moved to the back of all other rows of tabs.
+&nbsp;
+For example, in a tab control with three rows of tabs at the top, if the user selects a tab in the second row, ScrollOpposite determines where the first row moves. If ScrollOpposite is true, the second row now appears at the front (bottom) row on top of the tab control, followed by the third row behind (above) it. The first row moves to the bottom of the tab control. If ScrollOpposite is false, the first row moves to the back (top), so that the tab control displays the second row in front (at the bottom of the tab region), followed by the third row (now in the middle), followed by the first row.
+&nbsp;
+Note! &nbsp;Setting ScrollOpposite to true automatically sets the MultiLine property to true.
+
+
+
+Style
+
+Specifies the style of the tab control. Use Style to determine the appearance of the tabs. These can appear as notebook tabs or as buttons.
+
+
+
+TabHeight
+
+Specifies the height, in pixels, of the tabs in the tab control.
+&nbsp;
+Set TabHeight to control the height of the tabs that appear above the client region of the tab control. The TabHeight property is the vertical size in pixels of the individual tabs. If TabHeight is set to 0, the tabs automatically size themselves to fit their text.
+
+
+
+TabIndex
+
+Identifies the selected tab on a tab control.
+&nbsp;
+Read TabIndex to determine which tab was selected by the user. TabIndex is the index of the tab in the list of labels maintained by the Tabs property. The first (leftmost) tab has a TabIndex of 0, the next has 1, and so on. If no tabs are selected, TabIndex has a value of -1. Set TabIndex to programmatically change the selected tab in the tab control.
+
+
+
+TabOrder
+
+Indicates the position of the control in its parent's tab order.
+
+
+
+TabStop
+
+Determines if the user can tab to a control.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Visible
+
+Determines whether the component appears on screen.
+
+
+
+Width
+
+Specifies the horizontal size of the control in pixels.
+
+
+
+
+&nbsp;
+Methods of TPageControl
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Repaint
+
+Call Repaint to repaint the entire control.
+
+
+
+SelectNextPage
+
+Changes the ActivePage to the first visible page that is before or after the currently active page.
+&nbsp;
+Use SelectNextPage to select the page next to the currently active page. If the GoForward parameter is true, SelectNextPage selects the first page after ActivePage; if GoForward is false, SelectNextPage selects the first page previous to ActivePage.
+&nbsp;
+Note!  To select a page at design-time, right-click the TPageControl and choose Previous Page or Next Page.
+
+
+
+SetFocus
+
+Gives the input focus to the control. When a control has focus, it receives keyboard events.
+
+
+
+
+&nbsp;
+Events of TPageControl
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnChanging
+
+Occurs immediately before a new tab is selected.
+&nbsp;
+Write an OnChanging event handler to take specific action immediately before the selected tab changes. Set the AllowChange parameter to false to prevent the change. Use an OnChanging event handler to prevent the user from leaving a tab setting until certain conditions have been met. An OnChanging event handler can also be used to save information about the current state of the tab control before it is changed by a new tab selection.
+&nbsp;
+Note! &nbsp;The event is not called if you change the active page in code, for example, by setting the value of ActivePage.
+
+
+
+OnDrawTab
+
+Occurs when a tab is about to be drawn. Use OnDrawTab to customize the painting of tabs. You can paint the tab using the Canvas property.
+
+
+
+OnEnter
+
+Occurs when a control receives the input focus.
+
+
+
+OnExit
+
+Occurs when the input focus shifts away from one control to another.
+
+
+
+OnMouseDown
+
+Occurs when the user presses a mouse button with the mouse pointer over a control.
+
+
+
+OnMouseEnter
+
+Occurs when the user moves the mouse into a control.
+
+
+
+OnMouseLeave
+
+Occurs when the user moves the mouse outside of a control.
+
+
+
+OnMouseMove
+
+Occurs when the user moves the mouse pointer while the mouse pointer is over a control.
+
+
+
+OnMouseUp
+
+Occurs when the user releases a mouse button that was pressed with the mouse pointer over a component.
+
+
+
+OnResize
+
+Occurs immediately after the control is resized.
+
+
+
+
+
+
+
+

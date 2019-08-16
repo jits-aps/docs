@@ -1,0 +1,590 @@
+
+
+
+TRichEdit
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Form Designer&nbsp;&gt;
+   
+      TRichEdit
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+TRichEdit is a control for editing documents with pictures, tables and hyperlinks.
+&nbsp;
+This component support various character attributes (fonts, subscripts/superscripts, colored text background). Documents can contain tables, pictures, and images. Left, right, center or justify alignments of paragraphs, multilevel bullets and numbering, custom margins and indents, background images, RTF import and export and HTML export.
+&nbsp;
+The component is developed by RichView Â© Sergey Tkachenko
+&nbsp;
+Note! Use the TSpeedButton component to make a tool panel which gives the user direct access to various editing options such. Font, text alignment and inserting tables and images. Each button can be assigned a function by the property ButtonKind.
+&nbsp;
+Object Hierarchy
+TRichEdit - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TRichEdit
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Align
+
+Determines how the control aligns within its container (parent control).
+
+
+
+AllowImages
+
+Determines whether the user can insert or modify Images
+
+
+
+AllowTables
+
+Determines whether the user can insert or modify Tables
+
+
+
+Anchors
+
+Specifies how the control is anchored to its parent.
+
+
+
+BorderStyle
+
+Determines whether the edit control has a single line border around the client area.
+
+
+
+Color
+
+Specifies the background color of the document.
+To remove the background color, set the property to clNone.
+
+
+
+Cursor
+
+Specifies the image used to represent the mouse pointer when it passes into the region covered by the control.
+
+
+
+DataField
+
+Use DataField to bind the memo control to a field in the parent form dataset.
+
+
+
+DataFormat
+
+Specifies the format for saving data in the database field.
+&nbsp;
+
+
+Value
+
+Description
+
+
+
+reRVF
+
+Rich View Format
+Simple and compact file format that supports pictures, tables and hyperlinks.
+
+
+
+reRTF
+
+Rich Text Format
+File format developed by Microsoft. Most word processors are able to read and write RTF files. This format does NOT support pictures, tables and hyperlinks. 
+
+
+
+
+
+
+
+Enabled
+
+Controls whether the control responds to mouse and keyboard events.
+
+
+
+Field
+Run-time only
+
+Identifies the TField component the memo is linked to.
+
+
+
+Font
+
+Specifies the attributes of standard text. 
+To change to a new font, change the value of the Charset, Color, Height, Name , Pitch, Size, or Style of the TFont object.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+HelpKeyword
+
+Keyword for control's context-sensitive help topic.
+
+
+
+Hint
+
+Contains the text string that can appear when the user moves the mouse over the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Margins
+
+Specifies the margins in pixels.
+Change the margin by using the Top, Left, Bottom and Right properties of the TEditMargins object.
+
+
+
+Modified
+Run-time only
+
+Indicates whether the document has been modified since it was created.
+The property is set to True automatically when the contents of the document are modified either by being edited directly or programmatically. You may set the property at run-time to change the modified state of the document.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+ParentReadOnly
+
+Determines where a control looks for whether the user can change the value.
+
+
+
+ReadOnly
+
+Determines whether the user can change the text of the edit control.
+
+
+
+ScrollBars
+
+Determines whether the memo control has scroll bars.
+&nbsp;
+
+
+Value
+
+Description
+
+
+
+ssNone
+
+The control has no scroll bars.
+
+
+
+ssHorizontal
+
+The control has a single scroll bar on the bottom edge.
+
+
+
+ssVertical
+
+The control has a single scroll bar on the right edge.
+
+
+
+ssBoth
+
+The control has a scroll bar on both the bottom and right edges.
+
+
+
+
+
+
+
+TabOrder
+
+Indicates the position of the control in its parent's tab order.
+
+
+
+TabStop
+
+Determines if the user can tab to a control.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Visible
+
+Determines whether the component appears on screen.
+
+
+
+WantTabs
+
+Determines whether the user can insert tab characters into the text.
+
+
+
+Width
+
+Specifies the horizontal size of the control or form in pixels.
+
+
+
+WordWrap
+
+Determines whether the edit control inserts soft carriage returns so text wraps at the right margin.
+
+
+
+
+&nbsp;
+Methods of TRichEdit
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+ExportHTMLToFile
+
+Exports the document to HTML file, using HTML tags like &lt;font&gt;, &lt;b&gt;, &lt;div&gt;, etc.
+&nbsp;
+Set parameter IncludeCSS to True, if you want to include the CSS (Cascading Style Sheets). Files saved by this method can be rendered by the most of HTML applications. But many advanced formatting options are lost without CSS. Files saved with CSS look better in modern browsers.
+&nbsp;
+Set parameter InlineCSS to True, if you want CSS inserted directly in &lt;p&gt;, &lt;span&gt; and &lt;li&gt; tags (instead of generating CSS table at the beginning of HTML). This option generates highly overbloated HTML. Not recommended.
+&nbsp;
+Set parameter OnlyBody to True, if you only want the body of HTML document. (content inside &lt;body&gt; tag)
+&nbsp;
+Set parameter UTF8 to True, if you want a unicode (UTF-8) HTML data file. Highly recommended for multilingual documents.
+&nbsp;
+By default, this method saves images in separate files. You can change how images are saved by using the OnSaveImage event.
+The function returns True on success or False on failure.
+
+
+
+ExportHTMLToStream
+
+Exports the document as HTML to a stream, using HTML tags like &lt;font&gt;, &lt;b&gt;, &lt;div&gt;, etc.
+&nbsp;
+Set parameter IncludeCSS to True, if you want to include the CSS (Cascading Style Sheets). Files saved by this method can be rendered by the most of HTML applications. But many advanced formatting options are lost without CSS. Files saved with CSS look better in modern browsers.
+&nbsp;
+Set parameter InlineCSS to True, if you want CSS inserted directly in &lt;p&gt;, &lt;span&gt; and &lt;li&gt; tags (instead of generating CSS table at the beginning of HTML). This option generates highly overbloated HTML. Not recommended.
+&nbsp;
+Set parameter OnlyBody to True, if you only want the body of HTML document. (content inside &lt;body&gt; tag)
+&nbsp;
+Set parameter UTF8 to True, if you want a unicode (UTF-8) HTML data stream. Highly recommended for multilingual documents.
+&nbsp;
+By default, this method saves images in separate files. You can change how images are saved by using the OnSaveImage event.
+The function returns True on success or False on failure.
+
+
+
+FindText
+
+This method searchs for the substring &quot;Text&quot; in the document. When found, it returns True and select substring and scroll to it.
+If FromStart is True, the search starts from the beginning/end of the document. If WholeWord is True (default = False), the searched string matches only whole words. If CaseSensitive is True (default = False), a character case is taken into account when comparing strings.
+&nbsp;
+Note! It's easy to implement replacing of text in editor. FindText selects the old substring, InsertText replaces the selected string with the new one.
+
+
+
+InsertHyperlink
+
+Inserts hyperlink in the position of caret.
+&nbsp;
+Example:
+RichEdit1.InsertHyperlink('Admind.dk','http://admind.dk target=_blank title=&quot;Click here!&quot;');
+
+
+
+InsertPicture
+
+Inserts picture in the position of caret.
+&nbsp;
+Example:
+var
+ &nbsp; pic: TPicture;
+begin
+ &nbsp; pic := TPicture.Create;
+ &nbsp; with TOpenDialog.Create do
+ &nbsp; &nbsp; try
+ &nbsp; &nbsp; &nbsp; PictureDialog := True;
+ &nbsp; &nbsp; &nbsp; if Execute then
+ &nbsp; &nbsp; &nbsp; begin
+ &nbsp; &nbsp; &nbsp; &nbsp; Pic.LoadFromFile(FileName);
+ &nbsp; &nbsp; &nbsp; &nbsp; RichEdit1.InsertPicture(pic.Graphic);
+ &nbsp; &nbsp; &nbsp; end;
+ &nbsp; &nbsp; finally
+ &nbsp; &nbsp; &nbsp; Free;
+ &nbsp; &nbsp; &nbsp; pic.Free;
+ &nbsp; &nbsp; end;
+end;
+&nbsp;
+Note! This method has a Location parameter. Use this parameter if you export the document to HTML and want to use a link to the image from the web (instead of saving images in files together with HTML file).
+
+
+
+InsertText
+
+The methods insert text in the position of caret. All possible line breaks (CR, LF) are supported.
+
+
+
+IsImageSelected
+
+Returns True if an image is selected. Otherwise it returns False.
+
+
+
+IsTableSelected
+
+Returns True if a table is selected. Otherwise it returns False.
+
+
+
+LoadFromStream
+
+Loads document from a Stream
+Returns True on success or False on failure.
+
+
+
+Repaint
+
+Call Repaint to repaint the entire control.
+
+
+
+ReplaceText
+
+This method replace occurrences of the substring, without case sensitivity, specified by OldPattern with the substring specified by NewPattern.
+
+
+
+SaveToStream
+
+Saves the document to the Stream
+Returns True on success or False on failure.
+
+
+
+SetFocus
+
+Gives the input focus to the control. When a control has focus, it receives keyboard events.
+
+
+
+
+&nbsp;
+Events of TRichEdit
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnChange
+
+Occurs when the text for the edit control may have changed.
+
+
+
+OnClick
+
+Occurs when the user clicks the control.
+
+
+
+OnDblClick
+
+Occurs when the user double-clicks the left mouse button when the mouse pointer is over the control.
+
+
+
+OnEnter
+
+Occurs when the control receives the input focus. Use the OnEnter event handler to cause any special processing to occur when a control becomes active.
+
+
+
+OnExit
+
+Occurs when the input focus shifts away from the control to another control. Use the OnExit event handler to provide special processing when the control ceases to be active.
+
+
+
+OnExportImage
+
+Occurs when saving saves image to HTML file or stream. Use this event to provide customized saving procedure for all (or some) images.
+&nbsp;
+If the parameters NewWidth and NewHeight are different from zero, the Image have been stretched by the user. The path parameter is the default destination directory. When customize the saving procedure, specify the Location parameter and set Handled to True. The Location string will be inserted in the HTML script.
+
+
+
+OnHyperlink
+
+Occurs when the user want to insert or modify a hyperlink. Write an OnHyperlink event handler to provide a customized hyperlink dialog. Otherwise the standard dialog window will be used. The âCaptionâ parameter specifies the selected text. Enter the hyperlink in the âTargetâ parameter and additional information in the âExtrasâ parameter. Example 'target=_blank title=&quot;Click here!ââ.
+
+
+
+OnKeyDown
+
+Occurs when a user presses any key while the control has focus.
+&nbsp;
+Use the OnKeyDown event handler to specify special processing to occur when a key is pressed. The OnKeyDown handler can respond to keyboard keys, including function keys and keys combined with the SHIFT, ALT, and CTRL keys, and pressed mouse buttons. See TShiftState for a description of the Shift parameter.
+
+
+
+OnKeyPress
+
+Occurs when a key is pressed.
+
+
+
+OnKeyUp
+
+Occurs when the user releases a key that has been pressed.
+
+
+
+OnMouseDown
+
+Occurs when the user presses a mouse button with the mouse pointer over a control.
+
+
+
+OnMouseEnter
+
+Occurs when the user moves the mouse into a control.
+
+
+
+OnMouseLeave
+
+Occurs when the user moves the mouse outside of a control.
+
+
+
+OnMouseMove
+
+Occurs when the user moves the mouse pointer while the mouse pointer is over a control.
+
+
+
+OnMouseUp
+
+Occurs when the user releases a mouse button that was pressed with the mouse pointer over a component.
+
+
+
+OnSaveData
+
+Occurs when the control save changes to a data field. Write an OnSaveData event handler to provide your own saving rutine.
+&nbsp;
+Example:
+var
+ &nbsp; Stream: TMemoryStream;
+begin
+ &nbsp; if ConfirmMsg('Save changes',True) then
+ &nbsp; begin
+ &nbsp; &nbsp; Stream := TMemoryStream.Create;
+ &nbsp; &nbsp; with Form.DataSet do
+ &nbsp; &nbsp; &nbsp; try
+ &nbsp; &nbsp; &nbsp; &nbsp; // Save data as HTML
+ &nbsp; &nbsp; &nbsp; &nbsp; RichEdit1.ExportHTMLToStream(Stream,'',True);
+ &nbsp; &nbsp; &nbsp; &nbsp; Stream.Position := 0;
+ &nbsp; &nbsp; &nbsp; &nbsp; FieldByName('HTML').LoadFromStream(Stream);
+ &nbsp; &nbsp; &nbsp; &nbsp; Stream.Clear;
+ &nbsp; &nbsp; &nbsp; &nbsp; // Save data as RVF/RTF
+ &nbsp; &nbsp; &nbsp; &nbsp; RichEdit1.SaveToStream(Stream);
+ &nbsp; &nbsp; &nbsp; &nbsp; Stream.Position := 0;
+ &nbsp; &nbsp; &nbsp; &nbsp; FieldByName('DATA').LoadFromStream(Stream);
+ &nbsp; &nbsp; &nbsp; finally
+ &nbsp; &nbsp; &nbsp; &nbsp; Stream.Free;
+ &nbsp; &nbsp; &nbsp; end;
+ &nbsp; end; 
+end;
+
+
+
+
+
+
+
+

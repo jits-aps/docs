@@ -1,0 +1,184 @@
+
+
+
+TIcon
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TIcon
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+TIcon is an encapsulation of a Windows icon. Assign an icon to objects that have an Icon property, such as TForm or TPicture. 
+Icon objects represent the value loaded from a Windows icon file (.ICO file). Draw an icon on a canvas, using the Draw method of the TCanvas object. Icons do not stretch, so do not use StretchDraw (TCanvas) with an icon.
+&nbsp;
+Note! &nbsp;TIcon can be used to display the value of a multi-resolution (&gt;16 color) icon. However, it can not support the creation of multi-resolution icons, nor the resizing of the image after it is loaded from a file or stream.
+&nbsp;
+Object Hierarchy
+TIcon - TGraphic - TPersistent - TObject
+&nbsp;
+Properties of TIcon
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Empty
+
+Indicates whether the graphics object contains a graphic.
+
+
+
+FileExt
+
+Returns the current file extension identifier. (ico)
+
+
+
+Height
+
+Specifies the vertical size of the graphic in pixels.
+
+
+
+Width
+
+Determines the maximum width of the graphics object in pixels.
+
+
+
+
+&nbsp;
+Methods of TJPEG
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Assign
+
+Copies an icon image from another TIcon object.
+
+
+
+LoadFileExtLarge
+
+Assign the object with the large (24x24) icon image that represents the file, specified by the parameter. Note! If you only specify the extension parts of a file name, the object will be assigned with the standard Windows icons for the specified file types.
+
+
+
+LoadFileExtSmall
+
+Assign the object with the small (16x16) icon image that represents the file, specified by the parameter. Note! If you only specify the extension parts of a file name, the object will be assigned with the standard Windows icons for the specified file types.
+
+
+
+LoadWinIcon
+
+Assign the object with a standard Windows Icon, specified by the parameter. To use one of the predefined icons, set the Address parameter to one of the following values:
+&nbsp;
+
+
+Value
+
+Description
+
+
+
+32512
+
+Default application icon.
+
+
+
+32513
+
+Hand-shaped (Error) icon.
+
+
+
+32514
+
+Question mark icon.
+
+
+
+32515
+
+Exclamation point icon.
+
+
+
+32516
+
+Asterisk icon.
+
+
+
+
+
+
+
+LoadFromFile
+
+Loads the icon from a file. (.ico file)
+
+
+
+LoadFromStream
+
+Loads the icon from a TStream object.
+
+
+
+SaveToFile
+
+Saves the icon to a file. (.ico file)
+
+
+
+SaveToStream
+
+Saves the icon to a TStream object.
+
+
+
+
+
+
+
+

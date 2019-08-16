@@ -1,0 +1,165 @@
+
+
+
+TQRRichText
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Rapport Designer&nbsp;&gt;
+   
+      TQRRichText
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+Component for printing RichText Formatted (RVF/RTF) text.
+&nbsp;
+The text may be delivered by a Blob / Memo field from a dataset or by calling the LoadFromStream method. Connect the control to a data field by using the DataField property.
+&nbsp;
+Object Hierarchy
+TQRRichText - TCustomControl - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TQRRichText
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AutoStretch
+
+If this is True, the control can increase its height to accommodate its text.
+
+
+
+DataField
+
+This is the name of the database field to be printed. In design mode the object inspector will present a list of fields from the selected dataset.
+
+
+
+Enabled
+
+Determines whether the component appear at runtime.
+
+
+
+Field
+Run-time only
+
+Identifies the TField component the control is linked to.
+
+
+
+Frame
+
+All text components can display a visible frame around them. This property controls the appearance of the frame, which sides it is drawn on and so on.
+
+
+
+GrayScale
+
+Colors are converted to shades of gray
+
+
+
+Height
+
+Specifies the vertical size of the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Lines
+Run-time only
+
+This property is a standard TStringList object and contains the text to be displayed.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+Size
+
+All printable components share the Size property.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Width
+
+Specifies the horizontal size of the control.
+Note! This property will be ignored if AutoSize is true.
+
+
+
+
+&nbsp;
+Methods of TQRRichText
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+LoadFromStream
+
+Loads document from a Stream
+Returns True on success or False on failure.
+
+
+
+
+
+
+
+

@@ -1,0 +1,212 @@
+
+
+
+TQRMemo
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Rapport Designer&nbsp;&gt;
+   
+      TQRMemo
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+The TQRMemo component is accessible by the Design Palette and is used to print multiline text blocks. The component can expand vertically to span several pages.
+&nbsp;
+The text of the control is stored in the Lines property. In most respects TQRMemo behaves like the standard TMemo class.
+&nbsp;
+Object Hierarchy
+TQRMemo - TQRCustomLabel - TCustomControl - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TQRMemo
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AlignToBand
+
+By default components will print/align at the position set in the designer. But sometimes it is more practical to align components to the vertical edges of the band that it is placed on. When AlignToBand is True, the text component will align itself relative to its parent band instead of its own text rectangle.
+
+
+
+Alignment
+
+Determines where text is printed in the control - may be Left, Centre, or Right.
+
+
+
+AutoSize
+
+If this property is true, the control can increase its width to accommodate its text.
+
+
+
+AutoStretch
+
+If AutoStretch and WordWrap are both True, the component can expand vertically to accommodate its text. When the component expands in this way it also expands its parent band, provided that bandâs CanExpand property is set to True. A band can expand over multiple pages if necessary.
+&nbsp;
+Note that if a component expands it will not move other components on the same band down. If you have components whose desired position should depend on the length of a stretching text, you should place these in a child band. 
+&nbsp;
+Note also that this property cannot be used for components on any band that prints at the bottom of the page. This is typically the page footer, but also applies to any band that has had its AlignToBottom property set to True.
+
+
+
+Color
+
+Sets the background color of the memo. Use the Font property to set text color etc.
+
+
+
+Enabled
+
+Determines whether the component appear at runtime.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text.
+If not explicitly set, the control takes its font from its parent.
+
+
+
+Frame
+
+All text components can display a visible frame around them. This property controls the appearance of the frame, which sides it is drawn on and so on.
+
+
+
+FullJustify
+
+Specifies full-justified, multiline text. In adjusted text, the spaces between words are stretched or sometimes compressed in order to align between both the left and right margins. This feature has no effect if AutoSize is True.
+
+
+
+Height
+
+Specifies the vertical size of the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Lines
+
+This property is a standard TStringList object and contains the text to be displayed. The text may be set in design mode using the Text editor from the object inspector, or in code like this:
+&nbsp;
+QRMemo1.Lines.Add('Text line 1');
+QRMemo1.Lines.Add('Text line 2');
+
+
+
+MaxBreakChars
+
+Used on full-justified text and specifies the maximum number of characters per line may vary, before a line break is generated.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+Size
+
+All printable components share the Size property. If AutoSize is False you can use this property to set the exact size of the component. This property also contains the position of the component relative to its parent band.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Transparent
+
+Specifies whether the controls background will be transparent, so the surface of its parent will be visible âthroughâ the control.
+
+
+
+Width
+
+Specifies the horizontal size of the control.
+Note! This property will be ignored if AutoSize is true.
+
+
+
+WordWrap
+
+If this property is true, and AutoSize is false, the text will wrap at the right edge of the control.
+
+
+
+
+&nbsp;
+Events of TQRMemo
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnPrint
+
+Occurs before the component is about to be printed and gives you the possibility to change the text by changing the Value parameter. The change is not stored in the Lines property.
+
+
+
+
+
+
+
+

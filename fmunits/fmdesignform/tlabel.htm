@@ -1,0 +1,280 @@
+
+
+
+TLabel
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Form Designer&nbsp;&gt;
+   
+      TLabel
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+TLabel is a nonwindowed control that displays text on a form.
+&nbsp;
+Use TLabel to add text that the user can't edit to a form. This text can be used to label another control, and can set focus to that control when the user types an accelerator key.
+&nbsp;
+Object Hierarchy
+TLabel - TGraphicControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TLabel
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Align
+
+Determines how the control aligns within its container (parent control).
+
+
+
+Alignment
+
+Controls the horizontal placement of the text within the label.
+
+
+
+Anchors
+
+Specifies how the control is anchored to its parent.
+
+
+
+AutoSize
+
+Determines whether the size of the label automatically resizes to accommodate the text.
+
+
+
+Caption
+
+Use Caption to specify the text string that labels the control.
+
+
+
+Color
+
+Specifies the background color of the control.
+
+
+
+Cursor
+
+Specifies the image used to represent the mouse pointer when it passes into the region covered by the control.
+
+
+
+Enabled
+
+Controls whether the control responds to mouse and keyboard events.
+
+
+
+FocusControl
+
+Designates a windowed control associated with the label. Set FocusControl to the windowed control that should receive focus when the user presses the accelerator key specified by the label. Specify an accelerator key by preceding a character in the label text with an ampersand (&amp;) and setting the ShowAccelChar property to true.
+&nbsp;
+Note! If Caption is empty and FocusControl is linked to a TEditBox component with is linked to a data field, the label will automatically display the field label, specified by the TField DisplayLabel property.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text written on or in the control.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+HelpKeyword
+
+Keyword for control's context-sensitive help topic.
+
+
+
+Hint
+
+Contains the text string that can appear when the user moves the mouse over the control.
+
+
+
+Layout
+
+Specifies the vertical placement of the text within the label. Set Layout to specify how the text of the label is placed within the ClientRect of the label control. Layout is the vertical analog to the Alignment property.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+ParentColor
+
+Determines where a control looks for its color information.
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+ShowAccelChar
+
+Determines how an ampersand in the label text is displayed.
+&nbsp;
+Set ShowAccelChar to true to allow the label to display an underlined accelerator key value. When ShowAccelChar is true, any character preceded by an ampersand (&amp;) appears underlined. If the FocusControl property is set, the windowed control specified by the FocusControl property receives input focus when the user types that underlined character. To display an ampersand when ShowAccelChar is true, use two ampersands (&amp;&amp;) to stand for the single ampersand that is displayed.
+&nbsp;
+Set ShowAccelChar to false to display the label text with all ampersands appearing as ampersands. When ShowAccelChar is false, the value of the FocusControl property is not used.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Transparent
+
+Specifies whether controls that sit below the label on a form can be seen through the label.
+
+
+
+Underline
+
+Determines whether a line at the bottom of the label area will be displayed.
+
+
+
+Visible
+
+Determines whether the component appears on screen.
+
+
+
+Width
+
+Specifies the horizontal size of the control or form in pixels.
+
+
+
+WordWrap
+
+Specifies whether the label text wraps when it is too long for the width of the label.
+&nbsp;
+Set WordWrap to true to allow the label to display multiple line of text. When WordWrap is true, text that is too wide for the label control wraps at the right margin and continues in additional lines.
+&nbsp;
+Set WordWrap to false to limit the label to a single line. When WordWrap is false, text that is too wide for the label appears truncated.
+
+
+
+
+&nbsp;
+Events of TLabel
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnClick
+
+Occurs when the user clicks the control.
+
+
+
+OnDblClick
+
+Occurs when the user double-clicks the left mouse button when the mouse pointer is over the control.
+
+
+
+OnMouseDown
+
+Occurs when the user presses a mouse button with the mouse pointer over a control.
+
+
+
+OnMouseEnter
+
+Occurs when the user moves the mouse into a control.
+
+
+
+OnMouseLeave
+
+Occurs when the user moves the mouse outside of a control.
+
+
+
+OnMouseMove
+
+Occurs when the user moves the mouse pointer while the mouse pointer is over a control.
+
+
+
+OnMouseUp
+
+Occurs when the user releases a mouse button that was pressed with the mouse pointer over a component.
+
+
+
+
+
+
+
+

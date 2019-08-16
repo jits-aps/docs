@@ -1,0 +1,193 @@
+
+
+
+TFileStream
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TFileStream
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+Use TFileStream to access the information in disk files. TFileStream will open a named file and provide methods to read from or write to it.
+&nbsp;
+About TStream
+Use specialized stream objects to read from, write to, or copy information stored in a particular medium. Each descendant of TStream implements methods for transferring information to and from a particular storage medium, such as a disk file, dynamic memory, and so on. In addition to methods for reading, writing, and copying bytes to and from the stream, stream objects permit applications to seek to an arbitrary position in the stream. Properties of TStream provide information about the stream, such as its size and the current position in the stream.
+&nbsp;
+Object Hierarchy
+TFileStream - TStream - TObject
+&nbsp;
+constructor Create(FileName: String; Mode: Word)
+&nbsp;
+Call Create to instantiate a file stream for reading from or writing to the named file. Specify the name of the file and the way the file should be opened as parameters.
+&nbsp;
+The Mode parameter indicates how the file is to be opened. The Mode parameter consists of an open mode and (possibly) a share mode or'ed together. The open mode must be one of the following values:
+&nbsp;
+
+
+Value
+
+Description
+
+
+
+fmCreate
+
+Create a file with the given name. If a file with the given name exists, open the file in write mode.
+
+
+
+fmOpenRead
+
+Open the file for reading only.
+
+
+
+fmOpenWrite
+
+Indicates the size in bytes of the stream.
+
+
+
+fmOpenReadWrite
+
+Open the file to modify the current contents rather than replace them.
+
+
+
+
+&nbsp;
+Properties of TFileStream
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+DataString
+
+Provides direct access to the text of the stream.
+Note! DataString is a read-only property. DataString can be used to change the contents of the string, but you can't change the DataString itself.
+
+
+
+FileName
+
+Use FileName to display the name of the file that TFileStream has accessed from disk.
+
+
+
+Position
+
+Indicates the current offset into the stream for reading and writing.
+
+
+
+Size
+
+Indicates the size in bytes of the stream.
+
+
+
+
+&nbsp;
+Methods of TFileStream
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Read
+
+Reads up to Count bytes from the buffer into a string specified by Data, starting at the current position. If Count bytes extends beyond the end of the buffer, it will only transfer the data up to the end of the associated buffer.
+
+
+
+Seek
+
+Moves the current position of the stream by Offset bytes, relative to the origin specified by Origin. If Offset is a negative number, the seeking is backward from the specified origin. The following table shows the different values of Origin and their meanings for seeking:
+&nbsp;
+
+
+Value
+
+Meaning
+
+
+
+soBeginning
+
+Offset is from the beginning of the stream.
+Seek moves to the position Offset. Offset must be &gt;= 0.
+
+
+
+soCurrent
+
+Offset is from the current position.
+Seek moves to Position + Offset.
+
+
+
+soEnd
+
+Offset is from the end of the stream.
+Offset must be &lt;= 0 to indicate a number of bytes before the end of the memory buffer.
+
+
+
+
+
+
+
+Write
+
+Writes Count bytes from a string specified by Data to the current position in the buffer and updates the current position by Count bytes. 
+Note! The Data will be converted to a single-byte string (ANSI)
+
+
+
+CopyFrom
+
+Copies a specified number of bytes from one stream to another.
+
+
+
+
+
+
+
+

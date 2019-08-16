@@ -1,0 +1,65 @@
+
+
+
+SQL Reference Guide
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      &raquo;No topics above this level&laquo;
+      
+   
+      SQL Reference Guide
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Introduction
+The database ElevateDB, developed by Elevate Software Inc, according to the SQL 2003 standard (ANSI ISO/IEC 9075:2003), and every effort was made to make sure that the product adheres to this standard as much as possible with no deviations. However, there are certain areas where ElevateDB does deviate from the standard. Each type, operator, statement, or function reference in this manual includes a summary of any deviation from the SQL 2003 standard at the end of the reference entitled SQL 2003 Standard Deviations that will detail any deviations from the SQL 2003 standard.
+&nbsp;
+SQL Statements
+SQL statements are used to select, insert, update, or delete rows from tables in the database.
+You can use the TQuery component or Database Query to execute SQL statements.
+&nbsp;
+&#8226;SELECT&#8226;INSERT&#8226;UPDATE&#8226;DELETE&nbsp;
+Related links
+&nbsp;
+&#8226;Operators&#8226;Types&nbsp;
+SQL Scripts
+SQL scripts is an ISO standard mainly defining an extension of SQL with a procedural language for use in stored procedures, functions or triggers.
+You can use the TDBScript component or Database Query to execute SQL scripts.
+&nbsp;
+&#8226;BEGIN..END&#8226;EXCEPTION&#8226;FINALLY&#8226;DECLARE&#8226;RAISE&#8226;IF&#8226;CASE&#8226;LOOP&#8226;REPEAT&#8226;WHILE&#8226;ITERATE&#8226;LEAVE&#8226;SET&#8226;CALL&#8226;USE&#8226;EXECUTE IMMEDIATE&#8226;PREPARE&#8226;UNPREPARE&#8226;EXECUTE&#8226;OPEN&#8226;CLOSE&#8226;FETCH&#8226;START TRANSACTION&#8226;COMMIT&#8226;ROLLBACK&#8226;INSERT&#8226;UPDATE&#8226;DELETE&#8226;REFRESH&#8226;ABORT&#8226;RETRY&nbsp;
+Related links
+&#8226;Numeric Functions&#8226;String Functions&#8226;Date and Time Functions&#8226;Interval Functions&#8226;Conversion Functions&#8226;Aggregate Functions&#8226;Boolean Functions&#8226;SQL/PSM Functions&nbsp;
+Administrative Statements
+It is strongly recommended that youâre using the Table Designer, when you want to create, alter or drop disk-based tables. Tables created by a SQL statement, is not accessibly from the Form Designer.
+&nbsp;
+&#8226;CREATE TABLE&#8226;ALTER TABLE&#8226;VERIFY TABLE&#8226;REPAIR TABLE&#8226;OPTIMIZE TABLE&#8226;DROP TABLE&#8226;RENAME TABLE&#8226;CREATE INDEX&#8226;ALTER INDEX&#8226;DROP INDEX&#8226;RENAME INDEX&nbsp;
+Transactions
+ElevateDB allows for transactions in order to provide the ability to execute single or multi-table updates and have them treated as an atomic unit of work. Transactions are implemented logically in the same fashion as most other database engines, however at the physical level there are some important considerations to take into account and these will be discussed here.
+&nbsp;
+&#8226;START TRANSACTION&#8226;COMMIT&#8226;ROLLBACK
+
+
+

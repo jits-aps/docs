@@ -1,0 +1,204 @@
+
+
+
+TQRChart
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Rapport Designer&nbsp;&gt;
+   
+      TQRChart
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+The TQRChart component is accessible by the Design Palette and display graphs.
+&nbsp;
+TQRChart is a âwrapperâ component who gives access to the TeeChart component from Steema Software. Use the Chart Editor to define display characteritics for the Chart and to add Data Series. At design time, double click on the TQRChart component to bring up the editor. Data Series for the TChart component must be populated by code.
+&nbsp;
+Configuring data Series
+After you have dropped a TQRChart component on a report band and added a Series to it, you are ready to populate the Series.
+&nbsp;
+Example Pie-Series
+Suppose the Series we added was a Pie Series. We could populate the Series in the following way:
+&nbsp;
+procedure ReportBeforeRun(Sender: TObject);
+begin
+ &nbsp; with QRChart1.SeriesList[0] do
+ &nbsp; begin
+ &nbsp; &nbsp; Add(40,'Pencil',clRed);
+ &nbsp; &nbsp; Add(60,'Paper',clBlue);
+ &nbsp; &nbsp; Add(30,'Ribbon',clGreen);
+ &nbsp; end;
+end;
+&nbsp;
+Object Hierarchy
+TQRChart - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TQRChart
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Enabled
+
+Determines whether the component appear at runtime.
+
+
+
+Frame
+
+All text components can display a visible frame around them. This property controls the appearance of the frame, which sides it is drawn on and so on.
+
+
+
+Height
+
+Specifies the vertical size of the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Monochrome
+
+The Monochrome property will allow Charts to be draw using only black and white colors. It's not yet completely implemented. Right now it uses the internal Bitmap.Monochrome property, and the output quality isn't really good.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+SeriesList
+Run-time only
+
+The SeriesList property is an array property that contains a list of pointers to all Series linked to a TChart component.Use the SeriesList to populate the data at runtime by code.
+&nbsp;
+Warning! Never FREE or REMOVE SeriesList elements. Use the Series.Free to remove it or use the Series.Active property to disable it.
+
+
+
+ShowAxis
+
+Determines whether the Chart Axis will be displayed or not.
+
+
+
+ShowLegend
+
+Determines whether the Chart Legend will be displayed or not.
+
+
+
+ShowTitle
+
+Determines whether the Chart Title or Foot will be displayed or not. When False, Chart dimensions grow to fit all available space.
+
+
+
+ShowWalls
+
+Determines whether the Chart Walls will be displayed or not.
+
+
+
+Size
+
+All printable components share the Size property. You can use this property to set the exact size of the component. This property also contains the position of the component relative to its parent band.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+TeePrintMethod
+
+The TeePrintMethod property allows two operation modes:
+&nbsp;
+
+
+Option
+
+Description
+
+
+
+qtmBitmap
+
+This mode outputs Charts as bitmap pictures. This makes the Chart appear as it looks on the screen, but remember that bitmaps are larger and slower to print.
+
+
+
+qtmMetafile
+
+This mode is faster and gives much better output quality than bitmaps. Chart contents are sent to QuickReports in Windows metafile vector instructions. There are, however, some limitations and bugs in the Windows metafile subsystem.
+
+
+
+
+Clipping does not work fine as it uses physical pixel coordinates instead of logical. Rotated fonts dimensions are very difficult to calculate in metafile mode. This makes rotated fonts overlap or leave too much space on axis and titles.
+
+
+
+TitleText
+
+This property is a standard TStringList object and contains the text to be drawn at Top Chart side.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Width
+
+Specifies the horizontal size of the control.
+
+
+
+
+&nbsp;
+
+
+
+

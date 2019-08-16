@@ -1,0 +1,117 @@
+
+
+
+TSMS
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TSMS
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+TSMS allows you to send SMS messages to a mobile phone via the Internet. The message will be send though the SMS.DLL file, witch is installed on the users PC.
+For more information on sending SMS messages using the TSMS component, please contact the software supplier.
+&nbsp;
+Example
+&nbsp;
+procedure SpeedButton1Click(Sender: TObject);
+var
+ &nbsp; sms: TSMS;
+begin
+ &nbsp; sms := TSMS.Create;
+ &nbsp; try
+ &nbsp; &nbsp; sms.Recipients.Add('4545262626');
+ &nbsp; &nbsp; sms.Text := 'This is a test';
+ &nbsp; &nbsp; sms.Send;
+ &nbsp; finally
+ &nbsp; &nbsp; sms.Free;
+ &nbsp; end;
+end;
+&nbsp;
+Object Hierarchy
+TSMS - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TSMS
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Recipients
+
+Use this TStringList property to add the recipients. If you want the user to enter the recipients, ignore this property and set ShowDialog to True.
+
+
+
+ShowDialog
+
+This option determines if an SMS dialog window should appear by the default mail program. Otherwise the mail will be sent automatically.
+
+
+
+Text
+
+Use this string property to enter the message. If you want the user to enter the message, ignore this property and set ShowDialog to True.
+
+
+
+
+&nbsp;
+Methods of TSMS
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Reset
+
+This procedure will clear all properties.
+
+
+
+Send
+
+This procedure will send the SMS.
+If the property ShowDialog is set to false, you must specify a recipient and a text message, before you execute this method.
+
+
+
+
+
+
+
+

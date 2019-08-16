@@ -1,0 +1,98 @@
+
+
+
+Script Reference Guide
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      &raquo;No topics above this level&laquo;
+      
+   
+      Script Reference Guide
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+Generelt
+I Script Editoren har du mulighed for at programmere egne event handlers, baseret pÃ¥ de objekter som findes i designmiljÃ¸et. Applikationssproget som anvendes, understÃ¸tter de grundlÃ¦ggende strukturer fra programmeringssproget Pascal, herunder definering af procedurer, funktioner, variabler og konstanter.
+&nbsp;
+FÃ¸lgende variabel typer supporteres:
+Byte, Word, Integer, Boolean, Real, Single, Double, Extended, Char, String og Variant.
+BemÃ¦rk! Det er IKKE muligt at definere egne objekter eller type erklÃ¦ringer.
+&nbsp;
+Via kommandoen &quot;uses&quot; efterfulgt af navnet pÃ¥ et global script unit, kan du implementere variabler, procedurer og funktioner som er defineret i et sÃ¦rskilt unit. En &quot;uses&quot; erklÃ¦ring skal altid indsÃ¦ttes i toppen af editoren. &nbsp;
+&nbsp;
+Eksempel
+&nbsp;
+uses
+ &nbsp; 'GlobalScriptName1';
+var
+ &nbsp; i: Integer;
+&nbsp;
+procedure Button1Click(Sender: TObject);
+begin
+end;
+&nbsp;
+Applikationssproget har et rigt udvalg af standard funktioner, som beskrives nÃ¦rmere under fÃ¸lgende afsnit:
+&#8226;General routines&#8226;System calls&#8226;Variable type conversions&#8226;Mathematical routines&#8226;String routines&#8226;Date / Time routines&#8226;Dialog routines&#8226;File handler routines&#8226;Database routines&nbsp;
+Events
+En event handler er en procedure, som afvikles nÃ¥r en given hÃ¦ndelse er indtruffet. F.eks. nÃ¥r man indsÃ¦tter en vÃ¦rdi i et databasefelt kaldes OnValidate, eller nÃ¥r en knap aktiveres kaldes OnClick.
+NÃ¥r du designer en tabel, form eller en rapport, kan du via Object Inspectoren se hvilke events (hÃ¦ndelser), der er knyttet til den aktuelle tabel, form eller komponent. For at oprette et event, skal du klikke pÃ¥ knappen i feltet udfra det Ã¸nskede event, og herefter generes automatisk en ny procedure i editoren. Det er sÃ¥ din opgave at definere den hÃ¦ndelse som skal afvikles. Hvis du ved en fejl kommer til at oprette en ny procedure, slettes denne i editoren og Admind fjerner herefter relationen fra Object Inspectoren.
+&nbsp;
+Code Completion
+Code completion (kodefuldfÃ¸relse) hjÃ¦lper med at udvÃ¦lge metoder, egenskaber, argumenter osv. NÃ¥r du har indtastet f.eks. et objektnavn efterfulgt af et punktum, dukker der automatisk et vindue op, som viser objektets forskellige indstillinger og funktionskald.
+Du kan ogsÃ¥ benytte Code Completion, nÃ¥r du Ã¸nsker at se en liste over alle tilgÃ¦ngelige objekter, variabler og konstanter. Tryk CTRL + Mellemrum for at aktivere funktionen.
+&nbsp;
+Objekter (Komponenter)
+Admind har en rÃ¦kke visuelle og ikke visuelle objekter, som tilsammen danner applikationen. NÃ¥r du f.eks. designer en form, kan du vÃ¦lge forskellige komponenter fra en Designpalet. Disse komponenter kaldes for de visuelle objekter og fÃ¥r automatisk tildelt et variabelnavn som reference. De ikke visuelle objekter har du derimod kun adgang til via applikationssproget.
+&nbsp;
+Eksempel:
+FÃ¸lgende eksempel viser hvordan du sender en e-mail via objektet TEmail:
+&nbsp;
+procedure SpeedButton1Click(Sender: TObject);
+var
+ &nbsp;e: TEmail;
+begin
+ &nbsp;e := TEmail.Create;
+ &nbsp;try
+ &nbsp; &nbsp;e.Recipients.Add('info@admind.dk');
+ &nbsp; &nbsp;e.Subject := 'Overskrift'; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+ &nbsp; &nbsp;e.Body := 'Dette er en test';
+ &nbsp; &nbsp;e.Send;
+ &nbsp;finally
+ &nbsp; &nbsp;e.Free;
+ &nbsp;end;
+end;
+&nbsp;
+FÃ¸rst erklÃ¦res variablen e som TEmail og initialiseres via metoden &quot;Create&quot;. E-mail'en specificeres via objektets forskellige egenskaber og sendes via metoden &quot;Send&quot;. Til sidst frigÃ¸res objektet via metoden &quot;Free&quot;.
+&nbsp;
+Navngivning af variabler og objekter
+Alle objekter og variabler, som du benytter, skal have entydige navne. Disse navne skal dannes af det engelske alfabet a,b,..z samt cifrene 0,1,..9. Det fÃ¸rste tegn mÃ¥ dog ikke vÃ¦re et ciffer, og det er ikke lovligt at bruge mellemrum i navne. Tegnet _ (understregning) mÃ¥ dog godt bruges. Endvidere skal det nÃ¦vnes at der ikke skelnes imellem store og smÃ¥ bogstaver.
+De visuelle objekter navngives automatisk, men navnet kan Ã¦ndres via property Name i Object Inspectoren.
+&nbsp;
+Compiler
+Admind's indbygget compiler fortokler koden i editoren og oversÃ¦tter den til en binÃ¦r XML kode, som anvendes nÃ¥r applikationen afvikles. NÃ¥r du gemmer et design unit, compiles den tilhÃ¸rende koden automatisk og sÃ¥fremt der er en &quot;syntax&quot; fejl, placeres markÃ¸ren pÃ¥ det aktuelle sted i editoren og viser en fejlmeddelelse. Du har mulighed for lÃ¸bende at teste dine indtastninger, ved at aktivere compileren. VÃ¦lg Funktioner og menupunktet Compiler, eller anvend genvejstasten CTRL+F9. &nbsp; 
+
+
+
+

@@ -1,0 +1,658 @@
+
+
+
+TMatrix
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Form Designer&nbsp;&gt;
+   
+      TMatrix
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+Add a TMatrix object to a form to present textual data in a tabular format. TMatrix provides many properties to control the appearance of the matrix, as well as events and methods that take advantage of the tabular organization of the matrix in responding to user actions.
+TMatrix introduces the ability to associate an object with each string in the matrix. These objects can encapsulate any information or behavior represented by the strings that are presented to the user.
+&nbsp;
+Note! If the strings to be presented in a matrix represent field values from the records in a dataset, use TGrid instead.
+&nbsp;
+Object Hierarchy
+TMatrix - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TMatrix
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Align
+
+Determines how the control aligns within its container (parent control).
+
+
+
+Anchors
+
+Specifies how the control is anchored to its parent.
+
+
+
+BevelEdges
+
+Use BevelEdges to get or set which edges of the control are beveled. The BevelInner, BevelOuter, and BevelKind properties determine the appearance of the specified edges.
+
+
+
+BevelInner
+
+Determines the style of the inner bevel of a panel.
+
+
+
+BevelOuter
+
+Determines the style of the outer bevel of a panel.
+
+
+
+BevelWidth
+
+Determines the width, in pixels, of both the inner and outer bevels of a panel.
+
+
+
+BorderStyle
+
+Determines whether a single line border is drawn around the matrix.
+
+
+
+Canvas
+Run-time only
+
+Specifies the TCanvas object that presents a drawing surface for the control. 
+Use the properties of the TCanvas object to draw or paint on the surface of the control. Canvas is often used in the OnDrawCell event handler.
+
+
+
+Cells
+Run-time only
+
+Use Cells to access the string within a particular cell. ACol is the column coordinate of the cell, and ARow is the row coordinate of the cell. The first row is row zero, and the first column is column zero. The ColCount and RowCount property values define the size of the array of strings. To access the objects associated with the strings in the Cells array, use the Objects property.
+
+
+
+ColCount
+
+Read ColCount to determine the number entries in the ColWidths array. Set ColCount to add or delete columns at the righthand side of the grid. The value of ColCount includes any fixed columns at the left of the matrix as well as the scrollable columns in the body of the matrix.
+
+
+
+Color
+
+Specifies the background color of the control.
+
+
+
+Cols
+Run-time only
+
+Use Cols to access all the strings for a single column, along with their associated objects. The number of strings and associated objects is always equal to the value of the ColCount property, the number of columns in the grid. The Index parameter is the number of the column, where the value of the first column in the grid is zero. To get all the strings and objects for a row, rather than for a column, use the Rows property.
+
+
+
+Constraints
+
+Specifies the size constraints for the control.
+
+
+
+Ctl3D
+
+Determines whether a control has a three-dimensional (3-D) or two-dimensional look.
+
+
+
+Cursor
+
+Specifies the image used to represent the mouse pointer when it passes into the region covered by the control.
+
+
+
+DefaultColWidth
+
+Set DefaultColWidth to change the size of all columns in the matrix. When DefaultColWidth is set, columns that have been resized using the mouse or by setting the ColWidths property are given the DefaultColWidth as well. When new columns are added to the matrix using the ColCount property, they are created with a width of DefaultColWidth.
+
+
+
+DefaultDrawing
+
+Set DefaultDrawing to true to have the control automatically paint the cells in the matrix, including adding the background color, the 3-D effects on the fixed cells, and the focus rectangle around the selected cell. Set DefaultDrawing to false to skip the painting of the cells when the grid is drawn. When DefaultDrawing is false, the cells should be painted using the OnDrawCell event.
+
+
+
+DefaultRowHeight
+
+Set DefaultRowHeight to change the size of all rows in the matrix. When DefaultRowHeight is set, rows that have been resized using the mouse or by setting the RowHeights property are given the DefaultRowHeight as well. When new rows are added to the matrix using the RowCount property, they are created with a height of DefaultRowHeight.
+
+
+
+Enabled
+
+Controls whether the control responds to mouse and keyboard events.
+
+
+
+FixedColor
+
+Specifies the background color of the fixed rows and columns in the matrix.
+
+
+
+FixedCols
+
+Set FixedCols to create or get rid of nonscrolling columns. Nonscrolling columns appear at the left of the matrix, and are always visible, even when the user scrolls the other columns in the matrix. Use nonscrolling columns for displaying row titles or row numbers, or to implement a scroll lock that the user can set. Nonscrolling columns are visually distinct from the scrollable columns in the matrix. They are painted with a separate background color, and their cells have a raised, 3-D look.
+&nbsp;
+Note! &nbsp;Matrixs must include at least one scrolling column. Do not set FixedCols to a value greater than ColCount - 1.
+
+
+
+FixedRows
+
+Set FixedRows to create or get rid of nonscrolling rows. Nonscrolling rows appear at the top of the matrix, and are always visible, even when the user scrolls the other rows in the matrix. Use nonscrolling rows for displaying column titles or column numbers. Nonscrolling rows are visually distinct from the scrollable rows in the matrix. They are painted with a separate background color, and their cells have a raised, 3-D look.
+&nbsp;
+Note! &nbsp;Matrixs must include at least one scrolling row. Do not set FixedRows to a value greater than RowCount - 1.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text written on or in the control.
+
+
+
+GridLineWidth
+
+Set GridLineWidth to make the lines that separate the cells in the matrix heavier or lighter. When GridLineWidth is zero, no separators are drawn between the cells of the grid. GridLineWidth will have no effect if the Options property does not include goFixedHorzLine, goFixedVertLine, goHorzLine, or goVertLine.
+
+
+
+Height
+
+Specifies the vertical size of the control in pixels.
+
+
+
+HelpKeyword
+
+Keyword for control's context-sensitive help topic.
+
+
+
+Hint
+
+Contains the text string that can appear when the user moves the mouse over the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+Objects
+Run-time only
+
+Use the Objects property to access the object associated with a particular cell. The ColCount and RowCount values define the size of the array of objects. ACol is the column coordinate of the cell, and ARow is the row coordinate of the cell, where the first column is column 0, and the first row is row 0.
+&nbsp;
+Note! &nbsp;The matrix does not own the objects in the Objects array. Objects added to the Objects array still exist even if the string grid is destroyed. They must be explicitly destroyed by the application.
+
+
+
+Options
+
+Specifies various display and behavioral properties of the grid.
+The following table lists the possible TGridOption values:
+&nbsp;
+
+
+Value
+
+Meaning
+
+
+
+goFixedVertLine
+
+Vertical lines are drawn to separate the fixed (nonscrolling) columns in the matrix.
+
+
+
+goFixedHorzLine
+
+Horizontal lines are drawn to separate the fixed (nonscrolling) rows in the matrix.
+
+
+
+goVertLine
+
+Vertical lines are drawn to separate the scrollable columns in the matrix.
+
+
+
+goHorzLine
+
+Horizontal lines are drawn to separate the scrollable rows in the matrix.
+
+
+
+goRangeSelect
+
+Users can select ranges of cells at one time. goRangeSelect is ignored if Options includes goEditing.
+
+
+
+goDrawFocusSelected
+
+Cells with input focus are drawn with a special highlight color, just like selected cells without input focus. If goDrawFocusSelected is not included, the cell with input focus is distinguished by a focus rectangle, not by a special background color.
+
+
+
+goRowSizing
+
+Scrollable rows can be individually resized.
+
+
+
+goColSizing
+
+Scrollable columns can be individually resized.
+
+
+
+goRowMoving
+
+Scrollable rows can be moved using the mouse.
+
+
+
+goColMoving
+
+Scrollable columns can be moved using the mouse.
+
+
+
+goEditing
+
+Users can edit the contents of cells. When goEditing is included in Options, goRangeSelect has no effect.
+
+
+
+goTabs
+
+Users can navigate through the cells in the grid using Tab and Shift+Tab.
+
+
+
+goRowSelect
+
+Entire rows are selected rather than individual cells. If goRowSelect is included in Options, goAlwaysShowEditor has no effect.
+
+
+
+goAlwaysShowEditor
+
+The matrix is locked into edit mode. The user does not need to use Enter or F2 to turn on EditorMode. If Options does not include goEditing, goAlwaysShowEditor has no effect. If Options includes goRowSelect, goAlwaysShowEditor has no effect.
+
+
+
+goThumbTracking
+
+The matrix image updates while the user is dragging the thumb of the scroll bar. If goThumbTracking is not included, the image does not update until the user releases the thumb in a new position.
+
+
+
+
+
+
+
+ParentColor
+
+Determines where a control looks for its color information.
+
+
+
+ParentCtl3D
+
+Determines where a component looks to determine if it should appear three dimensional.
+
+
+
+ParentFont
+
+Determines where a control looks for its font information.
+
+
+
+RowCount
+
+Read RowCount to determine the number entries in the RowHeights array. Set RowCount to add or delete rows at the bottom of the grid. The value of RowCount includes any fixed rows at the top of the grid as well as the scrollable rows in the body of the grid.
+
+
+
+Rows
+Run-time only
+
+Use Rows to access all the strings for a single row, along with their associated objects. The number of strings and associated objects is always equal to the value of the RowCount property, the number of rows in the grid. The Index parameter is the number of the row, where the value of the first row in the grid is zero. To get all the strings and objects for a column, rather than for a row, use the Cols property.
+
+
+
+ScrollBars
+
+Specifies whether the grid includes horizontal and vertical scroll bars.
+&nbsp;
+Note!  If all the cells in the grid fit in the ClientWidth, no horizontal scroll bar appears, even if ScrollBars is ssHorizontal or ssBoth. If all the cells fit in the ClientHeight, no vertical scroll bar appears, even if ScrollBars is ssVertical or ssBoth.
+
+
+
+TabOrder
+
+Indicates the position of the control in its parent's tab order.
+
+
+
+TabStop
+
+Determines if the user can tab to a control.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing &nbsp;control in pixels.
+
+
+
+Visible
+
+Determines whether the component appears on screen.
+
+
+
+Width
+
+Specifies the horizontal size of the control or form in pixels.
+
+
+
+
+&nbsp;
+Methods of TMatrix
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+BeginDrag
+
+Call BeginDrag to start a drag operation. The mouse pointer changes to the crDrag value and dragging begins. Use the flowing events handlers to control the drag operation: OnDragDrop, OnDragOver, OnEndDrag. If the Threshold parameter is 0 (default), the dragging begins immediately. Otherwise dragging does not begin until the user moves the mouse pointer the number of pixels specified by the Threshold parameter.
+
+
+
+Dragging
+
+Indicates whether a control is being dragged. Use this function to determine the drag state of the control. If Dragging returns true, the control is being dragged. If Dragging is false, the control is not being dragged.
+
+
+
+EndDrag
+
+Call EndDrag to stop a dragging operation that began with a call to the BeginDrag method.
+
+
+
+Refresh
+
+Call Refresh to repaint the entire control and update the inplace editor.
+
+
+
+Repaint
+
+Call Repaint to repaint the entire control.
+
+
+
+RepaintCell
+
+Call RepaintCell to repaint a cell specified by the parameters ACol and ARow.
+
+
+
+MouseToCell
+
+Call MouseToCell to convert from grid-relative screen coordinates to row and column indexes. The X and Y parameters are the screen coordinates of the point to be converted. MouseToCell returns the ACol parameter as the number of the column over the point (X,Y), and the ARow parameter as the number of the row. 
+Usually the MouseToCell method is used in a mouse event handler, which supplies the mouse coordinates as the X and Y parameters of the method call.
+
+
+
+SetFocus
+
+Gives the input focus to the control. When a control has focus, it receives keyboard events.
+
+
+
+
+&nbsp;
+Events of TMatrix
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+OnClick
+
+Occurs when the user clicks the control.
+
+
+
+OnColumnMoved
+
+ColumnMoved is called immediately after a column in the grid has moved. The FromIndex parameter is the old index of the column, and the ToIndex parameter is the new index. The ColumnMoved method of TCustomGrid does nothing. Descendants of TCustomGrid override this method to make internal adjustments or to generate an OnColumnMoved event.
+
+
+
+OnDblClick
+
+Occurs when the user double-clicks the left mouse button when the mouse pointer is over the control.
+
+
+
+OnDrawCell
+
+Write an OnDrawCell event handler to draw the contents of all the cells in the grid. Draw on the cell using the methods of the Canvas property. The x and y parameters indicates the location of the cell on the canvas. The Col and Row parameters indicate the column and row indexes of the cell that should be drawn. The State parameter represents information about the cell. It is a set that includes one or more of the states listed in the following table.
+&nbsp;
+
+
+Value
+
+Meaning
+
+
+
+gdSelected
+
+The cell is currently selected.
+
+
+
+gdFocused
+
+The cell has input focus.
+
+
+
+gdFixed
+
+The cell is in the fixed region of the grid / matrix
+
+
+
+
+&nbsp;
+Example:
+if State and gdFocused = gdFocused then
+ &nbsp; with Matrix1 do &nbsp; 
+ &nbsp; begin
+ &nbsp; &nbsp; Canvas.Pen.Color := clRed;
+ &nbsp; &nbsp; Canvas.Brush.Style := bsClear;
+ &nbsp; &nbsp; Canvas.Rectangle(x,y,x+DefaultColWidth,y+DefaultRowHeight);
+ &nbsp; end;
+&nbsp;
+If the OnDrawCell event handler is not assigned, all cells in the draw grid will appear empty. If the DefaultDrawing property is true, the draw grid paints the background color of the cell before the OnDrawCell event, and draws a focus rectangle around the selected cell after the OnDrawCell event handler finishes drawing the contents of the cell. If the DefaultDrawing property is false, the OnDrawCell event handler should paint the background of the cell and provide all visual indication of selection and focus.
+
+
+
+OnEnter
+
+Occurs when a control receives the input focus.
+
+
+
+OnExit
+
+Occurs when the input focus shifts away from one control to another.
+
+
+
+OnGetText
+
+Occurs when the matrix requests the value of a cell.
+Write an OnGetText handler to perform custom processing for the contents of the cell. Set the Text parameter to the string for the cell specified by the ACol and ARow parameters. The value of DisplayText is False when the cell enters edit mode, otherwise it is True. If there is no OnGetText handler, the matrix uses the string specified by the Cells property.
+
+
+
+OnKeyDown
+
+Occurs when a user presses any key while the control has focus.
+&nbsp;
+Use the OnKeyDown event handler to specify special processing to occur when a key is pressed. The OnKeyDown handler can respond to keyboard keys, including function keys and keys combined with the SHIFT, ALT, and CTRL keys, and pressed mouse buttons. See TShiftState for a description of the Shift parameter.
+
+
+
+OnKeyPress
+
+Occurs when a key is pressed.
+
+
+
+OnKeyUp
+
+Occurs when the user releases a key that has been pressed.
+
+
+
+OnMouseDown
+
+Occurs when the user presses a mouse button with the mouse pointer over a control.
+
+
+
+OnMouseEnter
+
+Occurs when the user moves the mouse into a control.
+
+
+
+OnMouseLeave
+
+Occurs when the user moves the mouse outside of a control.
+
+
+
+OnMouseMove
+
+Occurs when the user moves the mouse pointer while the mouse pointer is over a control.
+
+
+
+OnMouseUp
+
+Occurs when the user releases a mouse button that was pressed with the mouse pointer over a component.
+
+
+
+OnRowMoved
+
+RowMoved is called immediately after a row in the grid changes position. The FromIndex parameter is the old index of the row, and the ToIndex parameter is the new index. The RowMoved method of TCustomGrid does nothing. Descendants of TCustomGrid override this method to make internal adjustments or to generate an OnRowMoved event.
+
+
+
+OnSelectCell
+
+Occurs before a cell in the matrix is selected.
+
+
+
+OnSetText
+
+Occurs when the user has changed the value of a cell. 
+Write an OnSetText event handler to perform any special processing of the text edited by the user. For example, use the event to retrieve and store the value of a cell.
+
+
+
+
+
+
+
+

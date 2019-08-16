@@ -1,0 +1,223 @@
+
+
+
+Indstillinger
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      &raquo;No topics above this level&laquo;
+      
+   
+      Indstillinger
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+Vinduet vÃ¦lges via menuen Funktioner og menupunktet Indstillinger.
+&nbsp;
+Generelt
+Admind har nogle grundlÃ¦gende indstillinger som er gÃ¦ldende for denne installation. Indstillingerne gemmes i Windows registreringsdatabasen og har ingen indflydelse for andre brugere af systemet.
+&nbsp;
+
+
+Indstilling
+
+Beskrivelse
+
+
+
+Anvend Betalingsterminal
+
+Aktiver denne indstilling hvis du har tilsluttet en integreret betalingsterminal fra POINT eller NETS. Softwaren til terminalen downloades via admind.dk og skal installeres inden denne indstilling aktiveres.
+
+
+
+Anvend StregkodelÃ¦ser
+
+Aktiver denne indstilling hvis du har tilsluttet en stregkodelÃ¦ser.
+LÃ¦seenheden skal anvende Windows USB Keyboard Interface og sende ASCII #02 (Ctrl+B) som prefix.
+
+
+
+Anvend MagnetkortlÃ¦ser
+
+Aktiver denne indstilling hvis du har tilsluttet en magnetkortlÃ¦ser.
+LÃ¦seenheden skal anvende Windows USB Keyboard Interface og sende ASCII #04 (Ctrl+D) som prefix.
+
+
+
+AdvisÃ©r nye Webshop ordrer
+
+Aktiver denne indstilling hvis du Ã¸nsker at blive informeret nÃ¥r der er kommet nye ordrer fra Webshoppen.
+
+
+
+AdvisÃ©r nye prisopdateringer
+
+Aktiver denne indstilling hvis du Ã¸nsker at blive informeret nÃ¥r der er prisopdateringer fra leverandÃ¸rerne.
+De fleste leverandÃ¸rer til FrisÃ¸r- og Kosmetolog branchen indretter lÃ¸bende nye varenumre og prisÃ¦ndringer til en fÃ¦lles database. Via denne database kan programmet kontrollere, om priserne pÃ¥ de oprettede salgsvarer er blevet Ã¦ndret.
+
+
+
+Gem brugerindstillinger
+
+Denne funktion gemmer dine indstillinger af vinduer og kolonner. TrÃ¦kker du f.eks. i et vindue for at gÃ¸re det stÃ¸rre, eller indsÃ¦tter / fjerner kolonner i en liste, gemmes disse indstillinger til du nÃ¦ste gang Ã¥bner vinduet. Du kan nulstille alle gemte indstillinger, ved at klikke pÃ¥ Nulstil bruger indstillinger.
+
+
+
+Cache applikation i hukommelse
+
+Hver gang du Ã¥bner et vindue eller en rapport, hentes designet fra databasen. Denne funktion optimerer hastigheden ved at huske designet, sÃ¥ det ikke skal hentes igen, nÃ¦ste gang du Ã¥bner samme vindue eller rapport. Denne funktion har kun betydning hvis du anvender en langsom Internet forbindelse og databasen er placeret pÃ¥ en ekstern server.
+
+
+
+Applikationssprog
+
+Angiv det sprog som programmet skal anvende.
+Dansk er standard, men andre sprog kan rekvireres hos programforhandleren.
+
+
+
+
+&nbsp;
+Data Collector
+Hvis du anvender en Cipher Lab (Data Collector) til registrering af varemodtagelser eller lageroptÃ¦llinger, skal du taste fÃ¸lgende:
+&nbsp;
+
+
+Indstilling
+
+Beskrivelse
+
+
+
+SÃ¸g automatisk
+
+Aktiver denne indstilling hvis programmet automatisk skal sÃ¸ge efter en CipherLab terminal. Alternativt skal âKÃ¸r programâ og âKÃ¸r parametreâ angives.
+
+
+
+KÃ¸r Program
+
+Tast fÃ¸lgende: IR_Read.exe
+
+
+
+KÃ¸r Parameter
+
+Tast fÃ¸lgende: IR_Read.txt,n,3,1,1,1,1
+&nbsp;
+Parameteren n skal erstattes med nummeret pÃ¥ den virtuelle COM port, som Data Collectoren har fÃ¥et tildelt.
+&nbsp;
+Via Windows Kontrolpanel, kan du finde frem til nummeret, ved at vÃ¦lge System, Hardware og EnhedshÃ¥ndtering.
+Under Porte (COM &amp; LPT), kan du aflÃ¦se nummeret pÃ¥ COM porten, eksempelvis vil der stÃ¥:
+&nbsp;
+CP210x USB to UART Bridge Controller (COM4)
+I ovennÃ¦vnte eksempel har Data collectoren fÃ¥et tildelt port 4, som derfor skal erstatte n i parameter angivelsen.
+
+
+
+
+&nbsp;
+UdgÃ¥ende E-mails
+FÃ¸lgende indstillinger er bestemmende for, hvordan udgÃ¥ende e-mails sendes:
+&nbsp;
+
+
+Indstilling
+
+Beskrivelse
+
+
+
+E-mail program (mapi)
+
+E-mails sendes via eget e-mail program f.eks. Outlook.
+
+
+
+Admind Mail Service
+
+E-mails sendes via Adminds mail server.
+Denne service understÃ¸tter E-mail skabeloner og krÃ¦ver intet mail program installeret pÃ¥ computeren.
+
+
+
+SMTP server
+
+E-mails sendes til en bestemt mail server.
+Denne service understÃ¸tter E-mail skabeloner og krÃ¦ver intet mail program installeret pÃ¥ computeren.
+&nbsp;
+NedenstÃ¥ende skal udfyldes og oplyses af din Internet udbyder:
+&nbsp;
+
+
+Indstilling
+
+Beskrivelse
+
+
+
+Host
+
+Angiv navnet pÃ¥ SMTP serveren.
+
+
+
+Portnummer
+
+Angiv portnummer som SMTP serveren anvender.
+
+
+
+Krypteringsmetode
+
+Her kan du vÃ¦lge en TLS krypteringsmetode.
+TLS (Transport Layer Security) er en protokol, der krypterer meddelelser og leverer dem sikkert.
+
+
+
+Min server krÃ¦ver godkendelse
+
+SÃ¦t et flueben i dette felt, hvis SMTP serveren krÃ¦ver et brugernavn og en adgangskode.
+
+
+
+
+
+
+
+Mailchimp
+
+E-mail adresserne overfÃ¸res til Mailchimp hvorfra e-mailen afsendes.
+Denne funktion kan kun vÃ¦lges ved afsendelse af nyhedsbreve og benyttes, nÃ¥r du har en Mailchimp konto. I Mailchimp kan du designe dine nyhedsbreve og se statistikker over, hvor mange af dine kunder som Ã¥bner og lÃ¦ser nyhedsbrevene.
+
+
+
+
+&nbsp;
+Husk at afslutte med OK for at gemme Ã¦ndrede indstillinger.
+
+
+
+

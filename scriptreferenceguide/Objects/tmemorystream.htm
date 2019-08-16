@@ -1,0 +1,222 @@
+
+
+
+TMemoryStream
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Script Reference Guide &gt; Objects&nbsp;&gt;
+   
+      TMemoryStream
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+&nbsp;
+Description
+Use TMemoryStream to store data in a dynamic memory buffer that is enhanced with file-like access capabilities. TMemoryStream provides the general I/O capabilities of a stream object while introducing methods and properties to manage a dynamic memory buffer. 
+&nbsp;
+About TStream
+Use specialized stream objects to read from, write to, or copy information stored in a particular medium. Each descendant of TStream implements methods for transferring information to and from a particular storage medium, such as a disk file, dynamic memory, and so on. In addition to methods for reading, writing, and copying bytes to and from the stream, stream objects permit applications to seek to an arbitrary position in the stream. Properties of TStream provide information about the stream, such as its size and the current position in the stream.
+&nbsp;
+Object Hierarchy
+TMemoryStream - TStream - TObject
+&nbsp;
+constructor Create(TextFormat: String = '')
+&nbsp;
+Call Create to instantiate a TMemoryStream object.
+Use TextFormat to define a specific encoding for string characters.
+&nbsp;
+
+
+TextFormat
+
+Description
+
+
+
+ANSI
+
+The default ANSI code page.
+
+
+
+ASCII
+
+Encoding for the ASCII character set.
+
+
+
+UTF-7
+
+Encoding for the UTF-7 format.
+
+
+
+UTF-8
+
+Encoding for the UTF-8 format.
+
+
+
+UTF-16
+
+Encoding for the UTF-16 format. (Unicode)
+
+
+
+
+&nbsp;
+Properties of TMemoryStream
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+DataString
+
+Provides direct access to the text of the stream.
+Note! DataString is a read-only property. DataString can be used to change the contents of the string, but you can't change the DataString itself.
+
+
+
+Position
+
+Indicates the current offset into the stream for reading and writing.
+
+
+
+Size
+
+Indicates the size in bytes of the stream.
+
+
+
+
+&nbsp;
+Methods of TMemoryStream
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+Clear
+
+Frees the memory buffer, discarding all data associated with the memory stream.
+
+
+
+LoadFromFile
+
+Loads the entire contents of a file into the memory buffer.
+
+
+
+LoadFromStream
+
+Loads the entire contents of a TStream object into the memory buffer.
+
+
+
+Read
+
+Reads up to Count bytes from the buffer into a string specified by Data, starting at the current position. If Count bytes extends beyond the end of the buffer, it will only transfer the data up to the end of the associated buffer.
+
+
+
+SaveToFile
+
+Writes the entire contents of the memory stream to the file with a given file name.
+
+
+
+SaveToStream
+
+Writes the entire contents of the memory stream to the TStream object specified by Stream.
+
+
+
+Seek
+
+Moves the current position of the stream by Offset bytes, relative to the origin specified by Origin. If Offset is a negative number, the seeking is backward from the specified origin. The following table shows the different values of Origin and their meanings for seeking:
+&nbsp;
+
+
+Value
+
+Meaning
+
+
+
+soBeginning
+
+Offset is from the beginning of the stream.
+Seek moves to the position Offset. Offset must be &gt;= 0.
+
+
+
+soCurrent
+
+Offset is from the current position.
+Seek moves to Position + Offset.
+
+
+
+soEnd
+
+Offset is from the end of the stream.
+Offset must be &lt;= 0 to indicate a number of bytes before the end of the memory buffer.
+
+
+
+
+
+
+
+Write
+
+Concatenates a specified string to the current position in the stream, and updates the current position accordingly. 
+Writes Count bytes from a string specified by Data to the current position in the buffer and updates the current position by Count bytes. 
+
+
+
+CopyFrom
+
+Copies a specified number of bytes from one stream to another.
+
+
+
+
+
+
+
+

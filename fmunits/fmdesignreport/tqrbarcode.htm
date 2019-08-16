@@ -1,0 +1,254 @@
+
+
+
+TQRBarcode
+
+
+
+ 
+  
+    
+      &lt;&lt; Click to Display Table of Contents &gt;&gt;
+      Navigation:&nbsp;
+      
+      Design Units &gt; Rapport Designer&nbsp;&gt;
+   
+      TQRBarcode
+
+    
+    
+      
+      
+      
+      
+      
+    
+    
+
+
+  
+
+
+ 
+
+
+
+General
+The TQRBarcode component is accessible by the Design Palette and display barcodes.
+&nbsp;
+You create a barcode by putting a TQRBarcode component into a report band and select the barcode type by the BarType property. If you want to establish a link to a data field, use the DataField property. If you want to create barcodes without a connection to the database, type the text to be bar-coded in the BarCode property.
+&nbsp;
+The width of a barcode can be determined in two ways. Use the AutoWidth property with a value of True in combination with the CharWidth property for self-scaling barcodes. With AutoWidth set to False, barcodes will keep the same width, independent of the length of the string.
+For EAN-8 and EAN-13 codes, you have full control over the used font for the digits with the Font property (including the color).
+&nbsp;
+A note about printing barcodes
+For best readability (by a barcode reader), use a printer with at least 300 dpi resolution. Higher printer resolutions will result in better readability. 
+This component is using the Windows printing system. The use of specialized barcode printers is NOT supported.
+&nbsp;
+Object Hierarchy
+TQRBarcode - TCustomControl - TWinControl - TControl - TComponent - TPersistent - TObject
+&nbsp;
+Properties of TQRBarcode
+&nbsp;
+
+
+Name
+
+Description
+
+
+
+AutoSize
+
+The AutoWidth property determines how the horizontal scaling of the barcode is accomplished. When set to False, the width of the barcode is determined by the value of the component's Width property, which can be set by sizing the component with the mouse. When AutoWidth is set to True, the width is determined by the CharWidth property. This option is useful for variable length barcodes like Code 39 and Code 128.
+
+
+
+BarCode
+
+Type a string to be bar-coded. If you want to create barcodes directly from items in your database, use instead the DataField property.
+
+
+
+BarType
+
+The BarType property determines the type of barcode that should be used.
+Available types are:
+
+
+Option
+
+Description
+
+
+
+btCode128
+
+Code 128 style barcodes.
+
+
+
+btCode39
+
+Code 39 style barcodes.
+
+
+
+btCode39wCheck
+
+Code 39 style barcodes with check digit.
+
+
+
+btEAN13
+
+EAN-13 style barcodes.
+
+
+
+btEAN8
+
+EAN-8 style barcodes.
+
+
+
+btUPCA
+
+UPC-A style barcodes
+
+
+
+btITF
+
+ITF (2-5 Interleaved) style barcodes.
+
+
+
+btITFwCheck
+
+ITF (2-5 Interleaved) style barcodes with check digit.
+
+
+
+btPostnet
+
+US Postnet style barcodes.
+
+
+
+
+
+
+
+CharWidth
+
+Valid only when the AutoWidth property is set to True. Determines the approximate width in pixels of a single bar-coded character. The total width of the barcode will be the number of encoded characters multiplied by the value of this property.
+
+
+
+Color
+
+This property determines the background color of the component.
+
+
+
+DataField
+
+Specifies the field from which the control gets the string to be bar-coded. If you want to create barcodes without a connection to the database, use instead the BarCode property.
+
+
+
+Enabled
+
+Determines whether the component appear at runtime.
+
+
+
+Field
+Run-time only
+
+Identifies the TField component the control is linked to.
+
+
+
+Font
+
+Contains a TFont object and specifies the attributes of text.
+This property determines the font of the human readable numerics of the EAN 8, EAN 13 and UPC-A barcodes. The preferred font is OCR-B which is not present on most systems.
+
+
+
+Frame
+
+Display a visible frame around the shape. This property controls the appearance of the frame, which sides it is drawn on and so on.
+
+
+
+Height
+
+Specifies the vertical size of the control.
+
+
+
+Left
+
+Specifies the horizontal coordinate of the left edge of a component relative to its parent.
+
+
+
+Name
+
+Specifies the name of the component as referenced in code.
+
+
+
+Prefix
+
+This property contains an optional prefix that will be inserted as the first part of the encoded string. It can be used when barcodes should be comprised of a fixed and a variable part, for instance. The variable part is then assigned to the BarCode property or filled in automatically by the DataField property.
+
+
+
+Ratio
+
+This property applies to Code 39 style barcodes only. It determines the ratio between the wide and the narrow bars. Three values are available: r10to20 for a 1:2 ratio, r10to25 for 1:2.5 and r10to30 for 1:3.
+
+
+
+Size
+
+All printable components share the Size property. If AutoSize is False you can use this property to set the exact size of the component. This property also contains the position of the component relative to its parent band.
+
+
+
+Tag
+
+Stores an integer value as part of a component.
+This property is provided for the convenience of developers and has no predefined meaning.
+
+
+
+Top
+
+Specifies the Y coordinate of the top left corner of a control, relative to its parent or containing control in pixels.
+
+
+
+Transparent
+
+This property determines whether the rectangle around the barcode is painted or not. If not, other objects may be visible through the barcode.
+
+
+
+Width
+
+Specifies the horizontal size of the control.
+
+
+
+
+&nbsp;
+Â© Zorn Software 1994-2000 all rights reserved
+
+
+
+
