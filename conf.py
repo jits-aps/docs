@@ -3,3 +3,5 @@ html_theme_options = {
 }
 project = "Admind"
 primary_domain = "rst"
+
+master_doc = "index"
