@@ -5,3 +5,4 @@ project = "Admind"
 primary_domain = "rst"
 
 master_doc = "index"
+
