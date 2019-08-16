@@ -1,7 +1,7 @@
 html_theme = "default"
 
 html_theme_options = {
-  'collapse_navigation': True
+  'collapse_navigation': False
 }
 
 project = "Admind"
