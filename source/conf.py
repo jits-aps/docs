@@ -9,7 +9,7 @@ html_theme_options = {
 project = "Admind"
 primary_domain = "rst"
 
-master_doc = "index"
+master_doc = "docs/index"
 
 # These folders are copied to the documentation's HTML output
 html_static_path = ['_static']
