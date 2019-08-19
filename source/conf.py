@@ -1,4 +1,6 @@
 import requests
+from lxml.etree import LXML_VERSION
+
 html_theme = 'sphinx_rtd_theme'
 html_style = None
 
@@ -20,4 +22,5 @@ html_css_files = [
     'css/mod.css',
 ]
 
-print(requests.__version__)
+print('Requests: ' + requests.__version__)
+print('LXML: ' + LXML_VERSION)
