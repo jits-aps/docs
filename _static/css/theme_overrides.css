@@ -7,3 +7,7 @@
     mix-blend-mode: exclusion;
     color: #b1b1b1;
 }
+
+.wy-table-responsive table td {
+    white-space: normal !important;
+}
